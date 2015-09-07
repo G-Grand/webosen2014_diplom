@@ -36,6 +36,7 @@ class RenderView
         if (array_key_exists($attrName, $this->_attributes)) {
             return $this->_attributes[$attrName];
         }
+        return null;
     }
 
     public function setViews($ctrl, $method, $params=null){
