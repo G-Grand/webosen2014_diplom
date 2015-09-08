@@ -1,20 +1,40 @@
 <?php
 
-class RenderView
-{   private static $_instanse;
-    private $_attributes = array();
+/**
+ * Webosen 2014
+ * @link    https://github.com/G-Grand/webosen2014_diplom.git
+ */
+
+
+class RenderView extends ErObject
+{
+    /** @var RenderView */
+    private static $_instanse;
+
+    /** @var array */
     private $_tplConf;
+
+    /** @var array */
     private $_ctrls = array();
+
+    /** @var array */
     private $_blocks = array();
+
+    /** @var array */
     private $_prepareView = array();
+
+    /** @var string */
     private $_renderCahe = "";
 
+
     private function __construct(){
-        $this->_tplConf = require_once "template.cfg.php";
-        $this->_blocks = $this->_tplConf["blocks"];
-        $this->_ctrls = $this->_tplConf["controllers"];
-        foreach($this->_blocks as $block){
-            $this->_prepareView[$block] = array();
+        $this->_tplConf = (ERApplication::fileExists('template.cfg','php')) ? require_once "template.cfg.php" : null;
+        if($this->_tplConf){
+            $this->_blocks = $this->_tplConf["blocks"];
+            $this->_ctrls = $this->_tplConf["controllers"];
+            foreach($this->_blocks as $block){
+                $this->_prepareView[$block] = array();
+            }
         }
     }
     private function __clone(){}
@@ -26,21 +46,14 @@ class RenderView
             return self::$_instanse;
     }
 
-    public function __set($attrName, $attribute)
-    {
-            $this->_attributes[$attrName] = $attribute;
-    }
-
-    public function __get($attrName)
-    {
-        if (array_key_exists($attrName, $this->_attributes)) {
-            return $this->_attributes[$attrName];
-        }
-        return null;
-    }
-
+    /**
+     * @param string $ctrl
+     * @param string $method
+     * @param null mixed $params
+     */
     public function setViews($ctrl, $method, $params=null){
-        $view = $this->_ctrls[$ctrl][$method];
+        $view = (isset($this->_ctrls[$ctrl][$method])) ? $this->_ctrls[$ctrl][$method] : $this->_ctrls['common']['error404'];
+
         if(is_array($this->_prepareView[$view['block']][$view['weight']])){
             if(!is_array($this->_prepareView[$view['block']][$view['weight']][1])) {
                 $this->_prepareView[$view['block']][$view['weight']] = array($this->_prepareView[$view['block']][$view['weight']],
@@ -54,13 +67,13 @@ class RenderView
         }
     }
 
-    public function setMainHeader(){
-        $this->setViews('Common', 'header');
-    }
-
-    public function setMainFooter(){
-        $this->setViews('Common', 'footer');
-    }
+//    public function setMainHeader(){
+//        $this->setViews('Common', 'header');
+//    }
+//
+//    public function setMainFooter(){
+//        $this->setViews('Common', 'footer');
+//    }
 
     public function renderBody()
     {

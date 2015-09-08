@@ -39,6 +39,7 @@ class FrontController
         return self::$_maincfg["routing"]["default_action"];
     }
 
+
     /**
      * Initialise controller from request
      */
@@ -48,22 +49,21 @@ class FrontController
         $request = new Request();
         $request->initRequest();
         $path = explode("/", $request->getPath());
-        $ctrl =  (!empty($path[0])) ? (ucfirst($path[0]) . "Controller") : $this->getDefaultController();
+//        $ctrl =  (!empty($path[0])) ? (ucfirst($path[0]) . "Controller") : $this->getDefaultController();
+//        $action =  (!empty($path[1])) ? ($path[1] . "Action") : $this->getDefaultAction();
+        $ctrl =  (!empty($path[0])) ? (ucfirst($path[0])) : $this->getDefaultController();
         $action =  (!empty($path[1])) ? ($path[1] . "Action") : $this->getDefaultAction();
-//        echo $ctrl . "<br />" . $action;
-        $render = RenderView::getInstance();
-        if (class_exists($ctrl)) {
-            $controller = new $ctrl();
-            if (method_exists($ctrl, $action)) {
+        if (ERApplication::getController($ctrl)) {
+            $controller = ERApplication::getController($ctrl);
+            if (method_exists($controller, $action)) {
                 $controller->$action();
-                echo $render->renderBody();
             }else{
-                $render->setViews('IndexController', 'error404');
-                echo $render->renderBody();
+//                $render->setViews('IndexController', 'error404');
+//                echo $render->renderBody();
             }
         }else {
-            $render->setViews('IndexController', 'error404');
-            echo $render->renderBody();
+//            $render->setViews('IndexController', 'error404');
+//            echo $render->renderBody();
         }
     }
 }

@@ -92,5 +92,14 @@ class ERApplication{
 
     public static function getMainCfg() {return self::$_mainCfg;}
 
+    public static function getController($ctrl)
+    {
+        $ctrl .= 'Controller';
+        if (class_exists($ctrl)) {
+            return new $ctrl();
+        }
+        return null;
+    }
+
 
 }

@@ -8,4 +8,17 @@ abstract class IController
         return $result[1];
     }
 
+    public function initView($method)
+    {
+        $render = RenderView::getInstance();
+        $render->setViews(get_class($this),$this->getMethodName($method));
+        return $this;
+    }
+
+    public function renderView()
+    {
+        $render = RenderView::getInstance();
+        echo $render->renderBody();
+    }
+
 }
