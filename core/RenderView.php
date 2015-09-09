@@ -67,6 +67,9 @@ class RenderView extends ErObject
         }
     }
 
+    /**
+     * @return string
+     */
     public function renderBody()
     {
         foreach($this->_prepareView as $block){

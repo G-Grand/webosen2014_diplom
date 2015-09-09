@@ -9,20 +9,28 @@ class UserController extends  IController
 
     }
 
+    public function loginAction()
+    {
+        $userMapper = new UserMapper();
+        $request = new Request();
+        $request->initRequest();
+        $post = $request->getPost();
+        $user = $userMapper->getUserByEmail($post["email"]);
+        if($userMapper->authorizeUser($user, $post["password"]));
+
+    }
+
     public function findAction(){
         $userMapper = new UserMapper();
         $request = new Request();
         $request->initRequest();
         $post = $request->getPost();
         $params = $userMapper->getUserByEmail($post["email"]);
-        $render = RenderView::getInstance();
-        $render->headerTitle = "Find User by Email";
-        $render->setMainHeader();
-        $render->setMainFooter();
-        $render->setViews(__CLASS__,$this->getMethodName(__METHOD__), $params);
-        $render->setViews(__CLASS__,$this->getMethodName(__METHOD__), $params);
+        $this->addBlockToView('Common', 'header');
+        $this->addBlockToView('Common', 'footer');
+        $this->setViewAttributes('headerTitle', 'Find by email');
+        $this->initView(__FUNCTION__, null, $params)->renderView();
     }
-
 
     public function findOldAction()
     {

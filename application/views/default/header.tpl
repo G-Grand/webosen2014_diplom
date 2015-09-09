@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>
-        <?php if(!empty($this->_attributes["headerTitle"])): ?>
-            <?=$this->_attributes["headerTitle"]; ?>
+        <?php if($this->headerTitle): ?>
+            <?php echo $this->headerTitle; ?>
         <?php endif; ?>
     </title>
 

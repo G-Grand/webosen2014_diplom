@@ -9,7 +9,7 @@ class UserMapper extends Mapper
     public function getUserByEmail($email)
     {
         $userScope = new QueryScope("user");
-        $userScope->setFields(array("email", "username", "birthday"));
+        $userScope->setFields(array("*"));
 
         $userCond = new QueryCondition("user");
         $userCond->setConditions(array(
@@ -18,8 +18,15 @@ class UserMapper extends Mapper
 
         $this->addQueryScope($userScope);
         $this->addQueryCondition($userCond);
-        return $this->select()->fetch(PDO::FETCH_ASSOC);
+//        return $this->select()->fetch(PDO::FETCH_ASSOC);
+        return $this->select()->fetchObject('User');
 
+    }
+
+    public function authorizeUser(User $user, $password)
+    {
+        $password = hash("md5", $password);
+        return ($user->userpassword === $password) ? true : false;
     }
 }
 

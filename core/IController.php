@@ -10,7 +10,13 @@ abstract class IController
         $this->viewCollection[] = array($class, $method);
     }
 
-    public function initView($method, $class=null)
+    public function setViewAttributes($attrName, $attrValue)
+    {
+        $render = RenderView::getInstance();
+        $render->$attrName = $attrValue;
+    }
+
+    public function initView($method, $class, $params=null)
     {
         $render = RenderView::getInstance();
         if(!empty($this->viewCollection)){
@@ -19,7 +25,7 @@ abstract class IController
             }
         }
         $class = ($class) ? $class : get_class($this);
-        $render->setViews($class, $method);
+        $render->setViews($class, $method, $params);
         return $this;
     }
 

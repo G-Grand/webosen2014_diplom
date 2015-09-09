@@ -65,6 +65,7 @@ class ERApplication{
         $this->setIncludePath($this->_paths);
         $this->setAutoload();
         $this->_fc = FrontController::getInstance();
+        ERSession::startSession();
     }
 
     /**
