@@ -20,7 +20,7 @@ return array(
         "tableprefix" => "er_"
     ),
     "routing" => array(
-        "default_controller" => "Index",
+        "default_controller" => "IndexController",
         "default_action" => "IndexAction"
     )
 );

@@ -67,14 +67,6 @@ class RenderView extends ErObject
         }
     }
 
-//    public function setMainHeader(){
-//        $this->setViews('Common', 'header');
-//    }
-//
-//    public function setMainFooter(){
-//        $this->setViews('Common', 'footer');
-//    }
-
     public function renderBody()
     {
         foreach($this->_prepareView as $block){

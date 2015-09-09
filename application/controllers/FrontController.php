@@ -3,10 +3,12 @@
 class FrontController
 {
     private static  $_instance;
-    private static  $_maincfg;
+    private $defaultRoute = array();
 
     private function __construct() {
-        self::$_maincfg = ERApplication::getMainCfg();
+        $maincfg = ERApplication::getMainCfg();
+        $this->defaultRoute['controller'] = $maincfg["routing"]["default_controller"];
+        $this->defaultRoute['action'] = $maincfg["routing"]["default_action"];
     }
 
     private function __clone() {}
@@ -23,47 +25,21 @@ class FrontController
         return self::$_instance;
     }
 
-    /**
-     * Get default controller name
-     */
-
-    private function getDefaultController(){
-        return self::$_maincfg["routing"]["default_controller"];
-    }
-
-    /**
-     * Get default action name
-     */
-
-    private function getDefaultAction(){
-        return self::$_maincfg["routing"]["default_action"];
-    }
-
-
-    /**
-     * Initialise controller from request
-     */
-
-    public function run()
+    public function fetchController()
     {
         $request = new Request();
         $request->initRequest();
         $path = explode("/", $request->getPath());
-//        $ctrl =  (!empty($path[0])) ? (ucfirst($path[0]) . "Controller") : $this->getDefaultController();
-//        $action =  (!empty($path[1])) ? ($path[1] . "Action") : $this->getDefaultAction();
-        $ctrl =  (!empty($path[0])) ? (ucfirst($path[0])) : $this->getDefaultController();
-        $action =  (!empty($path[1])) ? ($path[1] . "Action") : $this->getDefaultAction();
-        if (ERApplication::getController($ctrl)) {
-            $controller = ERApplication::getController($ctrl);
-            if (method_exists($controller, $action)) {
-                $controller->$action();
-            }else{
-//                $render->setViews('IndexController', 'error404');
-//                echo $render->renderBody();
-            }
-        }else {
-//            $render->setViews('IndexController', 'error404');
-//            echo $render->renderBody();
+        $ctrl =  (!empty($path[0])) ? (ucfirst($path[0]) . "Controller") : $this->defaultRoute['controller'];
+        $action =  (!empty($path[1])) ? ($path[1] . "Action") : $this->defaultRoute['action'];
+        return array('controller' => $ctrl, 'action' => $action);
+    }
+
+    public function run()
+    {
+        $controller = $this->fetchController();
+        if (!ERApplication::runController($controller['controller'], $controller['action'])) {
+            ERApplication::runController($this->defaultRoute['controller'], $this->defaultRoute['action']);
         }
     }
 }
