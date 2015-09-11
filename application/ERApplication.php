@@ -92,6 +92,7 @@ class ERApplication{
      */
 
     public static function getMainCfg() {return self::$_mainCfg;}
+    public static function getBaseUrl() {return self::$_mainCfg['application']['BASE_URL'];}
 
     public static function runController($ctrl, $action)
     {

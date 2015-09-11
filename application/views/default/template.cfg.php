@@ -23,6 +23,11 @@ return array(
                 "block"=>"content",
                 "template"=>"index",
                 "weight"=>1
+            ),
+            "loginAction"=>array(
+                "block"=>"content",
+                "template"=>"signin_form",
+                "weight"=>1
             )
         ),
         "Common"=>array(

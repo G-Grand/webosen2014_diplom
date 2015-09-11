@@ -41,7 +41,4 @@ class Request
         $this->_post = $post;
     }
 
-
-
-
 }

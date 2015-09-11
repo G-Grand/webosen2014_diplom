@@ -32,7 +32,10 @@ abstract class IController
     public function renderView()
     {
         $render = RenderView::getInstance();
+        if($render->header) {header($render->header); }
         echo $render->renderBody();
     }
+
+
 
 }

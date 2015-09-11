@@ -18,8 +18,7 @@ class UserMapper extends Mapper
 
         $this->addQueryScope($userScope);
         $this->addQueryCondition($userCond);
-//        return $this->select()->fetch(PDO::FETCH_ASSOC);
-        return $this->select()->fetchObject('User');
+        return $this->select()->fetchObject('\Entity\User');
 
     }
 
@@ -27,6 +26,15 @@ class UserMapper extends Mapper
     {
         $password = hash("md5", $password);
         return ($user->userpassword === $password) ? true : false;
+    }
+
+    public function insertNewUser(User $user)
+    {
+        $userScope = new QueryScope("user");
+        $userScope->setFields(array("email", "userpassword", "crdate", "access"));
+        $userScope->setValues(array($user->email, $user->userpassword, $user->crdate, "ps"));
+        $this->addQueryScope($userScope);
+        $this->insert();
     }
 }
 

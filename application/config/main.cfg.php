@@ -10,7 +10,11 @@ return array(
             "modules" => "modules",
             "data" => "data",
             "templateDirectory" => "./application/views/default"
-        )
+        ),
+        'session' => array(
+            'mainstorage' => 'erapp'
+        ),
+        'BASE_URL' => 'webosen2014_diplom/'
     ),
     "dbsettings" => array(
         "host" => "localhost",
