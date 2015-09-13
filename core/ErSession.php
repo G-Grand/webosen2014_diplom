@@ -5,13 +5,13 @@
  * @link    https://github.com/G-Grand/webosen2014_diplom.git
  */
 
-class ERSession
+class ErSession
 {
     private static $_storage;
     public static function startSession()
     {
         if(!$_SESSION) { session_start(); }
-        $maincfg = ERApplication::getMainCfg();
+        $maincfg = ErApplication::getMainCfg();
         self::$_storage = $maincfg['application']['session']['mainstorage'];
     }
 

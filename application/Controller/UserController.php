@@ -2,7 +2,7 @@
 
 use \Entity\User;
 
-class UserController extends  IController
+class UserController extends  AbstractController
 {
 
     public function indexAction(){
@@ -17,23 +17,10 @@ class UserController extends  IController
         $post = $request->getPost();
         $user = $userMapper->getUserByEmail($post["email"]);
         if($userMapper->authorizeUser($user, $post["userpassword"])){
-            ERSession::saveToSession('user',$user->email);
-            ERSession::saveToSession('username',$user->username);
-            $this->setViewAttributes('header', 'Location: http://webosen2014_diplom/');
-//            ERApplication::runController('IndexController', 'indexAction');
-//            $url = 'http://' . ERApplication::getBaseUrl() . '/index/index';
-            $url = 'http://' . ERApplication::getBaseUrl() . 'index/index';
-
-            $ch = curl_init($url);
-
-            curl_setopt($ch, CURLOPT_POST, 1);
-//            curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
-//            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-            $response = curl_exec($ch);
-            curl_close($ch);
+            ErSession::saveToSession('user',$user->email);
+            ErSession::saveToSession('username',$user->username);
+            ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
         }else{
-//            ERApplication::runController('UserController', 'signinAction');
         }
     }
 

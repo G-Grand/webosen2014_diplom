@@ -8,7 +8,7 @@ class QueryScope
 
     public function __construct($entity)
     {
-        $mainCfg =ERApplication::getInstance()->getMainCfg();
+        $mainCfg =ErApplication::getInstance()->getMainCfg();
         $this->dbTable =  $mainCfg["dbsettings"]["tableprefix"] . strtolower($entity);
     }
 

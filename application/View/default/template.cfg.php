@@ -5,7 +5,7 @@ return array(
       "content",
       "footer"
     ),
-    "controllers"=>array(
+    "Controller"=>array(
         "UserController"=>array(
             "indexAction"=>array(
                 "block"=>"content",

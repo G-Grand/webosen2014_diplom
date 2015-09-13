@@ -5,7 +5,7 @@
  * @link    https://github.com/G-Grand/webosen2014_diplom.git
  */
 
-class ERMessenger
+class ErMessenger
 {
     protected $erMessage;
     protected $succeedMessage;

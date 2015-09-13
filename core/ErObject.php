@@ -29,4 +29,9 @@ abstract class ErObject
         }
         return null;
     }
+
+    public function getAttributes()
+    {
+        return $this->_attributes;
+    }
 }

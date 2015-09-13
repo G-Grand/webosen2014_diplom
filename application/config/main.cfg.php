@@ -2,14 +2,14 @@
 return array(
     "application" => array(
         "paths" => array(
-            "controllers" => "application/controllers",
-            "models" => "application/models",
-            "mappers" => "application/models/mappers",
-            "views" => "application/views",
+            "Controller" => "application/Controller",
+            "Model" => "application/Model",
+            "Mapper" => "application/Model/Mapper",
+            "View" => "application/View",
             "core" => "core",
             "modules" => "modules",
             "data" => "data",
-            "templateDirectory" => "./application/views/default"
+            "templateDirectory" => "./application/View/default"
         ),
         'session' => array(
             'mainstorage' => 'erapp'

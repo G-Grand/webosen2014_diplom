@@ -1,6 +1,6 @@
 <?php
 
-class IndexController extends  IController {
+class IndexController extends  AbstractController {
 
     public function indexAction(){
         $this->addBlockToView('Common', 'header');

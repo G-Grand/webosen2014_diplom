@@ -1,5 +1,5 @@
 <?php
-abstract class IController
+abstract class AbstractController
 {
     protected $viewCollection = array();
 

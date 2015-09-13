@@ -1,6 +1,6 @@
 <?php
 
-class ERApplication{
+class ErApplication{
     private static  $_instance = null;
     private $_paths = array();
     private static $_mainCfg = array();
@@ -13,7 +13,7 @@ class ERApplication{
     private function __clone() {}
 
     /**
-     * Get ERApplication instance
+     * Get ErApplication instance
      */
 
     public static  function getInstance()
@@ -35,7 +35,8 @@ class ERApplication{
         foreach($pathes as $path){
             $path = $path . DIRECTORY_SEPARATOR . $file . "." . $ext;
             if (file_exists($path)){
-                return true;
+//                return true;
+                return $path;
             }
         }
         return false;
@@ -49,11 +50,16 @@ class ERApplication{
     {
         spl_autoload_register(function($className){
             $className = str_replace("\\", DIRECTORY_SEPARATOR, $className);
-            if(ERApplication::fileExists($className,"php")){
-                spl_autoload($className);
+            $classPath = ErApplication::fileExists($className,"php");
+            if($classPath){
+//                spl_autoload($className);
+                require_once $classPath;
             }
         });
+
     }
+
+
 
     /**
      * Initialise application
@@ -65,7 +71,7 @@ class ERApplication{
         $this->setIncludePath($this->_paths);
         $this->setAutoload();
         $this->_fc = FrontController::getInstance();
-        ERSession::startSession();
+        ErSession::startSession();
     }
 
     /**
@@ -76,7 +82,7 @@ class ERApplication{
     {
         $pathStr = "";
         foreach ($paths as $path) {
-            $pathStr .= PATH_SEPARATOR.$path;
+            $pathStr .= PATH_SEPARATOR . $path;
         }
         set_include_path(get_include_path().$pathStr);
     }
@@ -109,5 +115,8 @@ class ERApplication{
         }
     }
 
-
+    public static function redirect($url, array $params=null)
+    {
+        header('Location: http://' . $url);
+    }
 }

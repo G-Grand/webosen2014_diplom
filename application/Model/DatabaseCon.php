@@ -5,7 +5,7 @@ class DatabaseCon {
     public $connDB;
     private function __construct()
     {
-        $mainCfg = ERApplication::getMainCfg();
+        $mainCfg = ErApplication::getMainCfg();
         $host = $mainCfg["dbsettings"]["host"];
         $name = $mainCfg["dbsettings"]["name"];
         $login = $mainCfg["dbsettings"]["login"];

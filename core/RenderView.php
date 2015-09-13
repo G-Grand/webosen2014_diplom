@@ -28,10 +28,10 @@ class RenderView extends ErObject
 
 
     private function __construct(){
-        $this->_tplConf = (ERApplication::fileExists('template.cfg','php')) ? require_once "template.cfg.php" : null;
+        $this->_tplConf = (ErApplication::fileExists('template.cfg','php')) ? require_once "template.cfg.php" : null;
         if($this->_tplConf){
             $this->_blocks = $this->_tplConf["blocks"];
-            $this->_ctrls = $this->_tplConf["controllers"];
+            $this->_ctrls = $this->_tplConf["Controller"];
             foreach($this->_blocks as $block){
                 $this->_prepareView[$block] = array();
             }
@@ -52,12 +52,14 @@ class RenderView extends ErObject
      * @param null mixed $params
      */
     public function setViews($ctrl, $method, $params=null){
-        $view = (isset($this->_ctrls[$ctrl][$method])) ? $this->_ctrls[$ctrl][$method] : $this->_ctrls['common']['error404'];
+        $view = (isset($this->_ctrls[$ctrl][$method])) ? $this->_ctrls[$ctrl][$method] :
+                                                        $this->_ctrls['common']['error404'];
 
         if(is_array($this->_prepareView[$view['block']][$view['weight']])){
             if(!is_array($this->_prepareView[$view['block']][$view['weight']][1])) {
-                $this->_prepareView[$view['block']][$view['weight']] = array($this->_prepareView[$view['block']][$view['weight']],
-                                                                        array($params, $view['template']));
+                $this->_prepareView[$view['block']][$view['weight']] =
+                        array($this->_prepareView[$view['block']][$view['weight']],
+                        array($params, $view['template']));
             }else{
                 $this->_prepareView[$view['block']][$view['weight']][] = array($params, $view['template']);
             }
@@ -82,7 +84,7 @@ class RenderView extends ErObject
         foreach($block as $blockItem){
             if(!is_array($blockItem[1])){
                 $file = $blockItem[1];
-                $tplFile = (ERApplication::fileExists($file,"tpl")) ? $file : "404";
+                $tplFile = (ErApplication::fileExists($file,"tpl")) ? $file : "404";
                 $params = $blockItem[0];
                 ob_start();
                 include $tplFile . ".tpl";
