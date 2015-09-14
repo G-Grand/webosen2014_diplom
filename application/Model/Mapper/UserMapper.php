@@ -1,7 +1,7 @@
 <?php
 use \Entity\User;
 
-class UserMapper extends Mapper
+class UserMapper extends AbstractMapper
 {
 
     function __construct() { parent::__construct(); }
@@ -22,19 +22,13 @@ class UserMapper extends Mapper
 
     }
 
-    public function authorizeUser(User $user, $password)
-    {
-        $password = hash("md5", $password);
-        return ($user->userpassword === $password) ? true : false;
-    }
-
     public function insertNewUser(User $user)
     {
         $userScope = new QueryScope("user");
         $userScope->setFields(array("email", "userpassword", "crdate", "access"));
         $userScope->setValues(array($user->email, $user->userpassword, $user->crdate, "ps"));
         $this->addQueryScope($userScope);
-        $this->insert();
+        return $this->insert();
     }
 }
 

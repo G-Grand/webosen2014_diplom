@@ -9,22 +9,68 @@ class UserController extends  AbstractController
 
     }
 
-    public function loginAction()
+    public function loginAction(){
+        $this->addBlockToView('Common', 'header');
+        $this->addBlockToView('Common', 'footer');
+        $this->setViewAttributes('headerTitle', 'Login');
+        $this->setViewAttributes('login_flag', true);
+        $this->initView(__FUNCTION__, null)->renderView();
+    }
+
+    public function signinAction(){
+        $this->addBlockToView('Common', 'header');
+        $this->addBlockToView('Common', 'footer');
+        $this->setViewAttributes('headerTitle', 'Sign in');
+        $this->setViewAttributes('login_flag', false);
+        $this->initView(__FUNCTION__, null)->renderView();
+    }
+
+    public function authoriseAction()
     {
         $userMapper = new UserMapper();
         $request = new Request();
         $request->initRequest();
         $post = $request->getPost();
         $user = $userMapper->getUserByEmail($post["email"]);
-        if($userMapper->authorizeUser($user, $post["userpassword"])){
+        $givenPassword = trim(strip_tags($post["userpassword"]));
+        $givenPassword = hash("md5", $givenPassword);
+        if($user->userpassword === $givenPassword){
             ErSession::saveToSession('user',$user->email);
             ErSession::saveToSession('username',$user->username);
             ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
         }else{
+            ErApplication::redirect(ErApplication::getBaseUrl() . 'user/signin');
         }
     }
 
+    public function registerAction()
+    {
+        $userMapper = new UserMapper();
+        $message = ErMessenger::getInstance();
+        $request = new Request();
+        $request->initRequest();
+        $post = $request->getPost();
+        $user = new User();
+        $user->email = $post['email'];
+        $user->crdate = date("Y-m-d");
+        $user->access = 'ps';
+        $givenPassword = trim(strip_tags($post["userpassword"]));
+        $user->userpassword = hash("md5", $givenPassword);
+        if($userMapper->insertNewUser($user)){
+            ErSession::saveToSession('user',$user->email);
+            ErSession::saveToSession('username',$user->username);
+            $message->setSucceedMessage('HURAAAAAAA!!!!!!!');
+            ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
+        }else{
+            echo "Error create new user ";
+        }
+    }
 
+    public function logoutAction()
+    {
+        ErSession::dieSession();
+        ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
+    }
 
     public function findAction(){
         $userMapper = new UserMapper();

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Webosen 2014
+ * @link    https://github.com/G-Grand/webosen2014_diplom.git
+ */
+
 class ErApplication{
     private static  $_instance = null;
     private $_paths = array();

@@ -1,6 +1,6 @@
 <?php
 
-abstract class Mapper
+abstract class AbstractMapper
 {
     private $queryScopes = array();
     private $queryConditions = array();
@@ -43,8 +43,12 @@ abstract class Mapper
         $prep = $this->initQueryStatement($query);
 
         if($prep->execute()){
+            return true;
 //            echo "<br /> OOOOOOOOOOOK <br />";
-        }else echo "<br /> BAAAAAD <br />";
+        }else {
+//            echo "<br /> BAAAAAD <br />";
+            return false;
+        }
     }
 
     /**

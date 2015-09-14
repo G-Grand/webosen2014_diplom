@@ -15,6 +15,12 @@ class ErSession
         self::$_storage = $maincfg['application']['session']['mainstorage'];
     }
 
+    public static function dieSession()
+    {
+        setcookie(session_name(), '', time() - 42000);
+        session_destroy();
+    }
+
     public static function saveToSession($name, $value, $storage=null)
     {
         if(!$_SESSION){self::startSession(); }
