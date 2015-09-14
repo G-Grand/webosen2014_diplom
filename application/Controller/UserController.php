@@ -68,8 +68,27 @@ class UserController extends  AbstractController
 //    }
 
     public function registerAction() {
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+            $ajax = true;
+        }
+//        TODO: add validation 4 post data
 
-
+        $userMapper = new UserMapper();
+        $request = new Request();
+        $request->initRequest();
+        $post = $request->getPost();
+        $user = new User();
+        $user->email = $post['email'];
+        $user->crdate = date("Y-m-d");
+        $user->access = 'ps';
+        $givenPassword = trim(strip_tags($post["userpassword"]));
+        $user->userpassword = hash("md5", $givenPassword);
+        if($userMapper->insertNewUser($user)){
+            echo '{"response": "ok"}';
+        }else {
+            echo '{"response": "bad"}';
+        }
     }
 
     public function logoutAction()

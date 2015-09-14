@@ -1,100 +1,74 @@
 $(function() {
-//выводит новый код CAPTCHA при нажатии на кнопку Обновить
+//РІС‹РІРѕРґРёС‚ РЅРѕРІС‹Р№ РєРѕРґ CAPTCHA РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєРЅРѕРїРєСѓ РћР±РЅРѕРІРёС‚СЊ
     $("#reload-captcha").click(function() {
         $('#img-captcha').attr('src', '/captcha?id='+Math.random()+'');
     });
-//при нажатии на кнопку Регистрация (id="save")
+//РїСЂРё РЅР°Р¶Р°С‚РёРё РЅР° РєРЅРѕРїРєСѓ Р РµРіРёСЃС‚СЂР°С†РёСЏ (id="save")
     $('#save').click(function() {
-        //переменная formValid
+        //РїРµСЂРµРјРµРЅРЅР°СЏ formValid
         var formValid = true;
-        //перебирает все элементы управления input, кроме CAPTCHA
+        //РїРµСЂРµР±РёСЂР°РµС‚ РІСЃРµ СЌР»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ input, РєСЂРѕРјРµ CAPTCHA
         $('input').each(function() {
-            //если текущий элемент CAPTCHA, то пропустить его
+            //РµСЃР»Рё С‚РµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ CAPTCHA, С‚Рѕ РїСЂРѕРїСѓСЃС‚РёС‚СЊ РµРіРѕ
             if  ($(this).attr('id') == 'text-captcha') { return true; }
-            //найти предков, которые имеют класс .form-group, для установления success/error
+            //РЅР°Р№С‚Рё РїСЂРµРґРєРѕРІ, РєРѕС‚РѕСЂС‹Рµ РёРјРµСЋС‚ РєР»Р°СЃСЃ .form-group, РґР»СЏ СѓСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ success/error
             var formGroup = $(this).parents('.form-group');
-            //найти glyphicon, который предназначен для показа иконки успеха или ошибки
+            //РЅР°Р№С‚Рё glyphicon, РєРѕС‚РѕСЂС‹Р№ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ РїРѕРєР°Р·Р° РёРєРѕРЅРєРё СѓСЃРїРµС…Р° РёР»Рё РѕС€РёР±РєРё
             var glyphicon = formGroup.find('.form-control-feedback');
-            //для валидации данных используем HTML5 функцию checkValidity
+            //РґР»СЏ РІР°Р»РёРґР°С†РёРё РґР°РЅРЅС‹С… РёСЃРїРѕР»СЊР·СѓРµРј HTML5 С„СѓРЅРєС†РёСЋ checkValidity
             if (this.checkValidity() && this.id != "pass_confirm") {
-                //добавить к formGroup класс .has-success, удалить has-error
+                //РґРѕР±Р°РІРёС‚СЊ Рє formGroup РєР»Р°СЃСЃ .has-success, СѓРґР°Р»РёС‚СЊ has-error
                 formGroup.addClass('has-success').removeClass('has-error');
-                //добавить к glyphicon класс glyphicon-ok, удалить glyphicon-remove
+                //РґРѕР±Р°РІРёС‚СЊ Рє glyphicon РєР»Р°СЃСЃ glyphicon-ok, СѓРґР°Р»РёС‚СЊ glyphicon-remove
                 glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-remove');
             } else if(this.id == "pass_confirm" && this.value == document.getElementById("password").value) {
                 formGroup.addClass('has-success').removeClass('has-error');
                 glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-remove');
             } else {
-                //добавить к formGroup класс .has-error, удалить .has-success
+                //РґРѕР±Р°РІРёС‚СЊ Рє formGroup РєР»Р°СЃСЃ .has-error, СѓРґР°Р»РёС‚СЊ .has-success
                 formGroup.addClass('has-error').removeClass('has-success');
-                //добавить к glyphicon класс glyphicon-remove, удалить glyphicon-ok
+                //РґРѕР±Р°РІРёС‚СЊ Рє glyphicon РєР»Р°СЃСЃ glyphicon-remove, СѓРґР°Р»РёС‚СЊ glyphicon-ok
                 glyphicon.addClass('glyphicon-remove').removeClass('glyphicon-ok');
-                //отметить форму как не валидную
+                //РѕС‚РјРµС‚РёС‚СЊ С„РѕСЂРјСѓ РєР°Рє РЅРµ РІР°Р»РёРґРЅСѓСЋ
                 formValid = false;
             }
         });
-        //проверяем элемент input, в который пользователь вводит код CAPTCHA
-        //получаем значение элемента input, содержащего код CAPTCHA
-        var captcha = $("#text-captcha").val();
-        //если код CAPTCHA пустой, то сразу сообщаем, что он не правильный
+
+        var inputCaptcha = $("#text-captcha");
+        var captcha = inputCaptcha.val();
+        var formGroupCaptcha = inputCaptcha.parents('.form-group');
+        var glyphiconCaptcha = formGroupCaptcha.find('.form-control-feedback');
+
+        console.log(formGroupCaptcha);
         if (captcha=='') {
-            inputCaptcha = $("#text-captcha");
-            formGroupCaptcha = inputCaptcha.parents('.form-group');
-            glyphiconCaptcha = formGroupCaptcha.find('.form-control-feedback');
             formGroupCaptcha.addClass('has-error').removeClass('has-success');
             glyphiconCaptcha.addClass('glyphicon-remove').removeClass('glyphicon-ok');
+            formValid = false;
+        }else {
+            formGroupCaptcha.addClass('has-success').removeClass('has-error');
+            glyphiconCaptcha.addClass('glyphicon-ok').removeClass('glyphicon-remove');
         }
-        //иначе запрашиваем результат у сервера через ajax
-        else  {
-            var dataString = 'captcha=' + captcha;
-            $.ajax({
-                type: "POST",
-                url: "verify.php",
-                data: dataString,
-                success: function(result) {
-                    inputCaptcha = $("#text-captcha");
-                    formGroupCaptcha = inputCaptcha.parents('.form-group');
-                    glyphiconCaptcha = formGroupCaptcha.find('.form-control-feedback');
-                    //если результат, который вернул сервер, равен true,
-                    //то отмечаем, что код валидный и изменяет цвет элементов на зелёный
-                    if (result==="true") {
-                        formGroupCaptcha.addClass('has-success').removeClass('has-error');
-                        glyphiconCaptcha.addClass('glyphicon-ok').removeClass('glyphicon-remove');
-                        //отметить, что код captcha введён правильно
-                        if (formValid) {
-                            //скрыть модальное окно
-                            $('#myForm').hide();
-                            //отобразить сообщение об успехе
-                            $('#success-alert').removeClass('hidden');
-                            $('#success-alert').removeClass('hidden');
-                        }
-                    }
-                    //иначе отмечает, что код не валидный и изменяет цвет элементов на красный
-                    else {
-                        formGroupCaptcha.addClass('has-error').removeClass('has-success');
-                        glyphiconCaptcha.addClass('glyphicon-remove').removeClass('glyphicon-ok');
-                    }
+
+        if(!formValid) { return; }
+
+        var msg   = $('#myForm').serialize();
+        console.log(msg);
+        $.ajax({
+            type: "POST",
+            url: "/user/register",
+            data: msg,
+            dataType: "json",
+            success: function(result) {
+                console.log(result);
+                $("myForm").hide();
+                if(result.response == "ok") {
+                    $("#success-alert").removeClass("hidden").html("<h2>РЈСЃРїРµС…</h2><div>Р’С‹ Р·Р°СЂРµРіР°РЅС‹! Р™Рѕ!</div>");
+                }else {
+                    $("#success-alert").removeClass("hidden").html("<h2>Р›Р°Р¶Р°</h2><div>Р’Р°С€Рё РґР°РЅРЅС‹Рµ РѕС‚СЃС‚РѕР№!</div>");
                 }
-            });
-        }
+            }
+        });
+
     });
 });
 
-
-//Отправка всех полей формы на сервер с помощью ajax jQuery
-
-function call() {
-    var msg   = $('#myForm').serialize();
-    $.ajax({
-        type: 'POST',
-        url: 'reg.php',
-        data: msg,
-        success: function(data) {
-            $('.results').html(data);
-        },
-        error:  function(xhr, str){
-            alert('Возникла ошибка: ' + xhr.responseCode);
-        }
-    });
-
-}
