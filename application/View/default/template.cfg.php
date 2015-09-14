@@ -22,9 +22,9 @@ return array(
                 "template"=>"signin_form",
                 "weight"=>1
             ),
-            "signinAction"=>array(
+            "signupAction"=>array(
                 "block"=>"content",
-                "template"=>"signin_form",
+                "template"=>"register",
                 "weight"=>1
             )
         ),
