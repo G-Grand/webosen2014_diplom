@@ -40,7 +40,6 @@ class ErApplication{
         foreach($pathes as $path){
             $path = $path . DIRECTORY_SEPARATOR . $file . "." . $ext;
             if (file_exists($path)){
-//                return true;
                 return $path;
             }
         }
@@ -57,7 +56,6 @@ class ErApplication{
             $className = str_replace("\\", DIRECTORY_SEPARATOR, $className);
             $classPath = ErApplication::fileExists($className,"php");
             if($classPath){
-//                spl_autoload($className);
                 require_once $classPath;
             }
         });

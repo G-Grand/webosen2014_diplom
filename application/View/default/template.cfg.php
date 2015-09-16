@@ -19,7 +19,7 @@ return array(
             ),
             "loginAction"=>array(
                 "block"=>"content",
-                "template"=>"signin_form",
+                "template"=>"signin",
                 "weight"=>1
             ),
             "signupAction"=>array(

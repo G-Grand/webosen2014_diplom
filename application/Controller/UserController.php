@@ -12,7 +12,6 @@ class UserController extends  AbstractController
 
     public function loginAction(){
         $this->addBlockToView('Common', 'header');
-        $this->addBlockToView('Common', 'footer');
         $this->setViewAttributes('headerTitle', 'Login');
         $this->setViewAttributes('login_flag', true);
         $this->initView(__FUNCTION__, null)->renderView();
