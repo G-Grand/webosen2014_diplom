@@ -8,14 +8,11 @@
 class ErMessenger
 {
     private static $_instance;
-    protected $messages = array();
+    protected static $_msgstorage;
 
     private function __construct() {
-        $this->messages = array(
-            'error' => '',
-            'succeed' => '',
-            'notes' => ''
-        );
+        $maincfg = ErApplication::getMainCfg();
+        self::$_msgstorage = $maincfg['application']['session']['messagestorage'];
     }
     private function __clone() {}
 
@@ -31,42 +28,54 @@ class ErMessenger
         return self::$_instance;
     }
 
-    public function setErrMessage($errMessage)
+    public function setErrMessage($message)
     {
-        $this->messages['error'] = $errMessage;
+        ErSession::saveToSession('error', $message, self::$_msgstorage);
     }
 
     public function getErrMessage()
     {
-        if(isset($this->messages['error'])){
-            return $this->messages['error'];
+        if(ErSession::getFromSession('error', self::$_msgstorage)){
+            return ErSession::getFromSession('error', self::$_msgstorage);
         }
         return null;
     }
 
-    public function setSucceedMessage($errMessage)
+    public function setSucceedMessage($message)
     {
-        $this->messages['succeed'] = $errMessage;
+        ErSession::saveToSession('succeed', $message, self::$_msgstorage);
     }
 
     public function getSucceedMessage()
     {
-        if(isset($this->messages['succeed'])){
-            return $this->messages['succeed'];
+        if(ErSession::getFromSession('succeed', self::$_msgstorage)){
+            return ErSession::getFromSession('succeed', self::$_msgstorage);
         }
         return null;
     }
 
-    public function setNotesMessage($errMessage)
+    public function setNotesMessage($message)
     {
-        $this->messages['notes'] = $errMessage;
+        ErSession::saveToSession('notes', $message, self::$_msgstorage);
     }
 
     public function getNotesMessage()
     {
-        if(isset($this->messages['notes'])){
-            return $this->messages['notes'];
+        if(ErSession::getFromSession('notes', self::$_msgstorage)){
+            return ErSession::getFromSession('notes', self::$_msgstorage);
         }
         return null;
+    }
+
+    public function getAllMessages()
+    {
+        return ErSession::getStorage(self::$_msgstorage);
+    }
+
+    public function clearAllMessages()
+    {
+        ErSession::removeFromSession('error', self::$_msgstorage);
+        ErSession::removeFromSession('succeed', self::$_msgstorage);
+        ErSession::removeFromSession('notes', self::$_msgstorage);
     }
 }
