@@ -12,7 +12,8 @@ return array(
             "templateDirectory" => "./application/View/default"
         ),
         'session' => array(
-            'mainstorage' => 'erapp'
+            'mainstorage' => 'erapp',
+            'messagestorage' => 'ermessage'
         ),
         'BASE_URL' => 'webosen2014_diplom/'
     ),

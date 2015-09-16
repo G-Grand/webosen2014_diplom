@@ -15,6 +15,11 @@ class ErSession
         self::$_storage = $maincfg['application']['session']['mainstorage'];
     }
 
+    private static function initStorage($storage)
+    {
+        return ($storage) ? $storage : self::$_storage;
+    }
+
     public static function dieSession()
     {
         setcookie(session_name(), '', time() - 42000);
@@ -30,9 +35,26 @@ class ErSession
 
     public static function getFromSession($name, $storage=null)
     {
-        $storage = ($storage) ? $storage : self::$_storage;
+        $storage = self::initStorage($storage);
         if($_SESSION[$storage]){
             return $_SESSION[$storage][$name];
+        }
+        return null;
+    }
+
+    public static function removeFromSession($name, $storage=null)
+    {
+        $storage = self::initStorage($storage);
+        if($_SESSION[$storage] && $_SESSION[$storage][$name]){
+            unset($_SESSION[$storage][$name]);
+        }
+    }
+
+    public static function getStorage($storage=null)
+    {
+        $storage = self::initStorage($storage);
+        if($_SESSION[$storage]){
+            return $_SESSION[$storage];
         }
         return null;
     }

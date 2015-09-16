@@ -23,6 +23,8 @@ class RenderView extends ErObject
     /** @var array */
     private $_prepareView = array();
 
+    private $_messages;
+
     /** @var string */
     private $_renderCahe = "";
 
@@ -36,6 +38,7 @@ class RenderView extends ErObject
                 $this->_prepareView[$block] = array();
             }
         }
+        $this->_messages = ErMessenger::getInstance();
     }
     private function __clone(){}
 
