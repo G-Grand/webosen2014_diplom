@@ -10,5 +10,10 @@ class IndexController extends  AbstractController {
         $this->initView(__FUNCTION__, null)->renderView();
     }
 
+    public function findAction() {
+        $this->addBlockToView('Common', 'header');
+        $this->initView(__FUNCTION__, null)->renderView();
+    }
+
 
 }

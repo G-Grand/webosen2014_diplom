@@ -33,6 +33,11 @@ return array(
                 "block"=>"content",
                 "template"=>"index",
                 "weight"=>1
+            ),
+            "findAction"=>array(
+                "block"=>"content",
+                "template"=>"find_car",
+                "weight"=>1
             )
         ),
         "Common"=>array(
