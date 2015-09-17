@@ -4,16 +4,16 @@ class IndexController extends  AbstractController {
 
     public function indexAction(){
         $message = ErMessenger::getInstance();
-        $message->setSucceedMessage('Good news, its steel working!!!!' );
+        $message->setErrMessage('101', $this->getActionUrl());
+        $message->setSucceedMessage('202', $this->getActionUrl());
+        $message->setNotesMessage('303', $this->getActionUrl());
         $this->addBlockToView('Common', 'header');
         $this->addBlockToView('Common', 'footer');
-        $this->initView(__FUNCTION__, null)->renderView();
+        $this->initView($this->getActionUrl())->renderView();
     }
 
     public function findAction() {
         $this->addBlockToView('Common', 'header');
-        $this->initView(__FUNCTION__, null)->renderView();
+        $this->initView($this->getActionUrl())->renderView();
     }
-
-
 }

@@ -52,10 +52,9 @@ class ErSession
 
     public static function getStorage($storage=null)
     {
-        $storage = self::initStorage($storage);
-        if($_SESSION[$storage]){
-            return $_SESSION[$storage];
+        if(!$storage){
+            return $_SESSION[self::$_storage];
         }
-        return null;
+        return self::getFromSession($storage);
     }
 }

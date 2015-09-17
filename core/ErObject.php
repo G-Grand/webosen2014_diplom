@@ -34,4 +34,13 @@ abstract class ErObject
     {
         return $this->_attributes;
     }
+
+    public function arrayCut(&$array, $key)
+    {
+            if(!isset($array[$key])) return null;
+
+            $keyOffset = array_search($key, array_keys($array));
+            $result = array_values(array_splice($array, $keyOffset, 1));
+            return $result[0];
+    }
 }

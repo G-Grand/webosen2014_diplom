@@ -28,3 +28,6 @@
 
 </head>
 <body>
+<p class="bg-success"><?php echo $this->_messages->getSucceedMessage($this->getRefererUrl()); ?></p>
+<p class="bg-info"><?php echo $this->_messages->getErrMessage($this->getRefererUrl()); ?></p>
+<p class="bg-warning"><?php echo $this->_messages->getNotesMessage($this->getRefererUrl()); ?></p>

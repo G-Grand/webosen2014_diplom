@@ -6,7 +6,10 @@ class UserController extends  AbstractController
 {
 
     public function indexAction(){
-
+        $msg = ErMessenger::getInstance();
+        $msg->setNotesMessage('Massage from User Index', 'user/index');
+        $this->addBlockToView('Common', 'header');
+        ErApplication::redirect(ErApplication::getBaseUrl());
     }
 
 
@@ -14,7 +17,7 @@ class UserController extends  AbstractController
         $this->addBlockToView('Common', 'header');
         $this->setViewAttributes('headerTitle', 'Login');
         $this->setViewAttributes('login_flag', true);
-        $this->initView(__FUNCTION__, null)->renderView();
+        $this->initView($this->getActionUrl())->renderView();
     }
 
     public function signupAction(){
@@ -22,7 +25,7 @@ class UserController extends  AbstractController
         $this->addBlockToView('Common', 'footer');
         $this->setViewAttributes('headerTitle', 'Sign up');
         $this->setViewAttributes('login_flag', false);
-        $this->initView(__FUNCTION__, null)->renderView();
+        $this->initView($this->getActionUrl())->renderView();
     }
 
     public function authoriseAction()

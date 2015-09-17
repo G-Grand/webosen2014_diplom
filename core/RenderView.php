@@ -25,6 +25,9 @@ class RenderView extends ErObject
 
     private $_messages;
 
+    private $_refererUrl;
+
+
     /** @var string */
     private $_renderCahe = "";
 
@@ -98,4 +101,23 @@ class RenderView extends ErObject
 
         }
     }
+
+
+    /**
+     * @param mixed $refererUrl
+     */
+    public function setRefererUrl($refererUrl)
+    {
+        $this->_refererUrl = $refererUrl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRefererUrl()
+    {
+        return $this->_refererUrl;
+    }
+
+
 }
