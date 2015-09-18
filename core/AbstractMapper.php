@@ -13,6 +13,8 @@ abstract class AbstractMapper
         $this->db = DatabaseCon::getInstance()->connDB;
     }
 
+    abstract public function validate();
+
     public function addQueryScope(QueryScope $queryScope) { $this->queryScopes[] = $queryScope; }
 
     public function addQueryCondition(QueryCondition $queryCondition) { $this->queryConditions[] = $queryCondition; }
