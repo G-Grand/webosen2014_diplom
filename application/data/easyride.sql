@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS er_passenger (
 -- Таблица промежуточных пунктов следования
 CREATE TABLE IF NOT EXISTS er_routpoint (
   roadroutid VARCHAR(15) NOT NULL,
-  point VARCHAR(255) NULL,
+  point VARCHAR(255) NOT NULL,
   pointqueue INT NOT NULL,
   INDEX (roadroutid ASC),
   CONSTRAINT rout_key

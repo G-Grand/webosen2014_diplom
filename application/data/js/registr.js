@@ -39,7 +39,7 @@ $(function() {
         var formGroupCaptcha = inputCaptcha.parents('.form-group');
         var glyphiconCaptcha = formGroupCaptcha.find('.form-control-feedback');
 
-        console.log(formGroupCaptcha);
+        //console.log(formGroupCaptcha);
         if (captcha=='') {
             formGroupCaptcha.addClass('has-error').removeClass('has-success');
             glyphiconCaptcha.addClass('glyphicon-remove').removeClass('glyphicon-ok');

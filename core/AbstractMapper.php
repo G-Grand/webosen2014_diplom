@@ -26,7 +26,17 @@ abstract class AbstractMapper
             if($type['nullable'] && empty($entity->$key)){continue;}
             switch($type['type']){
                 case "date":
-                    if(!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$entity->$key)){
+                    if(!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/',$entity->$key)){
+                        return false;
+                    }
+                    break;
+                case "datetime":
+                    if(!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (20|21|22|23|[0-1]?\d{1}):([0-5]?\d{1})$/',$entity->$key)){
+                        return false;
+                    }
+                    break;
+                case "time":
+                    if(!preg_match('/^(20|21|22|23|[0-1]?\d{1}):([0-5]?\d{1})$/',$entity->$key)){
                         return false;
                     }
                     break;
@@ -40,7 +50,11 @@ abstract class AbstractMapper
                         return false;
                     }
                     break;
-
+                case "decimal":
+                    if(!preg_match('^[0-9]+[\\.\\,]{1}[0-9]+$',$entity->$key)){
+                        return false;
+                    }
+                    break;
             }
 
             if($type['size']){

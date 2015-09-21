@@ -12,11 +12,11 @@
     </title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/application/data/CSS/jquery-ui.css">
-    <link rel="stylesheet" href="/application/data/CSS/jquery-ui.theme.css">
-    <link rel="stylesheet" type="text/css" href="/application/data/CSS/jquery.datetimepicker.css"/>
+    <link rel="stylesheet" href="/application/data/css/jquery-ui.css">
+    <link rel="stylesheet" href="/application/data/css/jquery-ui.theme.css">
+    <link rel="stylesheet" type="text/css" href="/application/data/css/jquery.datetimepicker.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/application/data/CSS/style.css">
+    <link rel="stylesheet" href="/application/data/css/style.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
