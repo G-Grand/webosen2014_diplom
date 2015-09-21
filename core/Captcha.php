@@ -42,13 +42,14 @@ class Captcha
         $request->initRequest();
         $post = $request->getPost();
 //��������� ������������ ���� CAPTCHA
-        if (ErSession::getFromSession("code") == $post["captcha"]) {
+
+        if (ErSession::getFromSession("code") == $post['captcha']) {
             //�������� ������ true, ���� ��� �������������
-            echo 'true';
+            return true;
         }
         else {
             //�������� ������ false, ���� ��� �� �������������
-            echo 'false';
+            return false;
         }
     }
 }
