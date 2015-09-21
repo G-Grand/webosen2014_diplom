@@ -76,22 +76,31 @@ class UserController extends  AbstractController
             && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
             $ajax = true;
         }
-//        TODO: add validation 4 post data
-
-        $userMapper = new UserMapper();
         $request = new Request();
         $request->initRequest();
         $post = $request->getPost();
-        $user = new User();
-        $user->email = $post['email'];
-        $user->crdate = date("Y-m-d");
-        $user->access = 'ps';
-        $givenPassword = trim(strip_tags($post["userpassword"]));
-        $user->userpassword = hash("md5", $givenPassword);
-        if($userMapper->insertNewUser($user)){
-            echo '{"response": "ok"}';
-        }else {
-            echo '{"response": "bad"}';
+        if(isset($post)){
+            if (!empty($post['email']) && !empty($post['password']) && !empty($post['pass_confirm'])
+                && !empty($post['captcha'])) {
+                $userMapper = new UserMapper();
+                $user = $userMapper->getUserByEmail($post["email"]);
+                if(!$user){
+                    $user = new User();
+                    $userMapper = new UserMapper();
+                    $user->email = $post['email'];
+                    $user->crdate = date("Y-m-d");
+                    $user->access = 'ps';
+                    $givenPassword = trim(strip_tags($post["password"]));
+                    $user->userpassword = hash("md5", $givenPassword);
+                    if ($userMapper->insertNewUser($user)) {
+                        echo '{"response": "ok"}';
+                    } else {
+                        echo '{"response": "bad"}';
+                    }
+                }else {
+                    echo '{"response": {"status":"bad","msg":"Ай вай такой юзер уже есть!!!"}}';
+                }
+            }
         }
     }
 
