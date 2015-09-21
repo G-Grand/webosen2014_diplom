@@ -30,6 +30,13 @@ class UserController extends  AbstractController
         $this->initView($this->getActionUrl())->renderView();
     }
 
+    public function forgotAction(){
+        $this->addBlockToView('Common', 'header');
+        $this->addBlockToView('Common', 'footer');
+        $this->setViewAttributes('headerTitle', 'Forgot');
+        $this->initView($this->getActionUrl())->renderView();
+    }
+
     public function authoriseAction()
     {
         $userMapper = new UserMapper();
@@ -85,18 +92,23 @@ class UserController extends  AbstractController
                 $userMapper = new UserMapper();
                 $user = $userMapper->getUserByEmail($post["email"]);
                 if(!$user){
-                    $user = new User();
-                    $userMapper = new UserMapper();
-                    $user->email = $post['email'];
-                    $user->crdate = date("Y-m-d");
-                    $user->access = 'ps';
-                    $givenPassword = trim(strip_tags($post["password"]));
-                    $user->userpassword = hash("md5", $givenPassword);
-                    if ($userMapper->insertNewUser($user)) {
-                        echo '{"response": "ok"}';
-                    } else {
-                        echo '{"response": "bad"}';
-                    }
+                    if(Captcha::verify()) {
+                        $givenEmail = trim(strip_tags($post['email']));
+                        $givenPassword = trim(strip_tags($post["password"]));
+                        if(filter_var($givenEmail, FILTER_VALIDATE_EMAIL)){
+                            $user = new User();
+                            $userMapper = new UserMapper();
+                            $user->email = $givenEmail;
+                            $user->crdate = date("Y-m-d");
+                            $user->access = 'ps';
+                            $user->userpassword = hash("md5", $givenPassword);
+                            if ($userMapper->insertNewUser($user)) {
+                                echo '{"response": "ok"}';
+                            } else {
+                                echo '{"response": "bad"}';
+                            }
+                        }else echo '{"response": {"status":"bad","msg":"Неверный email!!!"}}';
+                    }else echo '{"response": {"status":"bad","msg":"Неверная каптча!!!"}}';
                 }else {
                     echo '{"response": {"status":"bad","msg":"Ай вай такой юзер уже есть!!!"}}';
                 }

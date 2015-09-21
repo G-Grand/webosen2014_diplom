@@ -1,3 +1,28 @@
-.input-group{
-    padding: 30px 0;
+
+.container .panel-footer { border-bottom: 1px solid #ddd;}
+.social-button img { float: left; margin-left: 30px;}
+.social-button img:hover { opacity: 0.5; }
+.container .panel-body{ border-bottom: 1px solid #ddd;}
+.registr { text-align: center; }
+.reg label { text-indent: 90px; }
+.container-signin{
+    width: 400px;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+.form-control-fc{
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+@media screen and (max-width:500px){
+    .container-signin{
+        width:100%;
+
+    }
+}
+.nav{
+    height: 0px;
 }

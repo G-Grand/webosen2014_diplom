@@ -26,6 +26,11 @@ return array(
                 "block"=>"content",
                 "template"=>"register",
                 "weight"=>1
+            ),
+            "forgotAction"=>array(
+                "block"=>"content",
+                "template"=>"forgot",
+                "weight"=>1
             )
         ),
         "IndexController"=>array(
