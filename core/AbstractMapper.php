@@ -1,4 +1,5 @@
 <?php
+use Entity\AbstractEntity;
 
 abstract class AbstractMapper
 {
@@ -13,7 +14,23 @@ abstract class AbstractMapper
         $this->db = DatabaseCon::getInstance()->connDB;
     }
 
-    abstract public function validate();
+    public function validate(AbstractEntity $entity)
+    {
+        $entityTypes = $entity->getDataTypes();
+        foreach($entityTypes as $key => $type){
+            echo $key . '->' . gettype($entity->$key) . '==' . $type['type'] . '<br />';
+            $type['nullable'] = (!empty($type['nullable'])) ? $type['nullable'] : true;
+            if(!$type['nullable'] && empty($entity->$key)){
+                return false;
+            }
+            if($type['nullable'] && empty($entity->$key)){continue;}
+            if(gettype($entity->$key) == $type['type']){
+                if($type['size']){
+                    if(strlen($entity->$key) > $type['size']){return false;}
+                }
+            }else{return false;}
+        }
+    }
 
     public function addQueryScope(QueryScope $queryScope) { $this->queryScopes[] = $queryScope; }
 

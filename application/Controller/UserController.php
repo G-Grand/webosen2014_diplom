@@ -16,11 +16,9 @@ class UserController extends  AbstractController
         ErApplication::redirect(ErApplication::getBaseUrl());
     }
 
-
     public function loginAction(){
         $this->addBlockToView('Common', 'header');
         $this->setViewAttributes('headerTitle', 'Login');
-        $this->setViewAttributes('login_flag', true);
         $this->initView($this->getActionUrl())->renderView();
     }
 
