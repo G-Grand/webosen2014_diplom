@@ -1,4 +1,14 @@
 $(function() {
+
+    $('#switchPlaces').click(function() {
+        var departurePoint = $("input[name='departure_point']");
+        var destinationPoint = $("input[name='destination_point']");
+        var depVal = departurePoint.val();
+        var desVal = destinationPoint.val();
+        departurePoint.val(desVal);
+        destinationPoint.val(depVal);
+    });
+
     $('#find').click(function() {
         var form = $("#get_rt_form");
         var formValid = true;
