@@ -6,6 +6,18 @@ return array(
       "footer"
     ),
     "Controller"=>array(
+        "IndexController"=>array(
+            "indexAction"=>array(
+                "block"=>"content",
+                "template"=>"index",
+                "weight"=>1
+            ),
+            "findAction"=>array(
+                "block"=>"content",
+                "template"=>"find_car",
+                "weight"=>1
+            )
+        ),
         "UserController"=>array(
             "indexAction"=>array(
                 "block"=>"content",
@@ -33,10 +45,10 @@ return array(
                 "weight"=>1
             )
         ),
-        "IndexController"=>array(
+        "RoadController"=>array(
             "indexAction"=>array(
                 "block"=>"content",
-                "template"=>"index",
+                "template"=>"find_car",
                 "weight"=>1
             ),
             "findAction"=>array(

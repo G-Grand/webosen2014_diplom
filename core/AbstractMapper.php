@@ -143,7 +143,7 @@ abstract class AbstractMapper
 
         if($prep->execute()){
 //            echo "<br /> OOOOOOOOOOOK <br />";
-        }else echo "<br /> BAAAAAD <br />";
+        }else {echo "<br /> BAAAAAD <br />" . $query->_query . "<br />"; var_dump($query->_bindVal);}
         return $prep;
     }
 
