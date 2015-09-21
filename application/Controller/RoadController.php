@@ -7,4 +7,8 @@
 class RoadController extends AbstractController
 {
     public function indexAction(){}
+
+    public function findAction(){
+        echo '{"response":"ok"}';
+    }
 }
