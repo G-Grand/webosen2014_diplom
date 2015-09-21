@@ -1,3 +1,4 @@
+<script src="/application/data/js/find.js"></script>
 <div class="container">
     <div class="col-md-12 col-sm-12 col-xs-12"><h1>Найти попутку</h1></div>
     <div class="col-md-9 col-sm-9 col-xs-12">
@@ -7,14 +8,14 @@
                     <input type="text" form="get_rt_form" name="departure_point"
                            placeholder="пункт отправления" class="form-control form-control-fc">
                 </div>
-                <button class="btn btn-default btn-arrow" type="submit">
+                <button id="switchPlaces" class="btn btn-default btn-arrow" type="button">
                     <img src="/application/data/images/arrow.png" alt="" style="vertical-align:middle">
                 </button>
                 <div class="form-group btn-pf">
                     <input type="text" form="get_rt_form" name="destination_point"
                            placeholder="пункт назначения" class="form-control form-control-fc">
                 </div>
-                <button class="btn btn-default btn-find" type="submit">найти</button>
+                <button id="find" class="btn btn-default btn-find" type="button">найти</button>
             </form>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12">
