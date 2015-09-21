@@ -30,6 +30,13 @@ class UserController extends  AbstractController
         $this->initView($this->getActionUrl())->renderView();
     }
 
+    public function forgotAction(){
+        $this->addBlockToView('Common', 'header');
+        $this->addBlockToView('Common', 'footer');
+        $this->setViewAttributes('headerTitle', 'Forgot');
+        $this->initView($this->getActionUrl())->renderView();
+    }
+
     public function authoriseAction()
     {
         $userMapper = new UserMapper();

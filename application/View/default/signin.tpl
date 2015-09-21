@@ -1,7 +1,9 @@
-<div class="container signin">
+<script src="/application/data/js/registr.js" type="text/javascript"></script>
+<h1 class="text-center">Вход</h1>
+<div class="container container-signin">
     <div class="row">
-        <div class="col-md-12">
-            <h3>Вход</h3>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+
 
             <form id="myForm" method="post" role="form" name="myForm"><!-- Блок для ввода email -->
                 <div class="form-group has-feedback">
@@ -27,27 +29,31 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="checkbox col-md-7 col-sm-7 text-right">
+                    <div class="checkbox col-md-6 col-sm-6 text-left">
                         <label><input type="checkbox">Запомнить меня</label>
                     </div>
-                    <div class="col-md-5 col-sm-5 text-left"><button id="save" type="button" class="btn btn-primary">Войти</button></div>
+                    <div class="col-md-6 col-sm-6 text-right">
+                        <button id="save" type="button" class="btn btn-primary btn-lg">Войти</button>
+                    </div>
                 </div>
             </form>
         </div>
-
-        <div class="col-md-12" style="margin-top:20px">
+        <div class="col-md-12" style="margin-top:40px">
             <div class="text-center">
-                    <a href="#">Напомнить пароль</a> | <a href="#">Регистрация</a>
+                <a href="forgot">Напомнить пароль</a> | <a href="signup">Регистрация</a>
             </div>
         </div>
 
-        <div class="col-md-12" style="margin-top:20px">
+        <div class="col-md-12" style="margin-top:30px">
             <h4 class="text-center">Или войдите с помошью:</h4>
 
-            <div class="social-button">
+            <div class="social-button" style="margin-top:20px">
                 <p><a href="#"><img src="/application/data/images/vk.png" alt="Vk"></a></p>
+
                 <p><a href="#"><img src="/application/data/images/facebook.png" alt="facebook"></a></p>
+
                 <p><a href="#"><img src="/application/data/images/twitter.png" alt="twitter"></a></p>
+
                 <p><a href="#"><img src="/application/data/images/blogspot.png" alt="blogest"></a></p>
             </div>
         </div>
