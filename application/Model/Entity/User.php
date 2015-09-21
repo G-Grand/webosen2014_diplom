@@ -60,7 +60,7 @@ class User extends AbstractEntity
             ),
             'access' => array(
                 'type' => 'string',
-                'size' => 100,
+                'size' => 2,
                 'nullable' => false
             ),
         );

@@ -153,31 +153,3 @@ INSERT INTO er_routpoint(roadroutid, point, pointqueue) VALUES ('20150717','Во
 INSERT INTO er_routpoint(roadroutid, point, pointqueue) VALUES ('20150717','Харьков','1');
 
 COMMIT;
-
-
--- Примеры запросов
-
-SELECT rd.id, us.username, us.surname, cr.regnumber, cr.brand, cr.model, rd.`start`, rd.finish, GROUP_CONCAT(DISTINCT pt.`point` ORDER BY pt.pointqueue ASC SEPARATOR ', ') AS points, GROUP_CONCAT(DISTINCT usps.username ORDER BY usps.username ASC SEPARATOR ', ') AS passengers
-    FROM er_roadrout AS rd, er_user AS us, er_user AS usps, er_car AS cr, er_routpoint AS pt, er_passenger AS ps
-    WHERE rd.id='20150221' AND rd.driverid=us.email AND rd.autoid=cr.regnumber AND pt.roadroutid=rd.id AND ps.roadroutid=rd.id AND usps.email=ps.userid;
-
-SELECT rd.id, us.username, us.surname, cr.brand, cr.model, rd.`start`, rd.finish, GROUP_CONCAT(DISTINCT pt.`point` ORDER BY pt.pointqueue ASC SEPARATOR ', ') AS points
-    FROM er_roadrout AS rd, er_user AS us, er_car AS cr, er_routpoint AS pt
-    WHERE us.username='Петр' AND rd.driverid=us.email AND cr.regnumber=rd.autoid AND rd.id=pt.roadroutid
-    GROUP BY rd.id;
-
-SELECT us.username, us.surname, cr.brand, cr.model
-    FROM er_user AS us, er_car AS cr
-    WHERE us.username='Петр' AND us.surname='Мазепа' AND us.access='dr' AND cr.userid=us.email;
-
-SELECT us.username, us.surname, cr.brand, cr.model
-    FROM er_user AS us, er_car AS cr
-    WHERE us.phone='+380562556677' AND us.access='dr' AND cr.userid=us.email;
-
-SELECT rd.id, us.username, us.surname, cr.brand, cr.model, rd.`start`, rd.finish, rd.freeseats
-    FROM er_roadrout AS rd, er_user AS us, er_car AS cr
-    WHERE rd.freeseats>'0' AND rd.driverid=us.email AND cr.regnumber=rd.autoid;
-
--- Пример обновления записи
-UPDATE er_user SET `rate`= '5' WHERE er_user.email='georg@i.ua';
-

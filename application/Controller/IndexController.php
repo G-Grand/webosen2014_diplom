@@ -16,4 +16,17 @@ class IndexController extends  AbstractController {
         $this->addBlockToView('Common', 'header');
         $this->initView($this->getActionUrl())->renderView();
     }
+
+    public function testAction()
+    {
+        $user = new Entity\User();
+        $mapper = new UserMapper();
+        $user->email = 'df@e.ua';
+        $user->userpassword = hash('md5', '111');
+        $user->crdate = '2015-12-12';
+        $user->access = 'ps';
+        $user->rate = '200';
+        echo ($mapper->validate($user)) ? "OK" : "BAD";
+//        var_dump($user);
+    }
 }

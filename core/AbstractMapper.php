@@ -19,17 +19,35 @@ abstract class AbstractMapper
         $entityTypes = $entity->getDataTypes();
         foreach($entityTypes as $key => $type){
             echo $key . '->' . gettype($entity->$key) . '==' . $type['type'] . '<br />';
-            $type['nullable'] = (!empty($type['nullable'])) ? $type['nullable'] : true;
-            if(!$type['nullable'] && empty($entity->$key)){
+            $type['nullable'] = (isset($type['nullable'])) ? $type['nullable'] : true;
+            if(!$type['nullable'] && !isset($entity->$key)){
                 return false;
             }
             if($type['nullable'] && empty($entity->$key)){continue;}
-            if(gettype($entity->$key) == $type['type']){
-                if($type['size']){
-                    if(strlen($entity->$key) > $type['size']){return false;}
-                }
-            }else{return false;}
+            switch($type['type']){
+                case "date":
+                    if(!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$entity->$key)){
+                        return false;
+                    }
+                    break;
+                case "string":
+                    if(gettype($entity->$key) != $type['type']){
+                        return false;
+                    }
+                    break;
+                case "int":
+                    if(!preg_match('/\d+$/',$entity->$key)){
+                        return false;
+                    }
+                    break;
+
+            }
+
+            if($type['size']){
+                if(strlen($entity->$key) > $type['size']){return false;}
+            }
         }
+        return true;
     }
 
     public function addQueryScope(QueryScope $queryScope) { $this->queryScopes[] = $queryScope; }
