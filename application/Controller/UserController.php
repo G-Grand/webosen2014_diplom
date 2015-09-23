@@ -44,7 +44,7 @@ class UserController extends  AbstractController
         $request->initRequest();
         $post = $request->getPost();
         $user = $userMapper->getUserByEmail($post["email"]);
-        $givenPassword = trim(strip_tags($post["userpassword"]));
+        $givenPassword = $this->clearStr($post["userpassword"]);
         $givenPassword = hash("md5", $givenPassword);
         if($user->userpassword === $givenPassword){
             ErSession::saveToSession('user',$user->email);
@@ -93,8 +93,8 @@ class UserController extends  AbstractController
                 $user = $userMapper->getUserByEmail($post["email"]);
                 if(!$user){
                     if(Captcha::verify()) {
-                        $givenEmail = trim(strip_tags($post['email']));
-                        $givenPassword = trim(strip_tags($post["password"]));
+                        $givenEmail = $this->clearStr($post['email']);
+                        $givenPassword = $this->clearStr($post["password"]);
                         if(filter_var($givenEmail, FILTER_VALIDATE_EMAIL)){
                             $user = new User();
                             $userMapper = new UserMapper();
@@ -110,7 +110,7 @@ class UserController extends  AbstractController
                         }else echo '{"response": {"status":"bad","msg":"Неверный email!!!"}}';
                     }else echo '{"response": {"status":"bad","msg":"Неверная каптча!!!"}}';
                 }else {
-                    echo '{"response": {"status":"bad","msg":"Ай вай такой юзер уже есть!!!"}}';
+                    echo '{"response": {"status":"bad","msg":"Ай вай такой юзэр уже есть!!!"}}';
                 }
             }
         }

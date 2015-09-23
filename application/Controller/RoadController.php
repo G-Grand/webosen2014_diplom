@@ -22,31 +22,33 @@ class RoadController extends AbstractController
         $userMapper = new UserMapper();
         $carMapper = new CarMapper();
         $result = array();
-        foreach($roads as $road){
-            $user = $userMapper->getUserByEmail($road->driverid);
-            $car = $carMapper->getByUser($road->driverid);
-            $roadMapper->clear();
-            $routPoints = $roadMapper->getRoutPointsByRoad($road->roadroutid);
-            $result[] = array(
-                'startdate' => $road->startdate,
-                'start' => $road->start,
-                'start_adress' => $road->start_adress,
-                'finish' => $road->finish,
-                'finish_adress' => $road->finish_adress,
-                'freeseats' => $road->freeseats,
-                'price' => $road->price,
-                'terms' => $road->terms,
-                'rout_points' => $routPoints[0],
-                'username' => $user->username,
-                'surname' => $user->surname,
-                'photo' => $user->photo,
-                'age' => $user->getAge(),
-                'car_brand' => $car->brand,
-                'car_model' => $car->model
-            );
-            $userMapper->clear();
-            $carMapper->clear();
-            $roadMapper->clear();
+        if($roads){
+            foreach($roads as $road){
+                $user = $userMapper->getUserByEmail($road->driverid);
+                $car = $carMapper->getByUser($road->driverid);
+                $roadMapper->clear();
+                $routPoints = $roadMapper->getRoutPointsByRoad($road->roadroutid);
+                $result[] = array(
+                    'startdate' => $road->startdate,
+                    'start' => $road->start,
+                    'start_adress' => $road->start_adress,
+                    'finish' => $road->finish,
+                    'finish_adress' => $road->finish_adress,
+                    'freeseats' => $road->freeseats,
+                    'price' => $road->price,
+                    'terms' => $road->terms,
+                    'rout_points' => $routPoints[0],
+                    'username' => $user->username,
+                    'surname' => $user->surname,
+                    'photo' => $user->photo,
+                    'age' => $user->getAge(),
+                    'car_brand' => $car->brand,
+                    'car_model' => $car->model
+                );
+                $userMapper->clear();
+                $carMapper->clear();
+                $roadMapper->clear();
+            }
         }
         echo json_encode($result);
 

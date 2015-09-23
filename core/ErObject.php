@@ -43,4 +43,9 @@ abstract class ErObject
             $result = array_values(array_splice($array, $keyOffset, 1));
             return $result[0];
     }
+
+    public function clearStr($str)
+    {
+        return trim(strip_tags($str));
+    }
 }

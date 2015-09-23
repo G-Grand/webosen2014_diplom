@@ -24,11 +24,14 @@ class UserMapper extends AbstractMapper
 
     public function insertNewUser(User $user)
     {
-        $userScope = new QueryScope("user");
-        $userScope->setFields(array("email", "userpassword", "crdate", "access"));
-        $userScope->setValues(array($user->email, $user->userpassword, $user->crdate, "ps"));
-        $this->addQueryScope($userScope);
-        return $this->insert();
+        if($this->validate($user)){
+            $userScope = new QueryScope("user");
+            $userScope->setFields(array("email", "userpassword", "crdate", "access"));
+            $userScope->setValues(array($user->email, $user->userpassword, $user->crdate, "ps"));
+            $this->addQueryScope($userScope);
+            return $this->insert();
+        }
+        return false;
     }
 }
 

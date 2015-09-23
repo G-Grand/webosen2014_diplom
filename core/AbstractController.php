@@ -1,5 +1,5 @@
 <?php
-abstract class AbstractController
+abstract class AbstractController extends ErObject
 {
     protected $viewCollection = array();
 
