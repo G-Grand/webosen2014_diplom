@@ -14,6 +14,7 @@ class User extends AbstractEntity
     public $photo;
     public $crdate;
     public $access;
+    public $userstatus;
 
     public function _construct()
     {
@@ -63,6 +64,16 @@ class User extends AbstractEntity
                 'size' => 2,
                 'nullable' => false
             ),
+            'userstatus' => array(
+                'type' => 'int',
+                'nullable' => false
+            )
         );
+    }
+
+    public function getAge()
+    {
+        $now = date('Y');
+        return $now - date('Y',strtotime($this->birthday));
     }
 }

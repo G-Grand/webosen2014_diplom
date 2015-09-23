@@ -1,4 +1,5 @@
 <?php
+use Entity\User;
 
 class IndexController extends  AbstractController {
 
@@ -19,14 +20,16 @@ class IndexController extends  AbstractController {
 
     public function testAction()
     {
-        $user = new Entity\User();
+//        $user = new Entity\User();
         $mapper = new UserMapper();
-        $user->email = 'df@e.ua';
-        $user->userpassword = hash('md5', '111');
-        $user->crdate = '2015-12-12';
-        $user->access = 'ps';
-        $user->rate = '200';
-        echo ($mapper->validate($user)) ? "OK" : "BAD";
+//        $user->email = 'df@e.ua';
+//        $user->userpassword = hash('md5', '111');
+//        $user->crdate = '2015-12-12';
+//        $user->access = 'ps';
+//        $user->rate = '200';
+//        echo ($mapper->validate($user)) ? "OK" : "BAD";
+        $user = $mapper->getUserByEmail('john@i.ua');
 //        var_dump($user);
+        echo $user->getAge();
     }
 }

@@ -147,5 +147,11 @@ abstract class AbstractMapper
         return $prep;
     }
 
+    public function clear()
+    {
+        unset($this->queryScopes);
+        unset($this->queryConditions);
+    }
+
 
 }

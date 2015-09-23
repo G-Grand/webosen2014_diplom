@@ -6,10 +6,13 @@ class Roadrout extends AbstractEntity
     public $id;
     public $driverid;
     public $start;
+    public $start_adress;
     public $finish;
+    public $finish_adress;
     public $terms;
     public $autoid;
     public $freeseats;
+    public $price;
     public $startdate;
     public $timetrip;
     public $status;
@@ -32,10 +35,18 @@ class Roadrout extends AbstractEntity
                 'size' => 255,
                 'nullable' => false
             ),
+            'start_adress' => array(
+                'type' => 'string',
+                'size' => 255
+            ),
             'finish' => array(
                 'type' => 'string',
                 'size' => 255,
                 'nullable' => false
+            ),
+            'finish_adress' => array(
+                'type' => 'string',
+                'size' => 255
             ),
             'terms' => array(
                 'type' => 'string'
@@ -47,6 +58,9 @@ class Roadrout extends AbstractEntity
             ),
             'freeseats' => array(
                 'type' => 'int'
+            ),
+            'price' => array(
+                'type' => 'decimal'
             ),
             'startdate' => array(
                 'type' => 'date'
