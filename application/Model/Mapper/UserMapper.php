@@ -26,8 +26,8 @@ class UserMapper extends AbstractMapper
     {
         if($this->validate($user)){
             $userScope = new QueryScope("user");
-            $userScope->setFields(array("email", "userpassword", "crdate", "access"));
-            $userScope->setValues(array($user->email, $user->userpassword, $user->crdate, "ps"));
+            $userScope->setFields(array("email", "userpassword", "crdate", "access", "userstatus"));
+            $userScope->setValues(array($user->email, $user->userpassword, $user->crdate, $user->access, $user->userstatus));
             $this->addQueryScope($userScope);
             return $this->insert();
         }

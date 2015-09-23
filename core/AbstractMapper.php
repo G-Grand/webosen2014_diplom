@@ -18,7 +18,7 @@ abstract class AbstractMapper
     {
         $entityTypes = $entity->getDataTypes();
         foreach($entityTypes as $key => $type){
-            echo $key . '->' . gettype($entity->$key) . '==' . $type['type'] . '<br />';
+//            echo $key . '->' . gettype($entity->$key) . '==' . $type['type'] . '<br />';
             $type['nullable'] = (isset($type['nullable'])) ? $type['nullable'] : true;
             if(!$type['nullable'] && !isset($entity->$key)){
                 return false;

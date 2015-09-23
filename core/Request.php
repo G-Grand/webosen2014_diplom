@@ -40,6 +40,12 @@ class Request
     {
         $this->_post = $post;
     }
+    public static function ajax(){
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+            $ajax = true;
+        }
+    }
 
 
 

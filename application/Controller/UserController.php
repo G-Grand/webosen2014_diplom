@@ -79,10 +79,7 @@ class UserController extends  AbstractController
 //    }
 
     public function registerAction() {
-        if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-            $ajax = true;
-        }
+        Request::ajax();
         $request = new Request();
         $request->initRequest();
         $post = $request->getPost();
@@ -101,6 +98,7 @@ class UserController extends  AbstractController
                             $user->email = $givenEmail;
                             $user->crdate = date("Y-m-d");
                             $user->access = 'ps';
+                            $user->userstatus = 1;
                             $user->userpassword = hash("md5", $givenPassword);
                             if ($userMapper->insertNewUser($user)) {
                                 echo '{"response": "ok"}';
