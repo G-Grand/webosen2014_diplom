@@ -79,10 +79,7 @@ class UserController extends  AbstractController
 //    }
 
     public function registerAction() {
-        if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-            $ajax = true;
-        }
+        Request::ajax();
         $request = new Request();
         $request->initRequest();
         $post = $request->getPost();
