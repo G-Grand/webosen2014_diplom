@@ -101,6 +101,7 @@ class UserController extends  AbstractController
                             $user->email = $givenEmail;
                             $user->crdate = date("Y-m-d");
                             $user->access = 'ps';
+                            $user->userstatus = 1;
                             $user->userpassword = hash("md5", $givenPassword);
                             if ($userMapper->insertNewUser($user)) {
                                 echo '{"response": "ok"}';
