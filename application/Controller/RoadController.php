@@ -27,7 +27,9 @@ class RoadController extends AbstractController
                 $user = $userMapper->getUserByEmail($road->driverid);
                 $car = $carMapper->getByUser($road->driverid);
                 $roadMapper->clear();
-                $routPoints = $roadMapper->getRoutPointsByRoad($road->roadroutid);
+                $getPoints = $roadMapper->getRoutPointsByRoad($road->id);
+                $routPoints = array();
+                foreach($getPoints as $point){ $routPoints[$point->pointqueue] = $point->point; }
                 $result[] = array(
                     'startdate' => $road->startdate,
                     'start' => $road->start,
@@ -37,7 +39,7 @@ class RoadController extends AbstractController
                     'freeseats' => $road->freeseats,
                     'price' => $road->price,
                     'terms' => $road->terms,
-                    'rout_points' => $routPoints[0],
+                    'rout_points' => $routPoints,
                     'username' => $user->username,
                     'surname' => $user->surname,
                     'photo' => $user->photo,

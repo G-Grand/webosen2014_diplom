@@ -3,14 +3,14 @@ namespace Entity;
 
 class RoutPoint extends AbstractEntity
 {
-    public $rdroutid;
+    public $roadroutid;
     public $point;
     public $pointqueue;
 
     public function _construct()
     {
         self::$_dataTypes = array(
-            'rdroutid' => array(
+            'roadroutid' => array(
                 'type' => 'string',
                 'size' => 15,
                 'nullable' => false

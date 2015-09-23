@@ -5,6 +5,7 @@
  */
 
 use Entity\User;
+use Entity\RoutPoint;
 
 class RoadMapper extends AbstractMapper
 {
