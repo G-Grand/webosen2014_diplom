@@ -22,7 +22,8 @@ return array(
         "name" => "easyride_db",
         "login" => "root",
         "password" => "",
-        "tableprefix" => "er_"
+        "tableprefix" => "er_",
+        "encoding" => "utf8"
     ),
     "routing" => array(
         "default_controller" => "IndexController",
