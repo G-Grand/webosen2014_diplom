@@ -19,7 +19,7 @@ class RoadController extends AbstractController
         $post = $request->getPost();
         $roads = new \Entity\Roadrout();
         $roadMapper = new RoadMapper();
-        var_dump($roadMapper->getByStartFinish($post['departure_point'], $post['destination_point']));
+        echo json_encode($roadMapper->getByStartFinish($post['departure_point'], $post['destination_point']));
 //        $roadMapper->getByStartFinish($post['departure_point'], $post['destination_point']);
 
 

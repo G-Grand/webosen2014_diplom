@@ -14,13 +14,13 @@ class RoadMapper extends AbstractMapper
         $roadCond = new QueryCondition("roadrout");
         $roadCond->setConditions(array(
             new QueryConditionMember("start", $start, "="),
-            new QueryConditionMember("finish", $finish, "=", 'AND')
+            new QueryConditionMember("finish", $finish, "=", 'AND'),
+            new QueryConditionMember("status", "closed", "<>", 'AND')
         ));
 
         $this->addQueryScope($roadScope);
         $this->addQueryCondition($roadCond);
 
         return $this->select()->fetchAll(PDO::FETCH_ASSOC);
-//        return $this->select();
     }
 }

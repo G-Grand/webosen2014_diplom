@@ -128,6 +128,8 @@ INSERT INTO er_roadrout(id, driverid, `start`, finish, terms, autoid, freeseats,
 INSERT INTO er_roadrout(id, driverid, `start`, finish, terms, autoid, freeseats, startdate, timetrip, `status`)
     VALUES ('20150320','john@i.ua','Chikago','Dallas','no smoking, no pets','AE5487EE','1','2015-05-10 13:00:00','','opened');
 INSERT INTO er_roadrout(id, driverid, `start`, finish, terms, autoid, freeseats, startdate, timetrip, `status`)
+VALUES ('20150321','alex@i.ua','Chikago','Dallas','no smoking, no pets','AE6488II','2','2015-06-03 18:00:00','','opened');
+INSERT INTO er_roadrout(id, driverid, `start`, finish, terms, autoid, freeseats, startdate, timetrip, `status`)
     VALUES ('20150223','alex@i.ua','Кривой рог','Львов','в салоне не курят, без животных','AE6488II','3','2015-03-02 07:00:00','10:00:00','opened');
 INSERT INTO er_roadrout(id, driverid, `start`, finish, terms, autoid, freeseats, startdate, timetrip, `status`)
     VALUES ('20150207','mark@i.ua','Кременчуг','Днепропетровск','без детей, без животных','AE1418AK','4','2015-02-13 07:00:00','2:00:00','opened');
@@ -135,6 +137,8 @@ INSERT INTO er_roadrout(id, driverid, `start`, finish, terms, autoid, freeseats,
     VALUES ('20150221','piter@i.ua','Полтава','Санкт-Петербург','','AE6318KL','0','2015-05-28 03:00:00','16:00:00','closed');
 INSERT INTO er_roadrout(id, driverid, `start`, finish, terms, autoid, freeseats, startdate, timetrip, `status`)
     VALUES ('20150717','piter@i.ua','Санкт-Петербург','Полтава','','AE6318KK','2','2015-07-17 03:00:00','16:00:00','opened');
+INSERT INTO er_roadrout(id, driverid, `start`, finish, terms, autoid, freeseats, startdate, timetrip, `status`)
+VALUES ('20150718','piter@i.ua','Chikago','Dallas','','AE6318KK','3','2015-12-21 08:00:00','6:00:00','closed');
 
 INSERT INTO er_passenger(roadroutid, userid) VALUES ('20150101','ivan@i.ua');
 INSERT INTO er_passenger(roadroutid, userid) VALUES ('20150320','den@i.ua');
