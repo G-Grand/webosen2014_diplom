@@ -29,14 +29,14 @@ return array(
                 "template"=>"finduserbyemail_form",
                 "weight"=>10
             ),
-            "loginAction"=>array(
+            "signinAction"=>array(
                 "block"=>"content",
                 "template"=>"signin",
                 "weight"=>1
             ),
             "signupAction"=>array(
                 "block"=>"content",
-                "template"=>"register",
+                "template"=>"signup",
                 "weight"=>1
             ),
             "forgotAction"=>array(
