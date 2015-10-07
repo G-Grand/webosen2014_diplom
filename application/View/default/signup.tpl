@@ -48,7 +48,7 @@
                         </div>
 
 
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-default" onclick="history.back();">Отмена</button>
                     <button id="save" type="button" class="btn btn-primary">Регистрация</button>
             </form>
         </div>

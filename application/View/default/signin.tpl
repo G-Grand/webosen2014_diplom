@@ -29,11 +29,9 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="checkbox col-md-6 col-sm-6 text-left">
-                        <label><input type="checkbox">Запомнить меня</label>
-                    </div>
-                    <div class="col-md-6 col-sm-6 text-right">
-                        <button id="save" type="button" class="btn btn-primary btn-lg">Войти</button>
+                    <div class="col-md-12 col-sm-12 text-right">
+                        <button type="button" class="btn btn-default" onclick="history.back();">Отмена</button>
+                        <button id="save" type="button" class="btn btn-primary">Войти</button>
                     </div>
                 </div>
             </form>
