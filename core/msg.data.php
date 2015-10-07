@@ -2,8 +2,9 @@
 return array(
     'error' => array(
         'Error occurred when register new User' => '101',
-        'error message2' => '102',
-        'error message3' => '103',
+        'Ай вай такой юзэр уже есть!!!' => '102',
+        'Неверный email' => '103',
+        'Неверная каптча!!!' => '104',
     ),
     'succeed' => array(
         'New User was created successfully' => '201',

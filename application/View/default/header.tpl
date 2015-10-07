@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="/application/data/css/jquery-ui.css">
     <link rel="stylesheet" href="/application/data/css/jquery-ui.theme.css">
     <link rel="stylesheet" type="text/css" href="/application/data/css/jquery.datetimepicker.css"/>
+    <!--
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    -->
+    <link rel="stylesheet" href="/application/data/css/bootstrap.css">
     <link rel="stylesheet" href="/application/data/css/style.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -27,13 +30,16 @@
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/application/data/js/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+    <script src="/application/data/js/bootstrap.min.js"></script>
     <script src="/application/data/js/jquery.datetimepicker.js"></script>
     <script src="/application/data/js/jquery-ui.js"></script>
     <script src="/application/data/js/handlebars.js"></script>
+    <script src="/application/data/js/messenger.js"></script>
 
 </head>
 <body>
-<p class="bg-success"><?php echo $this->_messages->getSucceedMessage($this->getRefererUrl()); ?></p>
-<p class="bg-info"><?php echo $this->_messages->getErrMessage($this->getRefererUrl()); ?></p>
-<p class="bg-warning"><?php echo $this->_messages->getNotesMessage($this->getRefererUrl()); ?></p>
+
+<p id="succeed_msg" class="bg-success hidden"></p>
+<p id="notes_msg" class="bg-info hidden"></p>
+<p id="error_msg" class="bg-warning hidden"></p>

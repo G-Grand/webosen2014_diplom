@@ -60,14 +60,11 @@ $(function() {
             dataType: "json",
             success: function(result) {
                 console.log(result);
-                $("myForm").hide();
-                if(result.response == "ok") {
-                    $("#success-alert").removeClass("hidden").html("<h2>Успех</h2><div>Вы зареганы! Йо!</div>");
-                }else {
-                    $("#success-alert").removeClass("hidden").html("<h2>Лажа</h2><div>Ваши данные отстой!</div>");
-                }
             }
         });
+                //window.location = 'http://webosen2014_diplom/index/index';
+                window.location = '/index/index';
+        showMessage();
 
     });
 });

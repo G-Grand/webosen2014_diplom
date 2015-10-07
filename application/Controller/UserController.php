@@ -11,7 +11,7 @@ class UserController extends  AbstractController
 
     public function indexAction(){
         $msg = ErMessenger::getInstance();
-        $msg->setNotesMessage('Massage from User Index', 'user/index');
+        $msg->setNotesMessage('101', 'user/index');
         $this->addBlockToView('Common', 'header');
         ErApplication::redirect(ErApplication::getBaseUrl());
     }
@@ -57,6 +57,7 @@ class UserController extends  AbstractController
 
     public function registerAction() {
         Request::ajax();
+        $message = ErMessenger::getInstance();
         $request = new Request();
         $request->initRequest();
         $post = $request->getPost();
@@ -78,14 +79,16 @@ class UserController extends  AbstractController
                             $user->userstatus = 1;
                             $user->userpassword = hash("md5", $givenPassword);
                             if ($userMapper->insertNewUser($user)) {
-                                echo '{"response": "ok"}';
+                                $message->setSucceedMessage('201', 'index/index');
+                                ErSession::saveToSession('user',$user->email);
+                                ErSession::saveToSession('username',$user->username);
                             } else {
-                                echo '{"response": "bad"}';
+                                $message->setErrMessage('101', 'user/signup');
                             }
-                        }else echo '{"response": {"status":"bad","msg":"Неверный email!!!"}}';
-                    }else echo '{"response": {"status":"bad","msg":"Неверная каптча!!!"}}';
+                        }else $message->setErrMessage('103', 'user/signup');;
+                    }else $message->setErrMessage('104', 'user/signup');;
                 }else {
-                    echo '{"response": {"status":"bad","msg":"Ай вай такой юзэр уже есть!!!"}}';
+                    $message->setErrMessage('102', 'user/signup');
                 }
             }
         }
