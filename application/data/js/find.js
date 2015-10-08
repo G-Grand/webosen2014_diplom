@@ -107,4 +107,5 @@ function drawRoadsBlock(roads) {
     });
     roadsBlock.show();
     $("#roadsFilter").show();
+    initRate($('.rate'));
 }

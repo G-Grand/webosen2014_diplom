@@ -174,6 +174,7 @@
                      alt="icon">
                 <h4>{{surname}} {{username}}</h4>
                 <h4>возраст: {{age}}</h4>
+                <div class="rate" data-score="{{rate}}"></div>
                 <span class="glyphicon glyphicon-music"></span>
                 <span class="glyphicon glyphicon-thumbs-up"></span>
                 <span class="glyphicon glyphicon-ban-circle"></span>

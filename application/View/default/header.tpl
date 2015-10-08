@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     -->
     <link rel="stylesheet" href="/application/data/css/bootstrap.css">
+    <link rel="stylesheet" href="/application/data/css/jquery.raty.css">
     <link rel="stylesheet" href="/application/data/css/style.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -35,7 +36,9 @@
     <script src="/application/data/js/jquery.datetimepicker.js"></script>
     <script src="/application/data/js/jquery-ui.js"></script>
     <script src="/application/data/js/handlebars.js"></script>
+    <script src="/application/data/js/jquery.raty.js"></script>
     <script src="/application/data/js/messenger.js"></script>
+    <script src="/application/data/js/raty_handler.js"></script>
 
 </head>
 <body>

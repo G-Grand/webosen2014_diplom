@@ -42,6 +42,7 @@ class RoadController extends AbstractController
                     'rout_points' => $routPoints,
                     'username' => $user->username,
                     'surname' => $user->surname,
+                    'rate' => $user->rate,
                     'photo' => $user->photo,
                     'age' => $user->getAge(),
                     'car_brand' => $car->brand,
