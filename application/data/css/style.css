@@ -28,3 +28,19 @@ a{
 }
 
 .road_margin {margin-top:20px;}
+
+/*выпадающий список для создания маршрута*/
+.droplist { }
+.list {
+    display: none;
+    position: absolute;
+    background-color: #F3F3F3;
+    border: 1px solid #aaa;
+    z-index: 999;
+    top: 33px;
+    width: 94%;
+}
+.list option:hover {
+    background: #33aaff;
+    cursor: pointer;
+}
