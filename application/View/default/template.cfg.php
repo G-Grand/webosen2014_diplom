@@ -43,6 +43,11 @@ return array(
                 "block"=>"content",
                 "template"=>"forgot",
                 "weight"=>1
+            ),
+            "privateAction"=>array(
+                "block"=>"content",
+                "template"=>"private",
+                "weight"=>1
             )
         ),
         "RoadController"=>array(

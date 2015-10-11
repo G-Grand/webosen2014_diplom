@@ -99,4 +99,11 @@ class UserController extends  AbstractController
         ErSession::dieSession();
         ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
     }
+
+    public function privateAction(){
+        $this->addBlockToView('Common', 'header');
+        $this->addBlockToView('Common', 'footer');
+        $this->setViewAttributes('headerTitle', 'Private');
+        $this->initView($this->getActionUrl())->renderView();
+    }
 }

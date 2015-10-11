@@ -60,7 +60,6 @@ $(function() {
             dataType: "json",
             success: function(result) {
                 console.log(result);
-                $('#myForm').hide();
             }
         });
                 //window.location = 'http://webosen2014_diplom/index/index';
