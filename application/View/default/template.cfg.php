@@ -56,9 +56,9 @@ return array(
                 "template"=>"find_car",
                 "weight"=>1
             ),
-            "findAction"=>array(
+            "addrouteAction"=>array(
                 "block"=>"content",
-                "template"=>"find_car",
+                "template"=>"addroute",
                 "weight"=>1
             )
         ),

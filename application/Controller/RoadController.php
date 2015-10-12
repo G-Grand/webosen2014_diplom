@@ -13,6 +13,13 @@ class RoadController extends AbstractController
         $this->initView($this->getActionUrl())->renderView();
     }
 
+    public function addrouteAction()
+    {
+        $this->addBlockToView('Common', 'header');
+        $this->addBlockToView('Common', 'footer');
+        $this->initView($this->getActionUrl())->renderView();
+    }
+
     public function findAction(){
         $request = new Request();
         $request->initRequest();

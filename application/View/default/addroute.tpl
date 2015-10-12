@@ -1,9 +1,9 @@
-<link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.css">
-<link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.css">
-<script src="/application/data/css/crroute.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/moment-with-langs.js"></script>
-<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-datetimepicker.ru.js"></script>
+<link type="text/css" rel="stylesheet" href="/application/data/css/bootstrap-datetimepicker.css">
+<script type="text/javascript" src="/application/data/js/moment-with-langs.js"></script>
+<script type="text/javascript" src="/application/data/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/application/data/js/bootstrap-datetimepicker.ru.js"></script>
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="/application/data/js/addroute.js" type="text/javascript"></script>
 
 <div class="container" style="width: 740px;">
     <div class="row">
