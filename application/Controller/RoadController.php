@@ -15,9 +15,23 @@ class RoadController extends AbstractController
 
     public function addrouteAction()
     {
-        $this->addBlockToView('Common', 'header');
-        $this->addBlockToView('Common', 'footer');
-        $this->initView($this->getActionUrl())->renderView();
+        if (ErSession::getFromSession('user')) {
+            $carMapper = new CarMapper();
+            $cars = $carMapper->getByUser(ErSession::getFromSession('user'));
+            if (!empty($cars)){
+                $this->addBlockToView('Common', 'header');
+                $this->addBlockToView('Common', 'footer');
+                $this->initView($this->getActionUrl(), $cars)->renderView();
+            }else {
+                $message = ErMessenger::getInstance();
+                $message->setNotesMessage('302', 'index/index');
+                ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
+            }
+        }else {
+            $message = ErMessenger::getInstance();
+            $message->setNotesMessage('301', 'user/signin');
+            ErApplication::redirect(ErApplication::getBaseUrl() . 'user/signin');
+        }
     }
 
     public function findAction(){
@@ -32,7 +46,7 @@ class RoadController extends AbstractController
         if($roads){
             foreach($roads as $road){
                 $user = $userMapper->getUserByEmail($road->driverid);
-                $car = $carMapper->getByUser($road->driverid);
+                $car = $carMapper->getByAutoId($road->autoid);
                 $roadMapper->clear();
                 $getPoints = $roadMapper->getRoutPointsByRoad($road->id);
                 $routPoints = array();

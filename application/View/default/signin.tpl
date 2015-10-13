@@ -22,7 +22,7 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input id="password" type="password" class="form-control" required="required"
-                               name="password"
+                               name="userpassword"
                                value="">
                     </div>
                     <span class="glyphicon form-control-feedback"></span>
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <div class="col-md-12 col-sm-12 text-right">
                         <button type="button" class="btn btn-default" onclick="history.back();">Отмена</button>
-                        <button id="save" type="button" class="btn btn-primary">Войти</button>
+                        <button id="signin_btn" type="button" class="btn btn-primary">Войти</button>
                     </div>
                 </div>
             </form>

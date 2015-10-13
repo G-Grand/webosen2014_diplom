@@ -47,9 +47,13 @@
                                     <label for="inputAuto" class="control-label col-md-4">Выбирите ТС на котором<br> планируете поездку</label>
                                     <div class="col-md-8">
                                         <select class="form-control" id="inputAuto">
-                                            <option>Opel</option>
-                                            <option>Nissan</option>
-                                            <option>Ваз</option>
+                                            <?php
+                                             if (!empty($params)){
+                                                foreach($params as $car){
+                                                    echo '<option>' . $car->brand . ' ' . $car->model . '</option>';
+                                                }
+                                             }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>

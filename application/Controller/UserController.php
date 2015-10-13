@@ -39,6 +39,7 @@ class UserController extends  AbstractController
 
     public function authoriseAction()
     {
+        $message = ErMessenger::getInstance();
         $userMapper = new UserMapper();
         $request = new Request();
         $request->initRequest();
@@ -46,13 +47,23 @@ class UserController extends  AbstractController
         $user = $userMapper->getUserByEmail($post["email"]);
         $givenPassword = $this->clearStr($post["userpassword"]);
         $givenPassword = hash("md5", $givenPassword);
-        if($user->userpassword === $givenPassword){
-            ErSession::saveToSession('user',$user->email);
-            ErSession::saveToSession('username',$user->username);
-            ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
+        $response = array();
+        if(!empty($user)){
+            if($user->userpassword === $givenPassword){
+                ErSession::saveToSession('user',$user->email);
+                ErSession::saveToSession('username',$user->username);
+//                ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
+                $response['signin'] = 'true';
+            }else{
+                $response['signin'] = 'false';
+                $message->setErrMessage('105', 'user/signin');
+//                ErApplication::redirect(ErApplication::getBaseUrl() . 'user/signin');
+            }
         }else{
-            ErApplication::redirect(ErApplication::getBaseUrl() . 'user/signin');
+            $response['signin'] = 'false';
+            $message->setErrMessage('105', 'user/signin');
         }
+        echo json_encode($response);
     }
 
     public function registerAction() {

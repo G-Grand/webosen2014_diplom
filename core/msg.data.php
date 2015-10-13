@@ -5,6 +5,7 @@ return array(
         'Ай вай такой юзэр уже есть!!!' => '102',
         'Неверный email' => '103',
         'Неверная каптча!!!' => '104',
+        'Wrong user Name or password' => '105',
     ),
     'succeed' => array(
         'New User was created successfully' => '201',
@@ -12,8 +13,8 @@ return array(
         'succeed message3' => '203',
     ),
     'notes' => array(
-        'notes message1' => '301',
-        'notes message2' => '302',
+        'You hav to sign in to add new route' => '301',
+        'First You hav to add car to account' => '302',
         'notes message3' => '303',
     ),
 );

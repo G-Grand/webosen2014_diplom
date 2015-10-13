@@ -20,6 +20,22 @@ class CarMapper extends AbstractMapper
         $this->addQueryScope($carScope);
         $this->addQueryCondition($carCond);
 
+        return $this->select()->fetchAll(PDO::FETCH_CLASS, 'Entity\Car');
+    }
+
+    public function getByAutoId($autoId)
+    {
+        $carScope = new QueryScope("car");
+        $carScope->setFields(array("*"));
+
+        $carCond = new QueryCondition("car");
+        $carCond->setConditions(array(
+            new QueryConditionMember("regnumber", $autoId, "="),
+        ));
+
+        $this->addQueryScope($carScope);
+        $this->addQueryCondition($carCond);
+
         return $this->select()->fetchObject('\Entity\Car');
     }
 }
