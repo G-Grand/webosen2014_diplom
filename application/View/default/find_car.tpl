@@ -1,3 +1,5 @@
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="/application/data/js/addroute.js" type="text/javascript"></script>
 <script src="/application/data/js/find.js"></script>
 <div class="container">
 
@@ -6,17 +8,27 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <h1>Найти попутку</h1>
             <div style="text-align: center">
-                <form class="navbar-form" action="" method="post" id="get_rt_form">
-                    <div class="form-group btn-ps">
-                        <input type="text" form="get_rt_form" name="departure_point" value="Chikago"
-                               placeholder="пункт отправления" class="form-control form-control-fc">
+                <form id="get_rt_form" class="navbar-form" action="" method="post">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                        <div class="droplist">
+                            <input id="inputStart" class="form-control" type="text" form="get_rt_form" name="departure_point" value=""
+                                   placeholder="пункт отправления">
+                            <span class="glyphicon form-control-feedback"></span>
+                            <div id="start_list" class="list"></div>
+                        </div>
                     </div>
                     <button id="switchPlaces" class="btn btn-default btn-arrow" type="button">
                         <img src="/application/data/images/arrow.png" alt="" style="vertical-align:middle">
                     </button>
-                    <div class="form-group btn-pf">
-                        <input type="text" form="get_rt_form" name="destination_point" value="Dallas"
-                               placeholder="пункт назначения" class="form-control form-control-fc">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                        <div class="droplist">
+                            <input id="inputFinish" class="form-control" type="text" form="get_rt_form" name="destination_point" value=""
+                                   placeholder="пункт назначения">
+                            <span class="glyphicon form-control-feedback"></span>
+                            <div id="finish_list" class="list"></div>
+                        </div>
                     </div>
                     <button id="find" class="btn btn-default btn-find" type="button">найти</button>
                 </form>

@@ -14,6 +14,7 @@ function rateController(url, itemId, itemRate){
 function initRate(block){
     block.raty({
         starType : 'i',
+        readOnly : true,
         score: function() {
             return $(this).attr('data-score');
         }

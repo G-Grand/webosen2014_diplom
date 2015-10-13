@@ -67,6 +67,8 @@ $(function (){
 
     });
 
+
+
 });
 
 //календарь с числом
@@ -79,6 +81,13 @@ $('document').ready(function (){
     });
 });
 
+/**
+ *
+ * @param field target element object
+ * @param point
+ * @param datalist popup element object
+ * @param coords string point nfvt
+ */
 function getGeoTarget(field, point, datalist, coords)
 {
     clearTimeout(point);

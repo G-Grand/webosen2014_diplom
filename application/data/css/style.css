@@ -36,6 +36,8 @@ a{
     position: absolute;
     background-color: #F3F3F3;
     border: 1px solid #aaa;
+    text-align: left;
+    overflow: auto;
     z-index: 999;
     top: 33px;
     width: 94%;
