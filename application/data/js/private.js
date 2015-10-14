@@ -7,4 +7,12 @@ $(document).ready(function() {
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').focus()
-})
+});
+
+$('#changeData').click(function(){
+    $('input').each(function(){
+        $('#saveData').removeAttr("disabled");
+        //$(this).attr("disabled") = false;
+    });
+
+});
