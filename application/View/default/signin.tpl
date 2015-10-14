@@ -1,4 +1,3 @@
-<script src="/application/data/js/registr.js" type="text/javascript"></script>
 <h1 class="text-center">Вход</h1>
 <div class="container container-signin">
     <div class="row">

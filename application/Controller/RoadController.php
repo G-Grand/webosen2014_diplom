@@ -10,6 +10,8 @@ class RoadController extends AbstractController
     {
         $this->addBlockToView('Common', 'header');
         $this->addBlockToView('Common', 'footer');
+        $this->setViewAttributes('headerTitle', 'Find Ride');
+
         $this->initView($this->getActionUrl())->renderView();
     }
 
@@ -21,6 +23,14 @@ class RoadController extends AbstractController
             if (!empty($cars)){
                 $this->addBlockToView('Common', 'header');
                 $this->addBlockToView('Common', 'footer');
+                $this->setViewAttributes('headerTitle', 'Add Route');
+                $this->setViewAttributes('add_js', array(
+                    'moment-with-langs.js',
+                    'bootstrap-datetimepicker.min.js',
+                    'bootstrap-datetimepicker.ru.js',
+                    'addroute.js'
+                ));
+                $this->setViewAttributes('add_css', array('bootstrap-datetimepicker.css'));
                 $this->initView($this->getActionUrl(), $cars)->renderView();
             }else {
                 $message = ErMessenger::getInstance();

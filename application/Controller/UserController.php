@@ -18,21 +18,20 @@ class UserController extends  AbstractController
 
     public function signinAction(){
         $this->addBlockToView('Common', 'header');
-        $this->setViewAttributes('headerTitle', 'Login');
+        $this->setViewAttributes('headerTitle', 'Sign in');
+        $this->setViewAttributes('add_js', array('registr.js'));
         $this->initView($this->getActionUrl())->renderView();
     }
 
     public function signupAction(){
         $this->addBlockToView('Common', 'header');
-        $this->addBlockToView('Common', 'footer');
         $this->setViewAttributes('headerTitle', 'Sign up');
-        $this->setViewAttributes('login_flag', false);
+        $this->setViewAttributes('add_js', array('registr.js'));
         $this->initView($this->getActionUrl())->renderView();
     }
 
     public function forgotAction(){
         $this->addBlockToView('Common', 'header');
-        $this->addBlockToView('Common', 'footer');
         $this->setViewAttributes('headerTitle', 'Forgot');
         $this->initView($this->getActionUrl())->renderView();
     }
@@ -41,6 +40,7 @@ class UserController extends  AbstractController
         $this->addBlockToView('Common', 'header');
         $this->addBlockToView('Common', 'footer');
         $this->setViewAttributes('headerTitle', 'Private');
+        $this->setViewAttributes('add_js', array('private.js'));
         $this->initView($this->getActionUrl())->renderView();
     }
 

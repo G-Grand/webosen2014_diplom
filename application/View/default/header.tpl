@@ -21,18 +21,20 @@
     <link rel="stylesheet" href="/application/data/css/bootstrap.css">
     <link rel="stylesheet" href="/application/data/css/jquery.raty.css">
     <link rel="stylesheet" href="/application/data/css/style.css">
+    <?php
+        if($this->add_css){
+            foreach($this->add_css as $style){
+                echo '<link rel="stylesheet" href="/' . $this->_dataPath . '/css/' . $style . '">';
+            }
+        }
+    ?>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/application/data/js/jquery.js"></script>
    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
     <script src="/application/data/js/bootstrap.min.js"></script>
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script src="/application/data/js/jquery.datetimepicker.js"></script>
     <script src="/application/data/js/jquery-ui.js"></script>
     <script src="/application/data/js/handlebars.js"></script>
@@ -40,9 +42,19 @@
     <script src="/application/data/js/messenger.js"></script>
     <script src="/application/data/js/raty_handler.js"></script>
 
+    <?php
+        if($this->add_js){
+            foreach($this->add_js as $scr){
+                echo '<script src="/' . $this->_dataPath . '/js/' . $scr . '" type="text/javascript"></script>';
+            }
+        }
+    ?>
+
 </head>
+<!--
 <body>
 
 <p id="succeed_msg" class="bg-success hidden"></p>
 <p id="notes_msg" class="bg-info hidden"></p>
 <p id="error_msg" class="bg-warning hidden"></p>
+-->

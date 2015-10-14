@@ -1,5 +1,4 @@
-﻿<script src="/application/data/js/registr.js" type="text/javascript"></script>
-<div  class="container">
+﻿<div  class="container">
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
             <h1>Регистрация</h1>

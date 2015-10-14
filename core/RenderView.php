@@ -26,6 +26,7 @@ class RenderView extends ErObject
     private $_messages;
 
     private $_refererUrl;
+    private $_dataPath;
 
 
     /** @var string */
@@ -42,6 +43,8 @@ class RenderView extends ErObject
             }
         }
         $this->_messages = ErMessenger::getInstance();
+        $config = ErApplication::getMainCfg();
+        $this->_dataPath = $config['application']['paths']['data'];
     }
     private function __clone(){}
 

@@ -1,10 +1,3 @@
-<link type="text/css" rel="stylesheet" href="/application/data/css/bootstrap-datetimepicker.css">
-<script type="text/javascript" src="/application/data/js/moment-with-langs.js"></script>
-<script type="text/javascript" src="/application/data/js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="/application/data/js/bootstrap-datetimepicker.ru.js"></script>
-<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script src="/application/data/js/addroute.js" type="text/javascript"></script>
-
 <div class="container" style="width: 740px;">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">

@@ -8,7 +8,7 @@ return array(
             "View" => "application/View",
             "core" => "core",
             "modules" => "modules",
-            "data" => "data",
+            "data" => "application/data",
             "templateDirectory" => "./application/View/default"
         ),
         'session' => array(
