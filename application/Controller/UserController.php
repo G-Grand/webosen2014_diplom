@@ -37,6 +37,13 @@ class UserController extends  AbstractController
         $this->initView($this->getActionUrl())->renderView();
     }
 
+    public function privateAction(){
+        $this->addBlockToView('Common', 'header');
+        $this->addBlockToView('Common', 'footer');
+        $this->setViewAttributes('headerTitle', 'Private');
+        $this->initView($this->getActionUrl())->renderView();
+    }
+
     public function authoriseAction()
     {
         $message = ErMessenger::getInstance();
@@ -111,10 +118,4 @@ class UserController extends  AbstractController
         ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
     }
 
-    public function privateAction(){
-        $this->addBlockToView('Common', 'header');
-        $this->addBlockToView('Common', 'footer');
-        $this->setViewAttributes('headerTitle', 'Private');
-        $this->initView($this->getActionUrl())->renderView();
-    }
 }

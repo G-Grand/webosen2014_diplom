@@ -96,9 +96,8 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-sm-offset-4">
-                                <button id="changeData" class="btn btn-default"
-                                                                 type="submit">Изменить данные</button>
-                                <button id="saveData" type="button" class="btn btn-primary data-input"
+                                <button id="changeData" class="btn btn-default" type="button">Изменить данные</button>
+                                <button id="saveData" class="btn btn-primary data-input" type="submit"
                                                 disabled="disabled">Сохранить</button>
                                 </div>
                             </form>
