@@ -21,17 +21,17 @@
         <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-primary" href="#tab1" data-toggle="tab">
-                    <div class="hidden-xs">Мой профиль</div>
+                    <span>Мой профиль</span>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default" href="#tab2" data-toggle="tab">
-                    <div class="hidden-xs">Мои авто</div>
+                    <span>Мои авто</span>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab">
-                    <div class="hidden-xs">Мои поездки</div>
+                    <span>Мои поездки</span>
                 </button>
             </div>
         </div>
@@ -47,52 +47,74 @@
                         </div>
                         <div class="col-sm-6">
                             <form class="form-horizontal">
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="inputName" class="col-sm-4 control-label">Имя</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputName"
                                                value="Владимир" disabled>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="inputSurname" class="col-sm-4 control-label">Фамилия:</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputSurname"
                                                value="Коленцев" disabled>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="inputDate" class="col-sm-4 control-label">Дата рождения:</label>
                                     <div class="col-sm-8">
                                         <input type="date" class="form-control" id="inputDate"
                                                value="1991-05-17" disabled>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="inputGender" class="col-sm-4 control-label">Пол:</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputGender"
-                                               value="муж" disabled>
+                                               value="М" placeholder="M или Ж" pattern="[МЖмж]{1}" disabled>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="inputEmail" class="col-sm-4 control-label">e-mail:</label>
                                     <div class="col-sm-8">
                                         <p class="form-control-static">email@example.com</p>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="inputPhone" class="col-sm-4 control-label">Телефон:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="inputPhone"
-                                               value="380 562 322222" disabled>
+                                        <input type="tel" class="form-control" id="inputPhone"
+                                               value="38-056-2222222" placeholder="38-056-2222222"
+                                               pattern="[0-9]{2}-[0-9]{3}-[0-9]{7}" disabled>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-4 control-label">Пароль входа:</label>
+                                <div class="form-group has-feedback">
+                                    <label for="inputPassword" class="col-sm-4 control-label">Новый пароль:</label>
                                     <div class="col-sm-8">
                                         <input type="password" class="form-control" id="inputPassword"
                                                    disabled>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label for="preferences" class="col-sm-4 control-label">Ваши
+                                        предпочтения:</label>
+                                    <div class="col-sm-8">
+                                        <div class="row">
+                                        <div class="col-sm-4"><img style="width: 32px; height: 32px"
+                                                                   class="media-object"
+                                                                    src="/application/data/images/no-pets.jpg"></div>
+                                            <div class="col-sm-4"><img style="width: 32px; height: 32px" class="media-object"
+                                                                   src="/application/data/images/no-eat.jpg"></div>
+                                                <div class="col-sm-4"><img style="width: 32px; height: 32px" class="media-object"
+                                                                   src="/application/data/images/no-talk.jpg"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-sm-offset-4">
@@ -110,18 +132,6 @@
                                 Заполните недостающие данные, чтобы повысить уровень доверия к Вам на сервисе.</p>
                         </div>
                         <div class="clearfix"></div>
-                        <div class="row">
-                            <div class="col-sm-4"><h4>Ваши предпочтения:</h4></div>
-                            <div class="col-sm-1"><img style="width: 32px; height: 32 px" class="media-object"
-                                                       src="/application/data/images/no-pets.jpg"></div>
-                            <div class="col-sm-1"><img style="width: 32px; height: 32 px" class="media-object"
-                                                       src="/application/data/images/no-eat.jpg"></div>
-                            <div class="col-sm-1"><img style="width: 32px; height: 32 px" class="media-object"
-                                                       src="/application/data/images/no-talk.jpg"></div>
-                            <div class="col-sm-1"><img style="width: 32px; height: 32 px" class="media-object"
-                                                       src="/application/data/images/no-phone.jpg"></div>
-                            <div class="col-sm-4"></div>
-                        </div>
                     </div>
                 </div>
                 <div class="tab-pane fade in" id="tab2">
