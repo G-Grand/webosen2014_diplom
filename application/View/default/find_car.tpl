@@ -148,33 +148,7 @@
         </div>
     </div>
 <script>
-    $('#datetimepicker_mask').datetimepicker({
-        mask: '9999-19-39 29:59'
-    });
 
-    $(function () {
-        $("#slider-range-min").slider({
-            range: "min",
-            value: 500,
-            min: 1,
-            max: 10000,
-            slide: function (event, ui) {
-                $("#amount").val("" + ui.value);
-            },
-            stop: function (event, ui) {
-                var r = [];
-                price = parseFloat(ui.value);
-                for(var i=0; i<roads.length; ++i) {
-                    var priceR = parseFloat(roads[i].price);
-                    if(priceR <= price) {
-                        r.push(roads[i]);
-                    }
-                }
-                drawRoadsBlock(r);
-            }
-        });
-        $("#amount").val("" + $("#slider-range-min").slider("value"));
-    });
 </script>
 
 <script id="roadBlockTemplate" type="text/x-handlebars-template">

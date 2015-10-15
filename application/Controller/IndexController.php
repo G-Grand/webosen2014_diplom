@@ -12,7 +12,7 @@ class IndexController extends  AbstractController {
         $this->initView($this->getActionUrl())->renderView();
     }
 
-    public function findAction() {
+    public function page404Action() {
         $this->addBlockToView('Common', 'header');
         $this->initView($this->getActionUrl())->renderView();
     }

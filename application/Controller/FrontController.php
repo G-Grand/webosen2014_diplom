@@ -39,7 +39,7 @@ class FrontController
     {
         $controller = $this->fetchController();
         if (!ErApplication::runController($controller['Controller'], $controller['action'])) {
-            ErApplication::runController($this->defaultRoute['Controller'], $this->defaultRoute['action']);
+            ErApplication::runController($this->defaultRoute['Controller'], 'page404Action');
         }
     }
 }

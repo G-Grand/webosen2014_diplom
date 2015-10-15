@@ -12,9 +12,9 @@ return array(
                 "template"=>"index",
                 "weight"=>1
             ),
-            "findAction"=>array(
+            "page404Action"=>array(
                 "block"=>"content",
-                "template"=>"find_car",
+                "template"=>"404",
                 "weight"=>1
             )
         ),
@@ -23,11 +23,6 @@ return array(
                 "block"=>"content",
                 "template"=>"index",
                 "weight"=>1
-            ),
-            "findAction"=>array(
-                "block"=>"content",
-                "template"=>"finduserbyemail_form",
-                "weight"=>10
             ),
             "signinAction"=>array(
                 "block"=>"content",
@@ -63,11 +58,6 @@ return array(
             )
         ),
         "Common"=>array(
-            "error404"=>array(
-                "block"=>"content",
-                "template"=>"404",
-                "weight"=>1
-            ),
             "header"=>array(
                 "block"=>"header",
                 "template"=>"header",

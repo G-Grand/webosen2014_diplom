@@ -9,6 +9,35 @@ $(function() {
         destinationPoint.val(depVal);
     });
 
+    $('#datetimepicker_mask').datetimepicker({
+        mask: '9999-19-39 29:59'
+    });
+
+    $(function () {
+        $("#slider-range-min").slider({
+            range: "min",
+            value: 500,
+            min: 1,
+            max: 10000,
+            slide: function (event, ui) {
+                $("#amount").val("" + ui.value);
+            },
+            stop: function (event, ui) {
+                var r = [];
+                price = parseFloat(ui.value);
+                for(var i=0; i<roads.length; ++i) {
+                    var priceR = parseFloat(roads[i].price);
+                    if(priceR <= price) {
+                        r.push(roads[i]);
+                    }
+                }
+                drawRoadsBlock(r);
+            }
+        });
+        $("#amount").val("" + $("#slider-range-min").slider("value"));
+    });
+
+
     $('#find').click(function() {
         var form = $("#get_rt_form");
         var formValid = true;
@@ -50,12 +79,13 @@ $(function() {
     });
 
     $("#datetimepicker_mask").on("change", function(){
-        var date = new Date(this.value);
+
+        var date = new Date((this.value).replace(" ", "T"));
         var minDate = date.setHours(date.getHours()-3);
         var maxDate = date.setHours(date.getHours()+3);
         var r = [];
         for(var i=0; i<roads.length; ++i) {
-            var dateR = new Date(roads[i].startdate);
+            var dateR = new Date(roads[i].startdate.replace(" ", "T"));
             if(dateR >= minDate && dateR <= maxDate) {
                 r.push(roads[i]);
             }
@@ -75,8 +105,8 @@ function sortRoadsByPrice(roads) {
 }
 function sortRoadsByDate(roads) {
     return roads.sort(function(a,b){
-        var dateA = new Date(a.startdate);
-        var dateB = new Date(b.startdate);
+        var dateA = new Date(a.startdate.replace(" ", "T"));
+        var dateB = new Date(b.startdate.replace(" ", "T"));
         if(dateA > dateB)  { return 1; }
         if(dateA < dateB)  { return -1; }
         if(dateA == dateB) { return 0; }
@@ -107,5 +137,7 @@ function drawRoadsBlock(roads) {
     });
     roadsBlock.show();
     $("#roadsFilter").show();
+
+
     initRate($('.rate'));
 }
