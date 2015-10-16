@@ -1,44 +1,3 @@
-<div id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <span class="light">Easy</span> Ride
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <div class="authorize"><a href="">регистрация</a>|<a href="">войти</a></div>
-
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#">Главная</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#">Поймать попутку</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#">Создать маршрут</a>
-                    </li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
 
     <!-- Intro Header -->
     <header class="intro">
@@ -180,6 +139,5 @@
             <p>Copyright &copy; Your Web-Osen 2014</p>
         </div>
     </footer>
-</div>
 </body>
 </html>

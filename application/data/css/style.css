@@ -23,9 +23,9 @@ a{
 
     }
 }
-.nav{
-    height: 0px;
-}
+/*.nav{*/
+    /*height: 0px;*/
+/*}*/
 
 .road_margin {margin-top:20px;}
 
@@ -36,8 +36,8 @@ a{
     position: absolute;
     background-color: #F3F3F3;
     border: 1px solid #aaa;
-    text-align: left;
-    overflow: auto;
+    /*text-align: left;*/
+    /*overflow: auto;*/
     z-index: 999;
     top: 33px;
     width: 94%;

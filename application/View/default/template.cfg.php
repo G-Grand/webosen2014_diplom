@@ -16,6 +16,11 @@ return array(
                 "block"=>"content",
                 "template"=>"404",
                 "weight"=>1
+            ),
+            "testAction"=>array(
+                "block"=>"content",
+                "template"=>"upload",
+                "weight"=>1
             )
         ),
         "UserController"=>array(
@@ -61,6 +66,11 @@ return array(
             "header"=>array(
                 "block"=>"header",
                 "template"=>"header",
+                "weight"=>1
+            ),
+            "header_no_menu"=>array(
+                "block"=>"header",
+                "template"=>"header_no_menu",
                 "weight"=>1
             ),
             "footer"=>array(
