@@ -7,11 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        <?php if($this->headerTitle): ?>
-        <?php echo $this->headerTitle; ?>
-        <?php endif; ?>
-    </title>
+    <title><?php if($this->headerTitle){ echo $this->headerTitle; } ?></title>
 
     <link rel="stylesheet" href="/application/data/css/jquery-ui.css">
     <link rel="stylesheet" href="/application/data/css/jquery-ui.theme.css">
@@ -20,12 +16,10 @@
     <link rel="stylesheet" href="/application/data/css/style.css">
     <?php
         if($this->add_css){
-    foreach($this->add_css as $style){
-    echo '
-    <link rel="stylesheet" href="/' . $this->_dataPath . '/css/' . $style . '">
-    ';
-    }
-    }
+            foreach($this->add_css as $style){
+                echo '<link rel="stylesheet" href="/' . $this->_dataPath . '/css/' . $style . '">';
+            }
+        }
     ?>
 
     <script src="/application/data/js/jquery.js"></script>
@@ -37,12 +31,9 @@
     <script src="/application/data/js/messenger.js"></script>
     <?php
         if($this->add_js){
-    foreach($this->add_js as $scr){
-    echo '
-    <script src="/' . $this->_dataPath . '/js/' . $scr . '" type="text/javascript"></script>
-    ';
-    }
-    }
+            foreach($this->add_js as $scr){
+            echo '<script src="/' . $this->_dataPath . '/js/' . $scr . '" type="text/javascript"></script>'; }
+        }
     ?>
 
 </head>

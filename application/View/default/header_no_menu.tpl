@@ -7,25 +7,14 @@ $baseUrl = ErApplication::getBaseUrl();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>
-        <?php if($this->headerTitle): ?>
-            <?php echo $this->headerTitle; ?>
-        <?php endif; ?>
-    </title>
+    <title><?php if($this->headerTitle){ echo $this->headerTitle; } ?></title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="/application/data/css/jquery-ui.css">
     <link rel="stylesheet" href="/application/data/css/jquery-ui.theme.css">
     <link rel="stylesheet" type="text/css" href="/application/data/css/jquery.datetimepicker.css"/>
-    <!--
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    -->
     <link rel="stylesheet" href="/application/data/css/bootstrap.css">
     <link rel="stylesheet" href="/application/data/css/jquery.raty.css">
     <link rel="stylesheet" href="/application/data/css/style.css">
-    <!--
-    -->
     <?php
         if($this->add_css){
             foreach($this->add_css as $style){
@@ -42,8 +31,6 @@ $baseUrl = ErApplication::getBaseUrl();
     <script src="/application/data/js/jquery-ui.js"></script>
     <script src="/application/data/js/handlebars.js"></script>
     <script src="/application/data/js/messenger.js"></script>
-    <!--
--->
     <?php
         if($this->add_js){
             foreach($this->add_js as $scr){
