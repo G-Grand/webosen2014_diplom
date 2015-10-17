@@ -35,17 +35,13 @@ $baseUrl = ErApplication::getBaseUrl();
     ?>
 
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/application/data/js/jquery.js"></script>
-   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
     <script src="/application/data/js/bootstrap.min.js"></script>
     <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script src="/application/data/js/jquery.datetimepicker.js"></script>
     <script src="/application/data/js/jquery-ui.js"></script>
     <script src="/application/data/js/handlebars.js"></script>
-    <script src="/application/data/js/jquery.raty.js"></script>
     <script src="/application/data/js/messenger.js"></script>
-    <script src="/application/data/js/raty_handler.js"></script>
     <!--
 -->
     <?php
@@ -59,7 +55,7 @@ $baseUrl = ErApplication::getBaseUrl();
 </head>
 <body>
 <div class="container">
-    <p id="succeed_msg" class="alert alert-success"></p>
-    <p id="notes_msg" class="alert alert-info"></p>
-    <p id="error_msg" class="alert alert-danger"></p>
+    <p id="succeed_msg" class="alert alert-success hidden"></p>
+    <p id="notes_msg" class="alert alert-info hidden"></p>
+    <p id="error_msg" class="alert alert-danger hidden"></p>
 </div>

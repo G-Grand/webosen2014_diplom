@@ -99,7 +99,9 @@ class UserController extends  AbstractController
                             if ($userMapper->insertNewUser($user)) {
                                 $message->setSucceedMessage('201', 'index/index');
                                 ErSession::saveToSession('user',$user->email);
-                                ErSession::saveToSession('username',$user->username);
+                                if($user->username != null){
+                                    ErSession::saveToSession('username',$user->username);
+                                }
                             } else {
                                 $message->setErrMessage('101', 'user/signup');
                             }
@@ -115,7 +117,7 @@ class UserController extends  AbstractController
     public function logoutAction()
     {
         ErSession::dieSession();
-        ErApplication::redirect(ErApplication::getBaseUrl() . 'index/index');
+        ErApplication::redirect(ErApplication::getBaseUrl());
     }
 
 }
