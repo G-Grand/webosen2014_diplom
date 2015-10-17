@@ -44,11 +44,17 @@
                                 <img class="img-rounded" src="/application/data/images/foto.jpg"
                                      style="height: 100px;width:100px " alt="FOTO">
                             </a>
+
+                            <div class="form-group has-feedback">
+                                <label for="uploadPhoto">Изменить фото:</label>
+                                <input type="file" id="uploadPhoto" disabled>
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <form class="form-horizontal">
                                 <div class="form-group has-feedback">
                                     <label for="inputName" class="col-sm-4 control-label">Имя</label>
+
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputName"
                                                value="Владимир" disabled>
@@ -57,6 +63,7 @@
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="inputSurname" class="col-sm-4 control-label">Фамилия:</label>
+
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputSurname"
                                                value="Коленцев" disabled>
@@ -65,6 +72,7 @@
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="inputDate" class="col-sm-4 control-label">Дата рождения:</label>
+
                                     <div class="col-sm-8">
                                         <input type="date" class="form-control" id="inputDate"
                                                value="1991-05-17" disabled>
@@ -73,6 +81,7 @@
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="inputGender" class="col-sm-4 control-label">Пол:</label>
+
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="inputGender"
                                                value="М" placeholder="M или Ж" pattern="[МЖмж]{1}" disabled>
@@ -81,12 +90,14 @@
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="inputEmail" class="col-sm-4 control-label">e-mail:</label>
+
                                     <div class="col-sm-8">
                                         <p class="form-control-static">email@example.com</p>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="inputPhone" class="col-sm-4 control-label">Телефон:</label>
+
                                     <div class="col-sm-8">
                                         <input type="tel" class="form-control" id="inputPhone"
                                                value="38-056-2222222" placeholder="38-056-2222222"
@@ -94,33 +105,61 @@
                                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                 </div>
-                                <div class="form-group has-feedback">
-                                    <label for="inputPassword" class="col-sm-4 control-label">Новый пароль:</label>
+                                <div class="form-group" id="chngPswBox">
+                                    <label for="changePassword" class="col-sm-4 control-label">Сменить пароль:</label>
+
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="inputPassword"
-                                                   disabled>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="changePassword" disabled>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label for="inputNewPassword" class="col-sm-4 control-label">Новый пароль:</label>
+
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="inputNewPassword"
+                                               required="required" disabled>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label for="confirmNewPassword" class="col-sm-4 control-label">Подтвердите
+                                        пароль:</label>
+
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="confirmNewPassword"
+                                               required="required"
+                                               disabled>
                                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="preferences" class="col-sm-4 control-label">Ваши
                                         предпочтения:</label>
+
                                     <div class="col-sm-8">
                                         <div class="row">
-                                        <div class="col-sm-4"><img style="width: 32px; height: 32px"
-                                                                   class="media-object"
-                                                                    src="/application/data/images/no-pets.jpg"></div>
-                                            <div class="col-sm-4"><img style="width: 32px; height: 32px" class="media-object"
-                                                                   src="/application/data/images/no-eat.jpg"></div>
-                                                <div class="col-sm-4"><img style="width: 32px; height: 32px" class="media-object"
-                                                                   src="/application/data/images/no-talk.jpg"></div>
+                                            <div class="col-sm-4"><img style="width: 32px; height: 32px"
+                                                                       class="media-object"
+                                                                       src="/application/data/images/no-pets.jpg"></div>
+                                            <div class="col-sm-4"><img style="width: 32px; height: 32px"
+                                                                       class="media-object"
+                                                                       src="/application/data/images/no-eat.jpg"></div>
+                                            <div class="col-sm-4"><img style="width: 32px; height: 32px"
+                                                                       class="media-object"
+                                                                       src="/application/data/images/no-talk.jpg"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-sm-offset-4">
-                                <button id="changeData" class="btn btn-default" type="button">Изменить данные</button>
-                                <button id="saveData" class="btn btn-primary data-input" type="submit"
-                                                disabled="disabled">Сохранить</button>
+                                    <button id="changeData" class="btn btn-default" type="button">Изменить данные
+                                    </button>
+                                    <button id="saveData" class="btn btn-primary data-input" type="submit"
+                                            disabled="disabled">Сохранить
+                                    </button>
                                 </div>
                             </form>
                             <hr/>
@@ -128,103 +167,179 @@
                         <div class="col-sm-4 hidden-xs">
                             <h2>Совет дня</h2>
 
-                            <p>Ваш профиль заполнен на 60%.
+                            <p id="progress-message">Ваш профиль заполнен на 60%.
                                 Заполните недостающие данные, чтобы повысить уровень доверия к Вам на сервисе.</p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
                 <div class="tab-pane fade in" id="tab2">
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="#">
+                                    <img class="img-rounded" src="/application/data/images/auto_foto.jpg"
+                                         style="height: 200px;width:300px " alt="Фото авто">
+                                </a>
 
-                            <h4>Авто №1</h4>
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td class="col-sm-4 text-right">Бренд:</td>
-                                    <td class="col-sm-6"><input type="text" class="form-control" disabled
-                                                                value="Nissan"></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-edit"></span></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-remove"></span></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="col-sm-4 text-right">Модель:</td>
-                                    <td class="col-sm-6"><input type="text" class="form-control" disabled value="Pilot">
-                                    </td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-edit"></span></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-remove"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-sm-4 text-right">Гос.номер:</td>
-                                    <td class="col-sm-6"><input type="text" class="form-control" disabled
-                                                                value="AE*****"></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-edit"></span></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-remove"></span></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <h4>Авто №2</h4>
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td class="col-sm-4 text-right">Бренд:</td>
-                                    <td class="col-sm-6"><input type="text" class="form-control" disabled
-                                                                value="Nissan"></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-edit"></span></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-remove"></span></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="col-sm-4 text-right">Модель:</td>
-                                    <td class="col-sm-6"><input type="text" class="form-control" disabled value="Pilot">
-                                    </td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-edit"></span></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-remove"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-sm-4 text-right">Гос.номер:</td>
-                                    <td class="col-sm-6"><input type="text" class="form-control" disabled
-                                                                value="AE*****"></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-edit"></span></td>
-                                    <td class="col-sm-1"><span class="glyphicon glyphicon-remove"></span></td>
-                                </tr>
-                                </tbody>
-                            </table>
-
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                    data-target="#myModal">
-                                Добавить новое авто
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
-                                            </button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
+                                <div class="form-group has-feedback">
+                                    <label for="uploadPhoto">Изменить фото:</label>
+                                    <input type="file" id="uploadPhoto" disabled>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-sm-8">
+                                <form class="form-horizontal">
+                                    <div class="form-group has-feedback">
+                                        <label for="carBrend" class="col-sm-3 control-label">Марка:</label>
 
-                        <div class="clearfix"></div>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carBrend"
+                                                   value="Honda" disabled>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carModel" class="col-sm-3 control-label">Модель:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carModel"
+                                                   value="Accord" disabled>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carColor" class="col-sm-3 control-label">Цвет:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carColor"
+                                                   value="черный" disabled>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carNumber" class="col-sm-3 control-label">Гос.номер:</label>
+
+                                        <div class="col-sm-3">
+                                            <p class="form-control-static">АЕ2345ІІ</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carSeats" class="col-sm-3 control-label">Количество мест:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carSeats"
+                                                   value="4" disabled>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carFuel" class="col-sm-3 control-label">Расход топлива
+                                            л/100км:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carFuel"
+                                                   value="10" disabled>
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button id="deleteCarData" class="btn btn-default"
+                                                    type="button">Удалить авто
+                                            </button>
+                                            <button id="changeCarData" class="btn btn-default"
+                                                    type="button">Редактировать
+                                            </button>
+                                            <button id="saveCarData" class="btn btn-primary data-input" type="submit"
+                                                    disabled="disabled">Сохранить
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
+                    <div class="panel panel-default">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="#">
+                                    <img class="img-rounded" src="/application/data/images/auto_foto.jpg"
+                                         style="height: 200px;width:300px " alt="Фото авто">
+                                </a>
+
+                                <div class="form-group has-feedback">
+                                    <label for="uploadPhoto">Загрузить фото:</label>
+                                    <input type="file" id="uploadPhoto">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <form class="form-horizontal">
+                                    <div class="form-group has-feedback">
+                                        <label for="carBrend" class="col-sm-3 control-label">Марка:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carBrend"
+                                                   placeholder="Honda">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carModel" class="col-sm-3 control-label">Модель:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carModel"
+                                                   placeholder="Accord">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carColor" class="col-sm-3 control-label">Цвет:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carColor"
+                                                   placeholder="черный">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carNumber" class="col-sm-3 control-label">Гос.номер:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carColor"
+                                                   placeholder="АЕ2345ІІ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carSeats" class="col-sm-3 control-label">Количество мест:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carSeats"
+                                                   placeholder="4">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="carFuel" class="col-sm-3 control-label">Расход топлива
+                                            л/100км:</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" id="carFuel"
+                                                   placeholder="10">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button id="cancelNewCar" class="btn btn-default"
+                                                    type="button">Отменить
+                                            </button>
+                                            <button id="saveNewCar" class="btn btn-primary data-input"
+                                                    type="submit"
+                                                    disabled="disabled">Сохранить
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="addCar" class="btn btn-primary data-input" type="submit">Добавить авто</button>
                 </div>
                 <div class="tab-pane fade in" id="tab3">
                     <h4>Данных нет</h4>
