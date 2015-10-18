@@ -324,7 +324,78 @@
                     <button id="addCar" class="btn btn-primary data-input" type="submit">Добавить авто</button>
                 </div>
                 <div class="tab-pane fade in" id="tab3">
-                    <h4>Данных нет</h4>
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h4>Сегодня - 21:00</h4>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="row">
+                                                    <div class="panel panel-default col-sm-10">
+                                                        <span class="pull-left">Киев</span>
+                                                        <span class="pull-right">Львов</span>
+                                                    </div>
+                                                    <div class="col-sm-2 text-center">
+                                                        <a data-toggle="collapse" href="#collapse1"><i class="glyphicon
+                                                        glyphicon-chevron-down"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse">
+                                        <div class="panel body">
+                                            <h4>Водитель:</h4>
+                                            <div class="row">
+                                                <div class="col-sm-2 text-center">
+                                                    <img class="img-circle text-center" style="width: 100px; height:100px;"
+                                                         src="/application/data/images/icon-user.svg" alt="icon_user">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <p>Владимир Копытин</p>
+                                                    <p>Возраст:42</p>
+                                                    <p>(24 <i class="glyphicon glyphicon-star"></i>)</p>
+                                                </div>
+                                                <div class="col-sm-4 text-center">
+                                                    <p>Автомобиль:  Toyota Camry</p>
+                                                    <p>Гос.номер:  АЕ 3456 ВВ</p>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="row">
+                                                        <div class="col-sm-4"><img style="width: 32px; height: 32px"
+                                                                                   class="media-object"
+                                                                                   src="/application/data/images/no-pets.jpg"></div>
+                                                        <div class="col-sm-4"><img style="width: 32px; height: 32px"
+                                                                                   class="media-object"
+                                                                                   src="/application/data/images/no-eat.jpg"></div>
+                                                        <div class="col-sm-4"><img style="width: 32px; height: 32px"
+                                                                                   class="media-object"
+                                                                                   src="/application/data/images/no-talk.jpg"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <h4>Пассажиры:</h4>
+                                            <div class="row">
+                                                <div class="col-sm-3 col-sm-offset-2">
+                                                    <p>Николай Веревкин</p>
+                                                    <p>Ольга Петренко</p>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <p>(24 <i class="glyphicon glyphicon-star"></i>)</p>
+                                                    <p>(24 <i class="glyphicon glyphicon-star"></i>)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

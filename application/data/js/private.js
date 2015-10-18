@@ -76,8 +76,14 @@ $(function() {
 
 });
 
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').focus()
+//Collapsible Panel at Tab#3
+$(document).on('click', '.panel-heading', function(){
+    var $this = $(this);
+    if($this.find('a').hasClass('collapsed')) {
+        $this.find('i').addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+    } else {
+        $this.find('i').addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
+    }
 });
 
 function progressBar(){
