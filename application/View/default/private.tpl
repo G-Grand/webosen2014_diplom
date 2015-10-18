@@ -1,5 +1,3 @@
-<link href="/application/data/css/animate.css" rel="stylesheet">
-<script src="/application/data/js/private.js" type="text/javascript"></script>
 <div class="container">
     <!--    ------------------CONTENT------------------------------>
     <div class="row">
@@ -105,37 +103,21 @@
                                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                 </div>
-                                <div class="form-group" id="chngPswBox">
+                                <div class="form-group">
                                     <label for="changePassword" class="col-sm-4 control-label">Сменить пароль:</label>
 
                                     <div class="col-sm-8">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" id="changePassword" disabled>
+                                                <input id="changePassword" type="checkbox" disabled>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group has-feedback">
-                                    <label for="inputNewPassword" class="col-sm-4 control-label">Новый пароль:</label>
+                                <div id="chngPswBox">
 
-                                    <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="inputNewPassword"
-                                               required="required" disabled>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                    </div>
                                 </div>
-                                <div class="form-group has-feedback">
-                                    <label for="confirmNewPassword" class="col-sm-4 control-label">Подтвердите
-                                        пароль:</label>
 
-                                    <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="confirmNewPassword"
-                                               required="required"
-                                               disabled>
-                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                    </div>
-                                </div>
                                 <div class="form-group has-feedback">
                                     <label for="preferences" class="col-sm-4 control-label">Ваши
                                         предпочтения:</label>
@@ -350,3 +332,18 @@
 
     </div>
 </div>
+
+<script id="chngPswBoxTemplate" type="text/x-handlebars-template">
+    <div class="form-group has-feedback">
+        <label for="inputNewPassword" class="col-sm-4 control-label">Новый пароль:</label>
+        <div class="col-sm-8"><input type="password" class="form-control" id="inputNewPassword">
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="form-group has-feedback">
+        <label for="confirmNewPassword" class="col-sm-4 control-label">Подтвердите пароль:</label>
+        <div class="col-sm-8"><input type="password" class="form-control" id="confirmNewPassword">
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+        </div>
+    </div>
+</script>

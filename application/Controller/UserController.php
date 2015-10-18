@@ -41,6 +41,7 @@ class UserController extends  AbstractController
         $this->addBlockToView('Common', 'footer');
         $this->setViewAttributes('headerTitle', 'Private');
         $this->setViewAttributes('add_js', array('private.js'));
+        $this->setViewAttributes('add_css', array('animate.css'));
         $this->initView($this->getActionUrl())->renderView();
     }
 

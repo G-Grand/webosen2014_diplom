@@ -1,5 +1,6 @@
-<?php $user = (!empty(ErSession::getFromSession('username'))) ?
-                ErSession::getFromSession('username') : ErSession::getFromSession('user');
+<?php
+$user = ErSession::getFromSession('username');
+$user = (isset($user)) ? $user : ErSession::getFromSession('user');
 ?>
 <!DOCTYPE html>
 <html lang="en">

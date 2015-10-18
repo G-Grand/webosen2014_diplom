@@ -1,6 +1,3 @@
-<?php
-$baseUrl = ErApplication::getBaseUrl();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +19,6 @@ $baseUrl = ErApplication::getBaseUrl();
             }
         }
     ?>
-
 
     <script src="/application/data/js/jquery.js"></script>
     <script src="/application/data/js/bootstrap.min.js"></script>
