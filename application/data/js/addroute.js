@@ -1,6 +1,6 @@
 var startCoords,finishCoords;
 var positionStart = [];
-var revposStart = [];
+var revposStart = [48.464717, 35.046181];
 var mapCoords = {};
 
 var myMap;
@@ -8,7 +8,7 @@ console.log(init)
 function init() {
     myMap = new ymaps.Map('map', {
         center: revposStart,
-        zoom: 7,
+        zoom: 6,
         type: 'yandex#map',
         controls: []
     });
