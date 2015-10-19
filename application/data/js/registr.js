@@ -24,7 +24,6 @@ $(function() {
         if(!formValid) { return; }
 
         var msg   = $('#myForm').serialize();
-        console.log(msg);
         $.ajax({
             type: "POST",
             url: "/user/register",

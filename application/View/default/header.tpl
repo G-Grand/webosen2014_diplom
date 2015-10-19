@@ -84,9 +84,10 @@ $user = (isset($user)) ? $user : ErSession::getFromSession('user');
             </div>
         </nav>
     </div>
-
-<div class="container">
-    <p id="succeed_msg" class="alert alert-success hidden"></p>
-    <p id="notes_msg" class="alert alert-info hidden"></p>
-    <p id="error_msg" class="alert alert-danger hidden"></p>
-</div>
+    <div class="clearfix"></div>
+    <div class="container">
+        <p id="succeed_msg" class="alert alert-success hidden"></p>
+        <p id="notes_msg" class="alert alert-info hidden"></p>
+        <p id="error_msg" class="alert alert-danger hidden"></p>
+    </div>
+    <div class="clearfix"></div>

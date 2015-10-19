@@ -43,6 +43,7 @@ class UserController extends  AbstractController
         $this->setViewAttributes('add_js', array('private.js'));
         $this->setViewAttributes('add_css', array('animate.css'));
         $this->initView($this->getActionUrl())->renderView();
+
     }
 
     public function authoriseAction()
@@ -119,6 +120,60 @@ class UserController extends  AbstractController
     {
         ErSession::dieSession();
         ErApplication::redirect(ErApplication::getBaseUrl());
+    }
+
+    protected function fetchUserData($userEmail)
+    {
+        $userMapper = new UserMapper();
+        $carMapper = new CarMapper();
+        $currentUser = $userMapper->getUserByEmail($userEmail);
+        $userCars = $carMapper->getByUser($userEmail);
+        $result = get_object_vars($currentUser);
+        $cars = array();
+        foreach($userCars as $car){ $cars[] = get_object_vars($car); }
+        $result['cars'] = $cars;
+        return $result;
+    }
+
+    public function getPersonalDataAction()
+    {
+        $message = ErMessenger::getInstance();
+        $userEmail = ErSession::getFromSession('user');
+        if (isset($userEmail)) {
+            echo  json_encode($this->fetchUserData($userEmail));
+        } else {
+            $message->setNotesMessage('303', 'index/index');
+            ErApplication::redirect(ErApplication::getBaseUrl());
+        }
+
+    }
+
+    public function saveAction()
+    {
+        $message = ErMessenger::getInstance();
+        $request = new Request();
+        $request->initRequest();
+        $post = $request->getPost();
+        if(isset($post)){
+            $userEmail = ErSession::getFromSession('user');
+            $userMapper = new UserMapper();
+            $user = $userMapper->getUserByEmail($userEmail);
+            $user->username = $this->clearStr($post['username']);
+            $user->surname = $this->clearStr($post['surname']);
+            $user->birthday = $this->clearStr($post['birthday']);
+            $user->gendor = $this->clearStr($post['gendor']);
+            $user->phone = $this->clearStr($post['phone']);
+            if ($post['password_changed']){
+                $user->userpassword = hash("md5", $this->clearStr($post['userpassword']));
+            }
+            $userMapper->clear();
+            if ($userMapper->updateUser($user)) {
+                $message->setSucceedMessage('202', 'user/private');
+            } else {
+                $message->setErrMessage('100', 'user/private');
+            }
+            echo  json_encode($this->fetchUserData($userEmail));
+        }
     }
 
 }

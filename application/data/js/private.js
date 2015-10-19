@@ -1,33 +1,36 @@
 $(function() {
 
-    //progressBar();
-
+    initPrivatePage();
+    var privateTab = $('#private_tab');
 
     $(".btn-pref .btn").click(function () {
         $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
         $(this).removeClass("btn-default").addClass("btn-primary");
     });
 
-    $('#changePassword').click(function(){
+        privateTab.on('click', '#changePassword', function(){
+        var formGroup = $('#confirmNewPassword').parents('.form-group');
+        formGroup.removeClass('has-error').removeClass('has-success');
+        formGroup.find('.form-control-feedback').removeClass('glyphicon-remove').removeClass('glyphicon-ok');
         if($('#changePassword').prop('checked')){
-            drawBlock($('#chngPswBox'), $('#chngPswBoxTemplate'));
-            var formGroup = $(this).parents('.form-group')
-            formGroup.removeClass('has-error');
-            formGroup.find('.form-control-feedback').removeClass('glyphicon-remove');
+            $('#chngPswBox').removeClass('hidden');
         } else {
-            drawBlock($('#chngPswBox'), '');
+            $('#inputNewPassword').val('');
+            $('#confirmNewPassword').val('');
+            $('#chngPswBox').addClass('hidden');
         }
     });
 
-    $('#changeData').click(function(){
+    privateTab.on('click', '#changeData', function(){
         $('input').each(function(){
             $(this).removeAttr("disabled");
-            $('#saveData').removeAttr("disabled");
+            $('#save').removeAttr("disabled");
         });
     });
 
     var formValid = true;
-    $('input').change(function() {
+    //$('input').change(function() {
+    privateTab.on('change', 'input', function() {
         //найти предков, которые имеют класс .form-group, для установления success/error
         var formGroup = $(this).parents('.form-group');
         //найти glyphicon, который предназначен для показа иконки успеха или ошибки
@@ -48,17 +51,7 @@ $(function() {
                 formValid = false;
             }
 
-            if (this.val != '') {
-                formGroup.addClass('has-success').removeClass('has-error');
-                glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-remove');
-            } else {
-                //добавить к formGroup класс .has-error, удалить .has-success
-                formGroup.addClass('has-error').removeClass('has-success');
-                //добавить к glyphicon класс glyphicon-remove, удалить glyphicon-ok
-                glyphicon.addClass('glyphicon-remove').removeClass('glyphicon-ok');
-                //отметить форму как не валидную
-                formValid = false;
-            }
+
         } else if (this.id == "confirmNewPassword") {
             if(this.value == document.getElementById("inputNewPassword").value){
                 formGroup.addClass('has-success').removeClass('has-error').addClass('has-success');
@@ -66,74 +59,75 @@ $(function() {
             } else {
                 formGroup.addClass('has-success').removeClass('has-success').addClass('has-error');
                 glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+                formValid = false;
             }
         }
     });
 
-    $('#save').click(function() {
-        if(!formValid) { return; }
+    privateTab.on('click', '#save', function(){
+        if(!formValid) {
+            return;
+        } else {
+            var formData   = $('#personal_data').serialize();
+            $.ajax({
+                type: "POST",
+                url: "/user/save",
+                data: formData,
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    //window.location = '/index/index';
+                }
+            });
+        }
+        showMessage();
     });
 
 });
 
-//Collapsible Panel at Tab#3
-$(document).on('click', '.panel-heading', function(){
-    var $this = $(this);
-    if($this.find('a').hasClass('collapsed')) {
-        $this.find('i').addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
-    } else {
-        $this.find('i').addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
-    }
-});
-
-function progressBar(){
-
-    var numValid = 0;
-    $(".form-horizontal input").each(function() {
-        if (this.val != '') {
-            numValid++;
+function initPrivatePage(){
+    $.ajax({
+        type: "POST",
+        url: "/user/getPersonalData",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            //drawBlock($('#progress_bar'), $('#progressBarTemplate'), result);
+            drawBlock($('#private_tab'), $('#privateTabTemplate'), result);
+            drawCars($('#cars_tab'), $('#carsTabTemplate'), result);
         }
     });
 
-    var progress = $(".progress-bar");
-    var progressMessage = $("#progress-message");
-
-    if (numValid == 0) {
-        progress.attr("aria-valuenow", "0");
-        progressMessage.text("The form, it wants you.");
-    }
-    if (numValid == 1) {
-        progress.attr("aria-valuenow", "20");
-        progressMessage.text("There you go, great start!");
-    }
-    if (numValid == 2) {
-        progress.attr("aria-valuenow", "40");
-        progressMessage.text("Nothing can stop you now.");
-    }
-    if (numValid == 3) {
-        progress.attr("aria-valuenow", "60");
-        progressMessage.text("You're basically a hero, right?");
-    }
-    if (numValid == 4) {
-        progress.attr("aria-valuenow", "80");
-        progressMessage.text("They are going to write songs about you.");
-    }
-    if (numValid == 5) {
-        progress.attr("aria-valuenow", "95");
-        progressMessage.text("SO CLOSE. PRESS THE THING.");
-    }
-
 }
 
-function drawBlock(block, source){
+function drawBlock(block, source, params){
     if(source != ""){
         source   = source.html();
         var template = Handlebars.compile(source);
-        block.html("").append(template);
+        block.html("").append(template(params));
     } else {
         block.html("");
     }
 
+}
+
+function drawCars(block, source, params){
+    if(source != ""){
+        source   = source.html();
+        var template = Handlebars.compile(source);
+
+        if(params.cars.length == 0){
+            block.html("<h3>Вы еще не добавили автомобиль</h3>");
+            return;
+        }
+
+        params.cars.forEach(function(item, i, arr){
+            block.append(template(item));
+        });
+
+    } else {
+        block.html("");
+    }
 }
 
 

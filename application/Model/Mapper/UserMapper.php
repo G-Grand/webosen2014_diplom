@@ -33,5 +33,39 @@ class UserMapper extends AbstractMapper
         }
         return false;
     }
+
+    public function updateUser(User $user)
+    {
+        if($this->validate($user)){
+
+            $userScope = new QueryScope("user");
+            $userScope->setFields(array(
+                "username",
+                "surname",
+                "birthday",
+                "gendor",
+                "phone",
+                "userpassword"
+            ));
+            $userScope->setValues(array(
+                $user->username,
+                $user->surname,
+                $user->birthday,
+                $user->gendor,
+                $user->phone,
+                $user->userpassword
+            ));
+
+            $userCond = new QueryCondition("user");
+            $userCond->setConditions(array(
+                new QueryConditionMember("email", $user->email, "="),
+            ));
+
+            $this->addQueryScope($userScope);
+            $this->addQueryCondition($userCond);
+            return $this->update();
+        }
+        return false;
+    }
 }
 

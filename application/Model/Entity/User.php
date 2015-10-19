@@ -56,7 +56,7 @@ class User extends AbstractEntity
                 'size' => 200
             ),
             'crdate' => array(
-                'type' => 'date',
+                'type' => 'datetime',
                 'nullable' => false
             ),
             'access' => array(
