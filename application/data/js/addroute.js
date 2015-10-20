@@ -67,19 +67,18 @@ $(function (){
 
     });
 
-
-
 });
 
-//календарь с числом
-$('document').ready(function (){
+
+//календарь с числом старый
+//$('document').ready(function (){
     // Date-field
-    $('.datetimepicker').each(function() {
-        $(this).datetimepicker({
-            language: 'ru'
-        });
-    });
-});
+//    $('.datetimepicker').each(function() {
+//        $(this).datetimepicker({
+//            language: 'ru'
+//        });
+//    });
+//});
 
 /**
  *

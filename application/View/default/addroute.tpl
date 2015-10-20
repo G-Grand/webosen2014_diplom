@@ -1,3 +1,5 @@
+<script src="/application/data/js/addroute.js"></script>
+
 <div class="container" style="width: 740px;">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -135,18 +137,27 @@
                                     <label for="DateDep">Дата отправления:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                        <input class="form-control datetimepicker" id="DateDep" type="text" placeholder="дд-мм-гггг" value="">
-                                    </div>
-                                </div>
+                                        <input id="DateDep" class="form-control" type="text" >
+                                       </div>
+                                   </div>
 
-                                <div class="form-group col-md-4">
-                                    <!-- Data_picker -->
+                                   <div class="form-group col-md-4">
+                                       <!-- Data_picker -->
                                     <label for="DateArrival">Дата прибытия:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                        <input class="form-control datetimepicker" id="DateArrival" type="text" placeholder="дд-мм-гггг" value="">
+                                        <input id="DateArrival" class="form-control" type="text" value="">
                                     </div>
                                 </div>
+                                <script>
+                                    $('#DateDep').datetimepicker({
+                                        mask: '9999-19-39 29:59'
+                                    });
+                                    $('#DateArrival').datetimepicker({
+                                        mask: '9999-19-39 29:59'
+                                    });
+                                </script>
+
                             </form>
 
                             <div class="col-md-12 text-right">

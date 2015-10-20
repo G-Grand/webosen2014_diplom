@@ -27,9 +27,6 @@ class RoadController extends AbstractController
                 $this->addBlockToView('Common', 'footer');
                 $this->setViewAttributes('headerTitle', 'Add Route');
                 $this->setViewAttributes('add_js', array(
-                    'moment-with-langs.js',
-                    'bootstrap-datetimepicker.min.js',
-                    'bootstrap-datetimepicker.ru.js',
                     'addroute.js'
                 ));
                 $this->setViewAttributes('add_css', array('bootstrap-datetimepicker.css'));
