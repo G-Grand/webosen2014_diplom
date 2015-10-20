@@ -51,7 +51,8 @@ abstract class AbstractMapper
                     }
                     break;
                 case "decimal":
-                    if(!preg_match('^[0-9]+[\\.\\,]{1}[0-9]+$',$entity->$key)){
+//                    if(!preg_match('^[0-9]+[\\.\\,]{1}[0-9]+$',$entity->$key)){
+                    if(!preg_match('/^(\d*[.])?\d+$/',$entity->$key)){
                         return false;
                     }
                     break;

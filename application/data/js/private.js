@@ -8,6 +8,8 @@ $(function() {
         $(this).removeClass("btn-default").addClass("btn-primary");
     });
 
+    //Prvate tab script
+    //==========================================
         privateTab.on('click', '#changePassword', function(){
         var formGroup = $('#confirmNewPassword').parents('.form-group');
         formGroup.removeClass('has-error').removeClass('has-success');
@@ -22,14 +24,13 @@ $(function() {
     });
 
     privateTab.on('click', '#changeData', function(){
-        $('input').each(function(){
+        $(this).closest('form').find('input').each(function(){
             $(this).removeAttr("disabled");
             $('#save').removeAttr("disabled");
         });
     });
 
-    var formValid = true;
-    //$('input').change(function() {
+
     privateTab.on('change', 'input', function() {
         //найти предков, которые имеют класс .form-group, для установления success/error
         var formGroup = $(this).parents('.form-group');
@@ -37,37 +38,36 @@ $(function() {
         var glyphicon = formGroup.find('.form-control-feedback');
         //для валидации данных используем HTML5 функцию checkValidity
         if(this.id != "confirmNewPassword" && this.id != "inputNewPassword" && this.id != "changePassword") {
-            if (this.checkValidity()) {
-                //добавить к formGroup класс .has-success, удалить has-error
-                formGroup.addClass('has-success').removeClass('has-error');
-                //добавить к glyphicon класс glyphicon-ok, удалить glyphicon-remove
-                glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-remove');
-            } else {
-                //добавить к formGroup класс .has-error, удалить .has-success
-                formGroup.addClass('has-error').removeClass('has-success');
-                //добавить к glyphicon класс glyphicon-remove, удалить glyphicon-ok
-                glyphicon.addClass('glyphicon-remove').removeClass('glyphicon-ok');
-                //отметить форму как не валидную
-                formValid = false;
-            }
-
-
+            markFieldValidity(formGroup, glyphicon, this.checkValidity());
         } else if (this.id == "confirmNewPassword") {
             if(this.value == document.getElementById("inputNewPassword").value){
-                formGroup.addClass('has-success').removeClass('has-error').addClass('has-success');
-                glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+                markFieldValidity(formGroup, glyphicon, true);
             } else {
-                formGroup.addClass('has-success').removeClass('has-success').addClass('has-error');
-                glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-ok').addClass('glyphicon-remove');
-                formValid = false;
+                markFieldValidity(formGroup, glyphicon, false);
             }
         }
     });
 
     privateTab.on('click', '#save', function(){
-        if(!formValid) {
-            return;
-        } else {
+        var formValid = true;
+        $(this).closest('form').find('input').each(function(){
+            var formGroup = $(this).parents('.form-group');
+            var glyphicon = formGroup.find('.form-control-feedback');
+            if(this.id != "confirmNewPassword" && this.id != "inputNewPassword" && this.id != "changePassword") {
+                if(!markFieldValidity(formGroup, glyphicon, this.checkValidity())){
+                    formValid = false; }
+
+            } else if (this.id == "confirmNewPassword") {
+                if(this.value == document.getElementById("inputNewPassword").value){
+                    markFieldValidity(formGroup, glyphicon, true);
+                } else {
+                    markFieldValidity(formGroup, glyphicon, false);
+                    formValid = false;
+                }
+            }
+        });
+        if(!formValid) { return; }
+
             var formData   = $('#personal_data').serialize();
             $.ajax({
                 type: "POST",
@@ -75,13 +75,62 @@ $(function() {
                 data: formData,
                 dataType: "json",
                 success: function (result) {
-                    console.log(result);
-                    //window.location = '/index/index';
+                    drawBlock($('#private_tab'), $('#privateTabTemplate'), result);
                 }
             });
-        }
         showMessage();
     });
+
+    //Cars tab script
+    //==========================================
+
+    var carsTab = $('#cars_tab');
+    carsTab.on('click', 'button.update_car', function(){
+        var carForm = $(this).closest('form');
+        carForm.find('input').each(function() {
+            $(this).removeAttr("disabled");
+            carForm.find('button.save_car').removeAttr("disabled")
+        });
+    });
+
+    carsTab.on('change', 'input', function(){
+        var formGroup = $(this).parents('.form-group');
+        var glyphicon = formGroup.find('.form-control-feedback');
+        markFieldValidity(formGroup, glyphicon, this.checkValidity());
+    });
+
+    carsTab.on('click', 'button.save_car', function(){
+        var formValid = true;
+        var carForm = $(this).closest('form');
+        carForm.find('input').each(function(){
+            var formGroup = $(this).parents('.form-group');
+            var glyphicon = formGroup.find('.form-control-feedback');
+            if(!markFieldValidity(formGroup, glyphicon, this.checkValidity())){
+                formValid = false;
+            }
+        });
+
+        if(!formValid) { return; }
+
+        var formData   = carForm.serialize();
+        $.ajax({
+            type: "POST",
+            url: "/car/save",
+            data: formData,
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                clearBlock($('#cars_block'));
+                drawCars($('#cars_block'), $('#carsTabTemplate'), result);
+            }
+        });
+        showMessage();
+    });
+
+    carsTab.on('click', '#add_car', function(){
+        drawCars($('#cars_block'), $('#carsTabTemplate'), getNewCarJson());
+    });
+
 
 });
 
@@ -94,7 +143,7 @@ function initPrivatePage(){
             console.log(result);
             //drawBlock($('#progress_bar'), $('#progressBarTemplate'), result);
             drawBlock($('#private_tab'), $('#privateTabTemplate'), result);
-            drawCars($('#cars_tab'), $('#carsTabTemplate'), result);
+            drawCars($('#cars_block'), $('#carsTabTemplate'), result.cars);
         }
     });
 
@@ -111,23 +160,55 @@ function drawBlock(block, source, params){
 
 }
 
-function drawCars(block, source, params){
+function clearBlock(block){
+    block.html("");
+}
+
+function drawCars(block, source, cars){
     if(source != ""){
         source   = source.html();
         var template = Handlebars.compile(source);
 
-        if(params.cars.length == 0){
+        if(cars.length == 0){
             block.html("<h3>Вы еще не добавили автомобиль</h3>");
             return;
         }
 
-        params.cars.forEach(function(item, i, arr){
+        cars.forEach(function(item, i, arr){
             block.append(template(item));
         });
 
     } else {
         block.html("");
     }
+}
+
+function markFieldValidity(formGroup, glyphicon, validity){
+    if (validity) {
+        //добавить к formGroup класс .has-success, удалить has-error
+        formGroup.addClass('has-success').removeClass('has-error');
+        //добавить к glyphicon класс glyphicon-ok, удалить glyphicon-remove
+        glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-remove');
+    } else {
+        //добавить к formGroup класс .has-error, удалить .has-success
+        formGroup.addClass('has-error').removeClass('has-success');
+        //добавить к glyphicon класс glyphicon-remove, удалить glyphicon-ok
+        glyphicon.addClass('glyphicon-remove').removeClass('glyphicon-ok');
+        //отметить форму как не валидную
+    }
+    return validity;
+}
+
+function getNewCarJson(){
+    return [{
+        "brand" : "",
+        "model" : "",
+        "color" : "",
+        "regnumber" : "",
+        "seats" : "",
+        "fuelrate" : ""
+
+    }]
 }
 
 

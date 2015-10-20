@@ -10,7 +10,7 @@ return array(
     ),
     'succeed' => array(
         'New User was created successfully' => '201',
-        'User data has saved successfully' => '202',
+        'Data has saved successfully' => '202',
         'succeed message3' => '203',
     ),
     'notes' => array(

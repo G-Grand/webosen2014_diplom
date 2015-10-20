@@ -15,7 +15,6 @@ function showMessage(){
         data: {requestUri:requestUri},
         dataType: "json",
         success: function(result) {
-            console.log(result);
             if(result.succeed_msg != null){$("#succeed_msg").removeClass("hidden").html(result.succeed_msg);}
             if(result.notes_msg != null){$("#notes_msg").removeClass("hidden").html(result.notes_msg);}
             if(result.error_msg != null){$("#error_msg").removeClass("hidden").html(result.error_msg);}

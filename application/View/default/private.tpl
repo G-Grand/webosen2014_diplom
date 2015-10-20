@@ -38,7 +38,11 @@
 
                 <div id="private_tab" class="tab-pane fade in active"></div>
 
-                <div id="cars_tab" class="tab-pane fade in"></div>
+                <div id="cars_tab" class="tab-pane fade in">
+                    <div id="cars_block">
+                    </div>
+                    <button id="add_car" class="btn btn-primary data-input" type="button">Добавить авто</button>
+                </div>
 
                 <div id="routes_tab" class="tab-pane fade in">
                     <div class="row">
@@ -240,7 +244,7 @@
                             disabled="disabled">Сохранить
                     </button>
                 </div>
-            <hr/>
+            </form>
         </div>
         <div class="col-sm-4 hidden-xs">
             <h2>Совет дня</h2>
@@ -251,7 +255,7 @@
         <div class="clearfix"></div>
     </div>
 </script>
-
+<!-- ======================================================== -->
 <script id="carsTabTemplate" type="text/x-handlebars-template">
     <div class="panel panel-default">
         <div class="row">
@@ -267,13 +271,13 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <form class="form-horizontal">
+                <form id="car_{{regnumber}}" class="form-horizontal" name="car_{{regnumber}}">
                     <div class="form-group has-feedback">
                         <label for="carBrend" class="col-sm-3 control-label">Марка:</label>
 
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="carBrend" value="{{brand}}"
-                                   placeholder="Honda">
+                            <input type="text" class="form-control" id="brend" value="{{brand}}" disabled name="brand"
+                                    placeholder="Honda">
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
                     </div>
@@ -281,7 +285,7 @@
                         <label for="carModel" class="col-sm-3 control-label">Модель:</label>
 
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="carModel" value="{{model}}"
+                            <input type="text" class="form-control" id="model" value="{{model}}" disabled name="model"
                                    placeholder="Accord">
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
@@ -290,7 +294,7 @@
                         <label for="carColor" class="col-sm-3 control-label">Цвет:</label>
 
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="carColor" value="{{color}}"
+                            <input type="text" class="form-control" id="color" value="{{color}}" disabled name="color"
                                    placeholder="черный">
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
@@ -299,16 +303,17 @@
                         <label for="carNumber" class="col-sm-3 control-label">Гос.номер:</label>
 
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="regnumber" value="{{regnumber}}"
-                                   placeholder="АЕ2345ІІ">
+                            <input type="text" class="form-control" id="regnumber" value="{{regnumber}}" disabled name="regnumber"
+                                   pattern="[A-Z]{2}[0-9]{4}[A-Z]{2}" placeholder="АЕ2345ІІ">
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
                     </div>
                     <div class="form-group has-feedback">
                         <label for="carSeats" class="col-sm-3 control-label">Количество мест:</label>
 
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="carSeats" value="{{seats}}"
-                                   placeholder="4">
+                            <input type="text" class="form-control" id="seats" value="{{seats}}" disabled name="seats"
+                                   pattern="[0-9]{1,2}" placeholder="4">
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
                     </div>
@@ -317,17 +322,17 @@
                             л/100км:</label>
 
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="carFuel" value="{{fuelrate}}"
-                                   placeholder="10">
+                            <input type="text" class="form-control" id="fuelrate" value="{{fuelrate}}" disabled name="fuelrate"
+                                   pattern="(\d*[.])?\d+" placeholder="10">
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
                         <div class="col-sm-6">
-                            <button id="cancelNewCar" class="btn btn-default"
-                                    type="button">Отменить
+                            <button class="btn btn-default update_car"
+                                    type="button">Изменить
                             </button>
-                            <button id="saveNewCar" class="btn btn-primary data-input"
-                                    type="submit"
-                                    disabled="disabled">Сохранить
+                            <button class="btn btn-primary data-input save_car"
+                                    type="button"
+                                    disabled>Сохранить
                             </button>
                         </div>
                     </div>
@@ -335,7 +340,6 @@
             </div>
         </div>
     </div>
-    <button id="addCar" class="btn btn-primary data-input" type="submit">Добавить авто</button>
 </script>
 
 <script id="routeTabTemplate" type="text/x-handlebars-template">
