@@ -162,7 +162,7 @@
                             <div class="col-md-12 text-right">
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Шаг 2</a>
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                <a id="datetime" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
                                     Далее</a>
                             </div>
 
@@ -202,7 +202,7 @@
                             </form>
                             <div class="col-md-12 text-right">
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Шаг 3</a>
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+                                <a id="cost" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
                                     Далее</a>
                             </div>
                         </div>
@@ -227,10 +227,19 @@
 
                         <div class="panel-body">
                             <div>
-                                <h4>&#8594; Днепродзержинск <span class="glyphicon glyphicon-road"></span></h4>
+                                <h4><span id="start"></span> &#8594; <span id="finish"></span> <span class="glyphicon glyphicon-road"></span></h4>
                             </div>
-                            <div class="col-md-3">Отправление:</div><div> 07/07/2015 в 8:00</div>
-                            <div class="col-md-3">Стоимость:</div><div> 20 грн.</div>
+                            <div class="col-md-3">Отправление:</div>
+                            <div id="dtstart"> </div>
+
+                            <div class="col-md-3">Прибытие:</div>
+                            <div id="dtfinish"> </div>
+
+                            <div class="col-md-3">Стоимость:</div>
+                            <div id="prc"> </div>
+
+                            <div class="col-md-3">Автомобиль:</div>
+                            <div id="auto"> </div>
 
                             <button type="button" class="btn btn-warning btn-lg pull-right">Создать</button>
                         </div>

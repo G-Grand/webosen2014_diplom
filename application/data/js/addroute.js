@@ -129,4 +129,43 @@ function getGeoTarget(field, point, datalist, coords)
             }
         })
     }, 500);
+
+    $("#setCoords").click(function () {
+        var start = $("#inputStart").val();
+        $('#start').html(
+            '<span>'+start+'</span>'
+        );
+    });
+    $("#setCoords").click(function () {
+        var finish = $("#inputFinish").val();
+        $('#finish').html(
+            '<span>'+finish+'</span>'
+        );
+    });
+    $("#setCoords").click(function () {
+        var auto = $("#inputAuto").val();
+        $('#auto').html(
+            '<div>'+auto+'</div>'
+        );
+    });
+
+    $("#datetime").click(function () {
+        var datestart = $("#DateDep").val();
+        $('#dtstart').html(
+            '<div>'+datestart+'</div>'
+        );
+    });
+    $("#datetime").click(function () {
+        var datefinish = $("#DateArrival").val();
+        $('#dtfinish').html(
+            '<div>'+datefinish+'</div>'
+        );
+    });
+
+    $("#cost").click(function () {
+        var cost = $("#price").val();
+        $('#prc').html(
+            '<div>'+cost+' грн.</div>'
+        );
+    });
 }
