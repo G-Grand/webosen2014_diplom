@@ -14,7 +14,10 @@ $user = (isset($user)) ? $user : ErSession::getFromSession('user');
     <link rel="stylesheet" href="/application/data/css/jquery-ui.theme.css">
     <link rel="stylesheet" type="text/css" href="/application/data/css/jquery.datetimepicker.css"/>
     <link rel="stylesheet" href="/application/data/css/bootstrap.css">
-    <link rel="stylesheet" href="/application/data/css/style.css">
+   <!-- <link rel="stylesheet" href="/application/data/css/style.css">
+    <link rel="stylesheet" href="/application/data/css/svg.scss">
+     -->
+    <link rel="stylesheet" href="/application/data/css/index.css">
     <?php
         if($this->add_css){
             foreach($this->add_css as $style){
@@ -30,6 +33,8 @@ $user = (isset($user)) ? $user : ErSession::getFromSession('user');
     <script src="/application/data/js/jquery-ui.js"></script>
     <script src="/application/data/js/handlebars.js"></script>
     <script src="/application/data/js/messenger.js"></script>
+    <script src="/application/data/js/jquery.easing.min.js"></script>
+    <script src="/application/data/js/index.js"></script>
     <?php
         if($this->add_js){
             foreach($this->add_js as $scr){

@@ -11,7 +11,7 @@ class RoadController extends AbstractController
         $this->addBlockToView('Common', 'header');
         $this->addBlockToView('Common', 'footer');
         $this->setViewAttributes('headerTitle', 'Find Ride');
-        $this->setViewAttributes('add_js', array('jquery.raty.js', 'raty_handler.js'));
+        $this->setViewAttributes('add_js', array('jquery.raty.js', 'raty_handler.js', 'addroute.js','find.js'));
         $this->setViewAttributes('add_css', array('jquery.raty.css'));
 
         $this->initView($this->getActionUrl())->renderView();

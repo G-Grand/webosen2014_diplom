@@ -1,6 +1,4 @@
-<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script src="/application/data/js/addroute.js" type="text/javascript"></script>
-<script src="/application/data/js/find.js"></script>
+
 <div class="container">
 
     <!-- Find block -->

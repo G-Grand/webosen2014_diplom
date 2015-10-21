@@ -124,14 +124,29 @@ class UserController extends  AbstractController
 
     protected function fetchUserData($userEmail)
     {
+        $result = array();
         $userMapper = new UserMapper();
         $carMapper = new CarMapper();
+        $routeMapper = new RoadMapper();
         $currentUser = $userMapper->getUserByEmail($userEmail);
         $userCars = $carMapper->getByUser($userEmail);
-        $result = get_object_vars($currentUser);
+        $userRoutes = $routeMapper->getByUser($userEmail);
+        $routes = array();
+        $carMapper->clear();
+        $i = 0;
+        foreach($userRoutes as $route){
+            $routes[$i] = get_object_vars($route);
+            $_car = $carMapper->getByAutoId($route->autoid);
+            $routes[$i]['car'] = get_object_vars($_car);
+            $carMapper->clear();
+            ++$i;
+        }
         $cars = array();
         foreach($userCars as $car){ $cars[] = get_object_vars($car); }
+        $result['user'] = get_object_vars($currentUser);
+        $result['user']['age'] = $currentUser->getAge();
         $result['cars'] = $cars;
+        $result['routes'] = $routes;
         return $result;
     }
 

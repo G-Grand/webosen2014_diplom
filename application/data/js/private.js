@@ -121,15 +121,19 @@ $(function() {
             success: function (result) {
                 console.log(result);
                 clearBlock($('#cars_block'));
-                drawCars($('#cars_block'), $('#carsTabTemplate'), result);
+                drawItems($('#cars_block'), $('#carsTabTemplate'), result, 'Вы еще не добавили автомобиль');
             }
         });
         showMessage();
     });
 
     carsTab.on('click', '#add_car', function(){
-        drawCars($('#cars_block'), $('#carsTabTemplate'), getNewCarJson());
+        drawItems($('#cars_block'), $('#carsTabTemplate'), getNewCarJson());
     });
+
+    //Routes tab script
+    //==========================================
+
 
 
 });
@@ -142,8 +146,11 @@ function initPrivatePage(){
         success: function(result) {
             console.log(result);
             //drawBlock($('#progress_bar'), $('#progressBarTemplate'), result);
-            drawBlock($('#private_tab'), $('#privateTabTemplate'), result);
-            drawCars($('#cars_block'), $('#carsTabTemplate'), result.cars);
+            drawBlock($('#private_tab'), $('#privateTabTemplate'), result.user);
+            drawItems($('#cars_block'), $('#carsTabTemplate'), result.cars, 'Вы еще не добавили автомобиль');
+            result.routes = sortRoadsByDate(result.routes);
+            //drawItems($('#routes_tab'), $('#routesTabTemplate'), sortRoadsByDate(result.routes), 'Выеще не добавили маршрут');
+            drawBlock($('#routes_tab'), $('#routesTabTemplate'), result);
         }
     });
 
@@ -164,17 +171,17 @@ function clearBlock(block){
     block.html("");
 }
 
-function drawCars(block, source, cars){
+function drawItems(block, source, ar, msg){
     if(source != ""){
         source   = source.html();
         var template = Handlebars.compile(source);
 
-        if(cars.length == 0){
-            block.html("<h3>Вы еще не добавили автомобиль</h3>");
+        if(ar.length == 0){
+            block.html("<h3>" + msg + "</h3>");
             return;
         }
 
-        cars.forEach(function(item, i, arr){
+        ar.forEach(function(item, i, arr){
             block.append(template(item));
         });
 
@@ -209,6 +216,16 @@ function getNewCarJson(){
         "fuelrate" : ""
 
     }]
+}
+
+function sortRoadsByDate(roads) {
+    return roads.sort(function(a,b){
+        var dateA = new Date(a.startdate.replace(" ", "T"));
+        var dateB = new Date(b.startdate.replace(" ", "T"));
+        if(dateA > dateB)  { return 1; }
+        if(dateA < dateB)  { return -1; }
+        if(dateA == dateB) { return 0; }
+    });
 }
 
 
