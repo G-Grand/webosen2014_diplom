@@ -36,7 +36,7 @@
 body {
     width: 100%;
     height: 100%;
-    font-family: "Helvetica Neue",Helvetica,Calibri, Arial,sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Calibri,sans-serif;
     color: #fff;
     background-color: #1336ac;
 }
@@ -52,9 +52,9 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 35px;
+    margin: 0 0 50px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Calibri, Arial,sans-serif;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Calibri,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -94,6 +94,7 @@ a:focus {
     text-align: right;
     box-sizing: border-box;
     text-transform:none;
+    list-style: none;
 
 }
 
@@ -102,8 +103,28 @@ a:focus {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,.3);
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: #000;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Calibri,sans-serif;
+    background-color: #D48607;
+}
+#registr{
+    text-transform: none;
+    /*padding: 0 0 15px 5px;*/
+    margin-top: 0;
+    margin-left: 30px;
+    padding-right: 0;
+
+}
+
+#enter{
+    text-transform: none;
+    /*padding: 0 0 15px 5px;*/
+    margin-top: 0;
+    padding-left: 8px;
+
+}
+.signup-back{
+    width: 1000px;
+    height: 1000px;
 }
 
 .navbar-custom .navbar-brand {
@@ -127,6 +148,7 @@ a:focus {
 
 .navbar-custom a {
     color: #fff;
+    padding-top: 12px;
 }
 
 .navbar-custom .nav li a {
@@ -163,8 +185,8 @@ a:focus {
     .navbar-custom {
         padding: 20px 0;
         border-bottom: 0;
-        letter-spacing: 1px;
-        background: 0 0;
+        /*letter-spacing: 1px;*/
+        background: #f0a731;
         -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;
@@ -227,12 +249,20 @@ a:focus {
     .intro .intro-body .intro-text {
         font-size: 26px;
     }
+    .reg-section{
+
+    }
 }
+
+
+
+
 
 .btn-circle {
     width: 70px;
     height: 70px;
     margin-top: 15px;
+    margin-bottom: 15px;
     padding: 7px 16px;
     border: 2px solid #fff;
     border-radius: 100%!important;
@@ -307,15 +337,16 @@ a:focus {
     padding-top: 100px;
    }
 #create-catch{
-    height: 303px;
+    height: 350px;
 }
 
-.seek-rout, seek-buttons{
-    margin: 57px auto;
+.seek-rout, .seek-buttons{
+
+    margin: 45px auto;
 }
 
-.form-control {
-    border-radius: 0px;
+#main-buttons {
+    margin-bottom: -10px;
 }
 
 @media(min-width:768px) {
@@ -323,30 +354,48 @@ a:focus {
 
         padding: 0;
     }
-
+    .point1,.point2{
+        width: 212px;
+        height: 44px;
+        border-radius: 0;
+        margin: 6px 0 5px 0;
+        padding: 0px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    .point1{
+        margin-right: -15px;
+    }
+    .point2{
+        margin-left: -15px;
+    }
+}
 .reg-section {
     width: 100%;
     height: 303px;
     padding: 50px 0;
     color: #fff;
-
     background-color: #f7be40;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
 }
-.reg-anime{
-    width: 800px;
-    height: 303px;
-    margin-top: -167px;
+#reg-anime{
+    width: 580px;
+    height: 306px;
+    margin-top: -183px;
     background: url(../images/intro-bg2.gif) no-repeat center center scroll;
     float: right;
 }
 #reg-text{
     float: left;
     margin-top: 60px;
-    margin-left: -200px;
+
 }
 
 
@@ -356,8 +405,9 @@ a:focus {
     }
 
     .reg-section {
-        padding: 0px 0;
+        padding: 0px;
     }
+
 
 }
 
@@ -386,16 +436,16 @@ a:focus {
 }
 
 #reg {
-        border: 1px solid #e29525;
-        color: #c2730e;
-        background-color: transparent;
+    border: 1px solid #b77723;
+    outline: 0;
+    color: #ffffff;
+    background-color: #e29525;
     }
 #reg:hover,
 #reg:focus {
-        border: 1px solid #e29525;
-        outline: 0;
-        color: #ffffff;
-        background-color: #e29525;
+    border: 1px solid #b77723;
+    color:  #000;
+    background-color: transparent;
     }
 
 ul.banner-social-buttons {
@@ -418,7 +468,64 @@ ul.banner-social-buttons {
     ul.banner-social-buttons li:last-child {
         margin-bottom: 0;
     }
+
+    .top-panel {display: none;}
 }
+
+.signin {
+    background-color: #F0A731;
+}
+
+@media(max-width:767px){
+    .intro .intro-anime {
+        width: auto;
+    }
+    #reg-anime{
+        display: none;
+    }
+    #reg-text{
+
+    }
+    .g-ants{
+        display: none;
+    }
+    #registr,#enter{
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+    }
+    #svg{
+        padding: 0px;
+    }
+    input{
+        width: 100%;
+        height: 44px;
+        margin: 5px 0 5px 0;
+        font-size: 18px;
+        line-height: 1.3333333;
+        text-align: center;
+        vertical-align: middle;
+    }
+    #create-catch,#contact{
+        padding: 0 150px 0 150px;
+        min-height: 420px;
+    }
+    #reg-text{
+        padding: 0 150px 0 150px;
+        margin-top: 30px;
+
+    }
+    .btn-default{
+        width: 100%;
+    }
+    h4,h3{
+        margin: 20px 0 20px 0;
+    }
+    .reg-section{
+        background-image:url(../images/intro-bg2.gif) ;
+    }
+}
+
 
 footer {
     padding: 50px 0;

@@ -1,3 +1,4 @@
+
 <h1 class="text-center">Вход</h1>
 <div class="container container-signin">
     <div class="row">
@@ -54,6 +55,5 @@
                 <p><a href="#"><img src="/application/data/images/blogspot.png" alt="blogest"></a></p>
             </div>
         </div>
-
     </div>
 </div>
