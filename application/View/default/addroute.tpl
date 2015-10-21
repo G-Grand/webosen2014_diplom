@@ -220,26 +220,31 @@
                     <div id="collapseMap" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMap">
 
                         <div class="row-fluid">
-
-
                             <div id="map" style="width: 100%; height: 400px"></div>
                         </div>
 
                         <div class="panel-body">
-                            <div>
-                                <h4><span id="start"></span> &#8594; <span id="finish"></span> <span class="glyphicon glyphicon-road"></span></h4>
+                            <div class="row">
+                                <div>
+                                    <h4><span id="start"></span> &#8594; <span id="finish"></span> <span class="glyphicon glyphicon-road"></span></h4>
+                                </div>
                             </div>
-                            <div class="col-md-3">Отправление:</div>
-                            <div id="dtstart"> </div>
-
-                            <div class="col-md-3">Прибытие:</div>
-                            <div id="dtfinish"> </div>
-
-                            <div class="col-md-3">Стоимость:</div>
-                            <div id="prc"> </div>
-
-                            <div class="col-md-3">Автомобиль:</div>
-                            <div id="auto"> </div>
+                            <div class="row">
+                                <div class="col-md-3">Отправление:</div>
+                                <div id="dtstart"> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">Прибытие:</div>
+                                <div id="dtfinish"> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">Стоимость:</div>
+                                <div id="prc"> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">Автомобиль:</div>
+                                <div id="auto"> </div>
+                            </div>
 
                             <button type="button" class="btn btn-warning btn-lg pull-right">Создать</button>
                         </div>
