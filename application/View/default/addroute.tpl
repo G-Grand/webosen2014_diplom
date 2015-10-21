@@ -1,9 +1,8 @@
-<script src="/application/data/js/addroute.js"></script>
-
 <div class="container" style="width: 740px;">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="col-sm-12"><h1>Создать маршрут</h1></div>
+            <form id="data" action="road/saveRoute" method="post" ></form>
 
             <!-- Шаг 1 -->
             <div class="panel-group col-sm-12" id="accordion" role="tablist" aria-multiselectable="true">
