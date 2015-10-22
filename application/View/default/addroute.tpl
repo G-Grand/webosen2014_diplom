@@ -1,4 +1,3 @@
-<script src="/application/data/js/addroute.js"></script>
 <div class="container" style=" background-color: #F0A731; padding-top:100px;" >
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="col-sm-12"><h1>Создать маршрут</h1></div>
