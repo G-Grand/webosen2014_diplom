@@ -46,7 +46,7 @@ $user = (isset($user)) ? $user : ErSession::getFromSession('user');
     <div id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation" style="height: 80px;">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">

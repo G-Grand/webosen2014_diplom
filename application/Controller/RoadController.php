@@ -4,6 +4,8 @@
  * @link    https://github.com/G-Grand/webosen2014_diplom.git
  */
 
+use Entity\Roadrout;
+
 class RoadController extends AbstractController
 {
     public function indexAction()
@@ -85,5 +87,37 @@ class RoadController extends AbstractController
         }
         echo json_encode($result);
 
+    }
+
+    public function saveRouteAction()
+    {
+        $message = ErMessenger::getInstance();
+        $request = new Request();
+        $request->initRequest();
+        $post = $request->getPost();
+        $userEmail = ErSession::getFromSession('user');
+        $roadMapper = new RoadMapper();
+        $road = new Roadrout();
+        $road->id = (string)time();
+        $road->driverid = $userEmail;
+        $road->start = $post['id_citystart'];
+        $road->start_adress = $post['id_streetstart'];
+        $road->finish = $post['id_cityfinish'];
+        $road->finish_adress = $post['id_streetfinish'];
+        $road->terms = $post['dopinfo'];
+        $road->autoid = $post['regnumber'];
+        $road->freeseats = $post['seats'];
+        $road->price = $post['price'];
+        $road->startdate = $post['dateDep'];
+        $road->timetrip = $post['dateArrival'];
+        $road->status = 'opened';
+
+        if ($roadMapper->insertNewRoad($road)) {
+            $message->setSucceedMessage('202', 'index/index');
+            ErApplication::redirect('/');
+        } else {
+            $message->setErrMessage('100', 'road/addRoute');
+            ErApplication::redirect('road/addRoute');
+        }
     }
 }

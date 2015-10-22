@@ -1,3 +1,4 @@
+<div style="height: 100%;width: 100%;background-color: #FFFFFF;">
 <div class="container">
     <!--    ------------------CONTENT------------------------------>
     <div class="row">
@@ -36,7 +37,7 @@
         <div class="well">
             <div class="tab-content">
 
-                <div id="private_tab" class="tab-pane fade in active"></div>
+                <div id="private_tab" class="tab-pane fade in active" style="color: #000;"></div>
 
                 <div id="cars_tab" class="tab-pane fade in">
                     <div id="cars_block"></div>
@@ -48,6 +49,7 @@
         </div>
     </div>
 </div>
+</div>    
 
 <script id="privateTabTemplate" type="text/x-handlebars-template">
     <div class="row">

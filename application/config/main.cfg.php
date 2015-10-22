@@ -15,7 +15,7 @@ return array(
             'mainstorage' => 'erapp',
             'messagestorage' => 'ermessage'
         ),
-        'BASE_URL' => 'webosen2014_diplom/'
+        'BASE_URL' => 'step.com/'
     ),
     "dbsettings" => array(
         "host" => "localhost",

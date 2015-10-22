@@ -103,7 +103,7 @@ function getGeoTarget(field, point, datalist, coords)
                 for(var i=0; i<geoList.length; ++i) {
                     var obj = geoList[i].GeoObject;
                     var value = obj.Point.pos;
-                    text = obj.metaDataProperty.GeocoderMetaData.text;
+                    var text = obj.metaDataProperty.GeocoderMetaData.text;
                     try {
                         if(obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.LocalityName == "Киев"){
                              nameCity = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.LocalityName; //название города
@@ -148,7 +148,7 @@ function getGeoTarget(field, point, datalist, coords)
         );
     });
     $("#setCoords").click(function () {
-        var auto = $("#inputAuto").val();
+        var auto = $("#regnumber").val() + " " + $("#regnumber").text();
         $('#auto').html(
             '<div>'+auto+'</div>'
         );
@@ -167,16 +167,14 @@ function getGeoTarget(field, point, datalist, coords)
 
 // дата отправления и прибытия
     $("#datetime").click(function () {
-        var datestart = $("#DateDep").val();
-        $("#datestart").val(datestart);
+        var datestart = $("#dateDep").val();
         $('#dtstart').html(
             '<div>'+datestart+'</div>'
         );
     });
 
     $("#datetime").click(function () {
-        var datefinish = $("#DateArrival").val();
-        $("#datefinish").val(datefinish);
+        var datefinish = $("#dateArrival").val();
         $('#dtfinish').html(
             '<div>'+datefinish+'</div>'
         );
@@ -189,10 +187,10 @@ function getGeoTarget(field, point, datalist, coords)
             '<div>'+cost+' грн.</div>'
         );
     });
-    $("#cost").click(function () {
-        var seats = $("#seats").val();
-        $("#id_seats").val(seats);
-
-    });
+    //$("#cost").click(function () {
+    //    var seats = $("#seats").val();
+    //    $("#id_seats").val(seats);
+    //
+    //});
 
 }

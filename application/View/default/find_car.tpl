@@ -1,6 +1,10 @@
-
-<div class="container">
-
+<?php
+$start = (ErSession::getFromSession('start')) ? ErSession::getFromSession('start') : "";
+$finish = (ErSession::getFromSession('finish')) ? ErSession::getFromSession('finish') : "";
+ErSession::removeFromSession('start');
+ErSession::removeFromSession('finish');
+?>
+<div class="container" style="background-color: #F0A731; padding-top: 50px;">
     <!-- Find block -->
     <div class="row road_margin">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -10,7 +14,7 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
                         <div class="droplist">
-                            <input id="inputStart" class="form-control" type="text" form="get_rt_form" name="departure_point" value=""
+                            <input id="inputStart" class="form-control" type="text" form="get_rt_form" name="departure_point" value="<?php echo $start ?>"
                                    placeholder="пункт отправления">
                             <span class="glyphicon form-control-feedback"></span>
                             <div id="start_list" class="list"></div>
@@ -22,7 +26,7 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
                         <div class="droplist">
-                            <input id="inputFinish" class="form-control" type="text" form="get_rt_form" name="destination_point" value=""
+                            <input id="inputFinish" class="form-control" type="text" form="get_rt_form" name="destination_point" value="<?php echo $finish ?>"
                                    placeholder="пункт назначения">
                             <span class="glyphicon form-control-feedback"></span>
                             <div id="finish_list" class="list"></div>

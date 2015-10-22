@@ -5,6 +5,7 @@
  */
 
 use Entity\User;
+use Entity\Roadrout;
 use Entity\RoutPoint;
 
 class RoadMapper extends AbstractMapper
@@ -57,5 +58,17 @@ class RoadMapper extends AbstractMapper
         $this->addQueryCondition($roadCond);
 
         return $this->select()->fetchAll(PDO::FETCH_CLASS, 'Entity\Roadrout');
+    }
+
+    public function insertNewRoad(Roadrout $road)
+    {
+        if($this->validate($road)){
+            $roadScope = new QueryScope("roadrout");
+            $roadScope->setFields(array("id", "driverid", "start", "start_adress", "finish", "finish_adress", "terms", "autoid", "freeseats", "price", "startdate", "timetrip", "status"));
+            $roadScope->setValues(array($road->id, $road->driverid, $road->start, $road->start_adress, $road->finish, $road->finish_adress, $road->terms, $road->autoid, $road->freeseats, $road->price, $road->startdate, $road->timetrip, $road->status));
+            $this->addQueryScope($roadScope);
+            return $this->insert();
+        }
+        return false;
     }
 }

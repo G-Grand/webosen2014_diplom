@@ -63,10 +63,10 @@ class Roadrout extends AbstractEntity
                 'type' => 'decimal'
             ),
             'startdate' => array(
-                'type' => 'date'
+                'type' => 'datetime'
             ),
             'timetrip' => array(
-                'type' => 'time'
+                'type' => 'datetime'
             ),
             'status' => array(
                 'type' => 'string',

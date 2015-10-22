@@ -148,7 +148,7 @@ a:focus {
 
 .navbar-custom a {
     color: #fff;
-    padding-top: 12px;
+    padding-top: 25px;
 }
 
 .navbar-custom .nav li a {
@@ -183,17 +183,18 @@ a:focus {
 
 @media(min-width:768px) {
     .navbar-custom {
-        padding: 20px 0;
+        border-bottom: #000;
+        padding: 5px 0;
         border-bottom: 0;
         /*letter-spacing: 1px;*/
-        background: #f0a731;
+        background: #f09a2d;
         -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;
     }
 
     .navbar-custom.top-nav-collapse {
-        padding: 0 0 10px 0;
+        padding: 0 0 20px 0;
         border-bottom: 1px solid rgba(255,255,255,.3);
         background: #e29525;
     }
@@ -208,6 +209,7 @@ a:focus {
     color: #ffffff;
 
     background-color: #f0a731;
+    /*background: url(../images/bg.jpg) no-repeat center center scroll;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -552,4 +554,10 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: rgba(255, 255, 255, .2);
+}
+
+.routpoints{
+    display: inline-block;
+    height: 34px;
+    width: 40px;
 }

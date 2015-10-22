@@ -46,45 +46,55 @@
     <!-- create-catch -->
     <section id="create-catch" class="container content-section text-center">
         <div class="seek-rout">
-
-
-
-
+            <form id="data" action="/index/route" method="POST"></form>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12 text-center">
                         пункт отправления
+                        <div class="input-group center-block" style="width:60%">
+                            <div class="droplist">
+                                    <span class="input-group-addon routpoints pull-left"><i
+                                                class="glyphicon glyphicon-map-marker"></i></span>
+
+                                <input id="inputStart" type="text" class="form-control pull-left" style="width: 80%" form="data" name="start"
+                                       placeholder="Ваш пункт отправления">
+                                <div id="start_list" class="list"></div>
+                            </div>
+                        </div>
+                        <!--
                         <div class="form-group">
                             <input class="point1 form-control" type="text" form="get_rt_form" name="departure_point"
                                    placeholder="пункт отправления">
                         </div>
+                        -->
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 text-center">
                         пункт назначения
-                        <div class="form-group">
-                            <input class="point2 form-control" type="text" form="get_rt_form" name="destination_point"
-                                   placeholder="пункт назначения" >
+                        <div class="input-group center-block" style="width:60%">
+                            <div class="droplist">
+                                    <span class="input-group-addon routpoints pull-left"><i
+                                                class="glyphicon glyphicon-map-marker"></i></span>
 
+                                <input id="inputFinish" type="text" class="form-control" style="width: 80%" form="data" name="finish"
+                                       placeholder="Ваш пункт прибытия">
+                                <div id="finish_list" class="list"></div>
+                            </div>
                         </div>
 
                     </div>
                 </div>
                 <div class="clearfix"></div>
-            </form>
-
-
-
 
         </div>
         <div class="seek-buttons">
         <div class="row">
             <div  class="catch col-md-6 col-sm-6 col-xs-12 text-center" style="margin-top: 2px ;">
                 <h4>Найди тех, с кем тебе по пути!</h4>
-                <a class="btn btn-default btn-lg"  href="<?php echo '/road'?>">Поймать попутку</a>
+                <button class="btn btn-default btn-lg" form="data" name="findaction" value="find">Поймать попутку</button>
             </div>
             <div  class="create col-md-6 col-sm-6 col-xs-12 text-center" style="margin-top: 2px;">
                 <h4>Раздели свой путь с другими!</h4>
-                <a class="btn btn-default btn-lg">Создать маршрут</a>
+                <button type="submit" form="data" name="addaction" value="addroute" class="btn btn-default btn-lg">Создать маршрут</button>
             </div>
         </div>
         </div>
