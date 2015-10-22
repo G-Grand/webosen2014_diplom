@@ -49,7 +49,7 @@
             <form id="data" action="/index/route" method="POST"></form>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12 text-center">
-                        пункт отправления
+                        <span style="color: #ffffff;">пункт отправления</span>
                         <div class="input-group center-block" style="width:60%">
                             <div class="droplist">
                                     <span class="input-group-addon routpoints pull-left"><i
@@ -60,16 +60,10 @@
                                 <div id="start_list" class="list"></div>
                             </div>
                         </div>
-                        <!--
-                        <div class="form-group">
-                            <input class="point1 form-control" type="text" form="get_rt_form" name="departure_point"
-                                   placeholder="пункт отправления">
-                        </div>
-                        -->
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 text-center">
-                        пункт назначения
+                        <span style="color: #ffffff;">пункт назначения</span>
                         <div class="input-group center-block" style="width:60%">
                             <div class="droplist">
                                     <span class="input-group-addon routpoints pull-left"><i
@@ -89,11 +83,11 @@
         <div class="seek-buttons">
         <div class="row">
             <div  class="catch col-md-6 col-sm-6 col-xs-12 text-center" style="margin-top: 2px ;">
-                <h4>Найди тех, с кем тебе по пути!</h4>
+                <h4 style="color: #ffffff;">Найди тех, с кем тебе по пути!</h4>
                 <button class="btn btn-default btn-lg" form="data" name="findaction" value="find">Поймать попутку</button>
             </div>
             <div  class="create col-md-6 col-sm-6 col-xs-12 text-center" style="margin-top: 2px;">
-                <h4>Раздели свой путь с другими!</h4>
+                <h4 style="color: #ffffff;">Раздели свой путь с другими!</h4>
                 <button type="submit" form="data" name="addaction" value="addroute" class="btn btn-default btn-lg">Создать маршрут</button>
             </div>
         </div>

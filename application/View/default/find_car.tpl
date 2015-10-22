@@ -8,7 +8,7 @@ ErSession::removeFromSession('finish');
     <!-- Find block -->
     <div class="row road_margin">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <h1>Найти попутку</h1>
+            <h1 style="padding-top: 20px;">Найти попутку</h1>
             <div style="text-align: center">
                 <form id="get_rt_form" class="navbar-form" action="" method="post">
                     <div class="input-group">
@@ -17,7 +17,7 @@ ErSession::removeFromSession('finish');
                             <input id="inputStart" class="form-control" type="text" form="get_rt_form" name="departure_point" value="<?php echo $start ?>"
                                    placeholder="пункт отправления">
                             <span class="glyphicon form-control-feedback"></span>
-                            <div id="start_list" class="list"></div>
+                            <div id="start_list" class="list" style="text-align: left; overflow: hidden;"></div>
                         </div>
                     </div>
                     <button id="switchPlaces" class="btn btn-default btn-arrow" type="button">
@@ -29,7 +29,7 @@ ErSession::removeFromSession('finish');
                             <input id="inputFinish" class="form-control" type="text" form="get_rt_form" name="destination_point" value="<?php echo $finish ?>"
                                    placeholder="пункт назначения">
                             <span class="glyphicon form-control-feedback"></span>
-                            <div id="finish_list" class="list"></div>
+                            <div id="finish_list" class="list" style="text-align: left; overflow: hidden;"></div>
                         </div>
                     </div>
                     <button id="find" class="btn btn-default btn-find" type="button">найти</button>
@@ -76,41 +76,8 @@ ErSession::removeFromSession('finish');
                         <input type="text" id="amount" readonly style="border:0;color:#f6931f;font-weight:bold;"></p>
                     <div id="slider-range-min"></div>
                 </div>
-                <div class="panel">
-                    <h3>Количество мест</h3>
-                    <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                    </select>
-                </div>
-                <h3>Фото</h3>
-                <label class="radio">
-                    <input type="radio" name="optionsRadio" id="optionsRadio1" value="option1" checked>С фото
-                </label>
-                <label class="radio">
-                    <input type="radio" name="optionsRadio" id="optionsRadio2" value="option2">Все
-                </label>
-                <h3>По рейтингу</h3>
-                <label class="radio">
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                    С отзывами
-                </label>
-                <label class="radio">
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Все
-                </label>
+
+
             </div>
             <div class="panel text-center">
                 <h3>Осенний набор на профессиональное компьютерное обучение!</h3>

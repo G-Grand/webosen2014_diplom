@@ -60,10 +60,10 @@ $user = (isset($user)) ? $user : ErSession::getFromSession('user');
                 <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                     <div class="authorize">
                         <?php if (empty($user)): ?>
-                            <a href="<?php echo 'user/signup'; ?>">регистрация</a><span> | </span>
+                            <a href="<?php echo 'user/signup'; ?>">регистрация</a><span style="color: #ffffff;"> | </span>
                             <a href="<?php echo '/user/signin'; ?>">войти</a>
                         <?php else: ?>
-                            <a href="<?php echo '/user/private' ; ?>"><?php echo $user; ?></a><span> | </span>
+                            <a href="<?php echo '/user/private' ; ?>"><?php echo $user; ?></a><span style="color: #ffffff;"> | </span>
                             <a href="<?php echo '/user/logout'; ?>">выйти</a>
                         <?php endif;?>
                     </div>
