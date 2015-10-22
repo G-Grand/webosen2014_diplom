@@ -6,7 +6,7 @@ class IndexController extends  AbstractController {
     public function indexAction(){
         $this->addBlockToView('Common', 'header');
         $this->setViewAttributes('headerTitle', 'Easy Ride');
-        $this->setViewAttributes('add_js', array('jquery.easing.min.js', 'index.js'));
+//        $this->setViewAttributes('add_js', array('jquery.easing.min.js', 'index.js'));
         $this->setViewAttributes('add_css', array('index.css', 'svg.scss', 'font-awesome.css'));
 //        $this->addBlockToView('Common', 'footer');
         $this->initView($this->getActionUrl())->renderView();

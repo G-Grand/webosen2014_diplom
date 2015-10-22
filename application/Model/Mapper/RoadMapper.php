@@ -42,4 +42,20 @@ class RoadMapper extends AbstractMapper
 
         return $this->select()->fetchAll(PDO::FETCH_CLASS, 'Entity\RoutPoint');
     }
+
+    public function getByUser($email)
+    {
+        $roadScope = new QueryScope("roadrout");
+        $roadScope->setFields(array("*"));
+
+        $roadCond = new QueryCondition("roadrout");
+        $roadCond->setConditions(array(
+            new QueryConditionMember("driverid", $email, "=")
+        ));
+
+        $this->addQueryScope($roadScope);
+        $this->addQueryCondition($roadCond);
+
+        return $this->select()->fetchAll(PDO::FETCH_CLASS, 'Entity\Roadrout');
+    }
 }

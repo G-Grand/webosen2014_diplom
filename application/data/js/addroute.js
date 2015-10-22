@@ -4,7 +4,7 @@ var revposStart = [48.464717, 35.046181];
 var mapCoords = {};
 
 var myMap;
-console.log(init)
+//console.log(init)
 function init() {
     myMap = new ymaps.Map('map', {
         center: revposStart,
@@ -87,6 +87,7 @@ $(function (){
  * @param datalist popup element object
  * @param coords string point nfvt
  */
+var  text,nameCity, nameStreet, numberHome;
 function getGeoTarget(field, point, datalist, coords)
 {
     clearTimeout(point);
@@ -102,16 +103,16 @@ function getGeoTarget(field, point, datalist, coords)
                 for(var i=0; i<geoList.length; ++i) {
                     var obj = geoList[i].GeoObject;
                     var value = obj.Point.pos;
-                    var text = obj.metaDataProperty.GeocoderMetaData.text;
+                    text = obj.metaDataProperty.GeocoderMetaData.text;
                     try {
                         if(obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.LocalityName == "Киев"){
-                            var localNameFinish = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.LocalityName; //название города
-                            var nameStreetFinish = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.Thoroughfare.ThoroughfareName; //название улицы
-                            var numberHouseFinish = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.Thoroughfare.Premise.PremiseNumber; //номер дома
+                             nameCity = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.LocalityName; //название города
+                             nameStreet = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.Thoroughfare.ThoroughfareName; //название улицы
+                             numberHome = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality.Thoroughfare.Premise.PremiseNumber; //номер дома
                         } else {
-                            var localNameFinish = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName; //название города
-                            var nameStreetFinish = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.Thoroughfare.ThoroughfareName; //название улицы
-                            var numberHouseFinish = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.Thoroughfare.Premise.PremiseNumber; //номер дома
+                             nameCity = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName; //название города
+                             nameStreet = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.Thoroughfare.ThoroughfareName; //название улицы
+                             numberHome = obj.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea.SubAdministrativeArea.Locality.Thoroughfare.Premise.PremiseNumber; //номер дома
                         }
                     } catch (err) {
                     }
@@ -129,4 +130,69 @@ function getGeoTarget(field, point, datalist, coords)
             }
         })
     }, 500);
+// координаты
+    $("#setCoords").click(function () {
+        var start = $("#inputStart").val();
+        $("#id_citystart").val(start);
+
+        $('#start').html(
+            '<span>'+start+'</span>'
+        );
+    });
+    $("#setCoords").click(function () {
+        var finish = $("#inputFinish").val();
+        $("#id_cityfinish").val(finish);
+
+        $('#finish').html(
+            '<span>'+finish+'</span>'
+        );
+    });
+    $("#setCoords").click(function () {
+        var auto = $("#inputAuto").val();
+        $('#auto').html(
+            '<div>'+auto+'</div>'
+        );
+    });
+
+//промежуточные пункты и допинформация
+    $("#info").click(function () {
+        var waypoints = $("#waypoints").val();
+        $("#id_waypoints").val(waypoints);
+    });
+    $("#info").click(function () {
+        var dopinfo = $("#dopinfo").val();
+        $("#id_dopinfo").val(dopinfo);
+    });
+
+
+// дата отправления и прибытия
+    $("#datetime").click(function () {
+        var datestart = $("#DateDep").val();
+        $("#datestart").val(datestart);
+        $('#dtstart').html(
+            '<div>'+datestart+'</div>'
+        );
+    });
+
+    $("#datetime").click(function () {
+        var datefinish = $("#DateArrival").val();
+        $("#datefinish").val(datefinish);
+        $('#dtfinish').html(
+            '<div>'+datefinish+'</div>'
+        );
+    });
+// цена места
+    $("#cost").click(function () {
+        var cost = $("#price").val();
+        $("#id_price").val(cost);
+        $('#prc').html(
+            '<div>'+cost+' грн.</div>'
+        );
+    });
+    $("#cost").click(function () {
+        var seats = $("#seats").val();
+        $("#id_seats").val(seats);
+
+    });
+
 }
