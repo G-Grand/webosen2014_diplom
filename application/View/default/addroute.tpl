@@ -121,9 +121,8 @@ ErSession::removeFromSession('finish');
                                             </a>
                                         </h4>
                                     </div>
-                                    <div id="collapseDop" class="panel-collapse collapse" role="tabpanel"
-                                         aria-labelledby="headingDop">
-                                        <div class="panel-body">
+                                    <div id="collapseDop" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDop">
+                                        <div class="panel-body" style="color: #000;">
 
                                             <div class="form-group">
                                                 <textarea id="dopinfo" style="resize:none" type="text"
@@ -132,9 +131,8 @@ ErSession::removeFromSession('finish');
                                                           value="" form="data" name="dopinfo"></textarea>
                                             </div>
 
-                                            <h5><span class="glyphicon glyphicon-exclamation-sign"></span> Ваши
-                                                контактные данные (номер мобильного и эл. адрес)
-                                                уже есть в вашем профиле. Пожалуйста, не добавляйте их здесь!</h5>
+                                            <span class="glyphicon glyphicon-exclamation-sign"></span> Ваши контактные данные (номер мобильного и эл. адрес)
+                                                уже есть в вашем профиле. Пожалуйста, не добавляйте их здесь!
 
                                         </div>
                                     </div>
@@ -272,11 +270,10 @@ ErSession::removeFromSession('finish');
                             <div id="map" style="width: 100%; height: 400px"></div>
                         </div>
 
-                        <div class="panel-body">
+                        <div class="panel-body" style="color: #000;">
                             <div class="row">
-                                <div>
-                                    <h4><span id="start"></span> &#8594; <span id="finish"></span> <span
-                                                class="glyphicon glyphicon-road"></span></h4>
+                                <div >
+                                    <h4><span id="start"></span> &#8594; <span id="finish"></span> <span class="glyphicon glyphicon-road"></span></h4>
                                 </div>
                             </div>
                             <div class="row">
