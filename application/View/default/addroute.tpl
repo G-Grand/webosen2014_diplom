@@ -97,15 +97,15 @@
                                         </h4>
                                     </div>
                                     <div id="collapseDop" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDop">
-                                        <div class="panel-body">
+                                        <div class="panel-body" style="color: #000;">
 
                                                 <div class="form-group">
                                                     <textarea id="dopinfo" style="resize:none" type="text" class="form-control" rows="4" placeholder="Добавьте деталей к описанию вашей поездки - это поможет избежать многочисленных вопросов от пассажиров. Например: место встречи, музыку, которую слушаете, какую-либо полезную информацию для пассажиров." value=""></textarea>
                                                     <input id="id_dopinfo" type="hidden" form="data">
                                                 </div>
 
-                                            <h5><span class="glyphicon glyphicon-exclamation-sign"></span> Ваши контактные данные (номер мобильного и эл. адрес)
-                                                уже есть в вашем профиле. Пожалуйста, не добавляйте их здесь!</h5>
+                                            <span class="glyphicon glyphicon-exclamation-sign"></span> Ваши контактные данные (номер мобильного и эл. адрес)
+                                                уже есть в вашем профиле. Пожалуйста, не добавляйте их здесь!
 
                                         </div>
                                     </div>
