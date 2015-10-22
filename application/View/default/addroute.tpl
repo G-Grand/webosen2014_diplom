@@ -232,9 +232,9 @@
                             <div id="map" style="width: 100%; height: 400px"></div>
                         </div>
 
-                        <div class="panel-body">
+                        <div class="panel-body" style="color: #000;">
                             <div class="row">
-                                <div>
+                                <div >
                                     <h4><span id="start"></span> &#8594; <span id="finish"></span> <span class="glyphicon glyphicon-road"></span></h4>
                                 </div>
                             </div>
